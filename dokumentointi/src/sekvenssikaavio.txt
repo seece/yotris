@@ -1,0 +1,23 @@
+# compile with http://www.websequencediagrams.com
+
+title yotris basic operation
+
+Yotris->GameLogic: GameLogic(ui)
+GameLogic->GameLogic: addObserver(ui)
+Yotris->GameLogic: resetState()
+
+loop until gameover
+    Yotris->+UserInterface: getInput()
+    UserInterface->+KeyboardHandler: getKeyPresses()
+    KeyboardHandler-->-UserInterface: accumulated key events
+    UserInterface-->-Yotris: input
+    
+    Yotris->+GameLogic: update(input)
+   
+    loop each in ObserverList
+        GameLogic->Observer: update()
+    end
+
+    GameLogic-->-Yotris: gameState
+end
+
