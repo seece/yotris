@@ -10,10 +10,11 @@ public class GameLogic {
 
 	public GameLogic(UserInterface ui, Settings settings)	 {
 		this.ui = ui;
-		this.reset();
+		this.settings = settings;
+		this.reset(settings);
 	}
 
-	private void reset() {
+	private void reset(Settings settings) {
 		this.grid = new Grid(settings.getGridWidth(), settings.getGridHeight());	
 	}
 
