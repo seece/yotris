@@ -1,1 +1,2 @@
 pvm	tunnit	kuvaus
+17.12	3	ssh-avainten säätö, suunnittelu
