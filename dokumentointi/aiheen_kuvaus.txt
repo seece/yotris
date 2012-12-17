@@ -1,0 +1,14 @@
+# Aihemäärittely
+
+**Aihe:** tetris-klooni
+Toteutetaan Javalla klooni tetriksestä graafisella käyttöliittymällä. Pelissä voi varsinaisen pelaamisen lisäksi tarkastella pistetilastoja ja vaihtaa graafista teemaa.
+
+**Käyttäjät:** pelaaja
+**Pelaajan toiminnot:**
+* uuden pelin käynnistäminen
+* pelin pelaaminen
+* asetusruudun avaaminen
+	* vaikeustason vaihtaminen
+	* graafisen teeman vaihtaminen
+* pistetilaston tarkastelu
+
