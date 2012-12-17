@@ -1,19 +1,24 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package yotris;
 
-/**
- *
- * @author pekkavaa
- */
+package yotris;
+import yotris.logic.GameLogic;
+import yotris.logic.GameState;
+import yotris.ui.UserInterface;
+import yotris.ui.GUI;
+
 public class Yotris {
 
 	/**
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-		// TODO code application logic here
+		UserInterface ui = new GUI();
+		GameLogic logic = new GameLogic(ui);
+		GameState state;
+
+		do {
+
+			state = logic.update();
+
+		} while (state.running);
 	}
 }
