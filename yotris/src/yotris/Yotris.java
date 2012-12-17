@@ -4,6 +4,7 @@ import yotris.logic.GameLogic;
 import yotris.logic.GameState;
 import yotris.ui.UserInterface;
 import yotris.ui.GUI;
+import yotris.util.Settings;
 
 public class Yotris {
 
@@ -12,7 +13,8 @@ public class Yotris {
 	 */
 	public static void main(String[] args) {
 		UserInterface ui = new GUI();
-		GameLogic logic = new GameLogic(ui);
+		Settings defaultSettings = new Settings();
+		GameLogic logic = new GameLogic(ui, defaultSettings);
 		GameState state;
 
 		do {
