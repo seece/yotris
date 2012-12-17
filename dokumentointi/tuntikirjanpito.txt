@@ -1,2 +1,3 @@
 pvm	tunnit	kuvaus
 17.12	3	ssh-avainten säätö, suunnittelu
+17.12	2	luokkien pohjustus
