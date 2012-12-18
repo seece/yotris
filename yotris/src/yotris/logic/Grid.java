@@ -49,7 +49,7 @@ public class Grid {
 		return height;
 	}
 
-	public Tile[][] getMap() {
+	public Tile[][] getTiles() {
 		return map;
 	}
 

@@ -24,7 +24,7 @@ public class GridTest {
 
 	@Test
 	public void testSizeIsCorrect() {
-		Tile[][] tiles = grid.getMap();
+		Tile[][] tiles = grid.getTiles();
 
 		assertEquals(w, tiles[0].length);
 		assertEquals(h, tiles.length);
@@ -39,7 +39,7 @@ public class GridTest {
 		Tile t2= new Tile(TileColor.RED);
 		grid.setTile(1, 1, t1);
 		grid.setTile(0, 1, t2);
-		Tile[][] tiles = grid.getMap();
+		Tile[][] tiles = grid.getTiles();
 
 		assertEquals(t1.getColor(), grid.getTile(1, 1).getColor());
 		assertEquals(t2.getColor(), grid.getTile(0, 1).getColor());
@@ -65,7 +65,23 @@ public class GridTest {
 
 	@Test
 	public void testPlotter() {
-		Piece piece = new Piece(Tetrimino.O, new Position(0, 0));
+		Piece piece = new Piece(Tetrimino.O, TileColor.BLUE, new Position(0, 0));
+		grid.plotPiece(piece);	
+
+		Tile[][] gridtiles = grid.getTiles();
+		Tile[][] pieceTiles = piece.getTiles();
+
+		assertTrue(gridtiles.length > 0);
+		assertTrue(gridtiles[0].length > 0);
+
+		for (int y=0;y<piece.getHeight();y++) {
+			for (int x=0;x<piece.getWidth();x++) {
+				int grid_offset_x = x + piece.getPos().x;
+				int grid_offset_y = y + piece.getPos().y;
+				Tile gridTile = grid.getTile(grid_offset_x, grid_offset_y);
+				assertEquals(pieceTiles[y][x], gridTile);	
+			}
+		}
 	}
 
 }
