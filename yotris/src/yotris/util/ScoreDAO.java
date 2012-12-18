@@ -20,5 +20,10 @@ public class ScoreDAO {
 		return scorelist;
 	}
 
+	public boolean saveScorelist() {
+		return true;
+	}
+
+
 
 }
