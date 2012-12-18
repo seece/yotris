@@ -26,6 +26,9 @@ public class GameLogic extends Observable {
 		GameState state = new GameState(true);	
 		state.running = false;
 
+		notifyObservers(state);
+
 		return state;
 	}
+
 }
