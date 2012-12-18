@@ -15,4 +15,20 @@ public class Grid {
 		map = new Tile[height][width];
 	}
 
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public Tile[][] getMap() {
+		return map;
+	}
+
+	public void plotPiece(Piece piece) {
+
+	}
+
 }

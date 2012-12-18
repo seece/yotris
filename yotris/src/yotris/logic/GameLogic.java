@@ -26,9 +26,18 @@ public class GameLogic extends Observable {
 		GameState state = new GameState(true);	
 		state.running = false;
 
+		Grid renderGrid = getRenderGrid();
+		state.renderGrid = renderGrid;
+
 		notifyObservers(state);
 
 		return state;
+	}
+
+	public Grid getRenderGrid() {
+		Grid renderGrid = new Grid(this.grid.getWidth(), this.grid.getHeight());
+		renderGrid.plotPiece(fallingPiece);
+		return renderGrid;
 	}
 
 }
