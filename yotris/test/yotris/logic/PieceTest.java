@@ -11,6 +11,27 @@ public class PieceTest {
     }
 
 	@Test
+	public void testPieceDefaultRotation() {
+		Piece piece = new Piece(Tetrimino.O, TileColor.BLUE, new Position(0, 0));
+		assertEquals(Rotation.UP, piece.getRotation());
+	}
+
+	@Test
+	public void testPieceRotation() {
+		Piece piece = new Piece(Tetrimino.O, TileColor.BLUE, new Position(0, 0));
+
+		piece.rotateClockwise();
+		assertEquals(Rotation.RIGHT, piece.getRotation());
+
+		piece.rotateClockwise();
+		assertEquals(Rotation.DOWN, piece.getRotation());
+
+		piece.rotateCounterClockwise();
+		piece.rotateCounterClockwise();
+		assertEquals(Rotation.UP, piece.getRotation());
+	}
+
+	@Test
 	public void testTetriminoParsing() {
 		Piece piece = new Piece(Tetrimino.O, TileColor.BLUE, new Position(0, 0));
 

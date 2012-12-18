@@ -33,6 +33,48 @@ public class Piece {
 		return tilearray;
 	}
 
+	public Rotation rotateClockwise() {
+		switch (rotation) {
+			case UP:
+				rotation = Rotation.RIGHT;
+				break;
+			case RIGHT:
+				rotation = Rotation.DOWN;
+				break;
+			case DOWN:
+				rotation = Rotation.LEFT;
+				break;
+			case LEFT:
+				rotation = Rotation.UP;
+				break;
+			default:
+				break;
+		}
+
+		return rotation;
+	}
+
+	public Rotation rotateCounterClockwise() {
+		switch (rotation) {
+			case UP:
+				rotation = Rotation.LEFT;
+				break;
+			case LEFT:
+				rotation = Rotation.DOWN;
+				break;
+			case DOWN:
+				rotation = Rotation.RIGHT;
+				break;
+			case RIGHT:
+				rotation = Rotation.UP;
+				break;
+			default:
+				break;
+		}
+
+		return rotation;
+	}
+
 	public Position getPos() {
 		return pos;
 	}
