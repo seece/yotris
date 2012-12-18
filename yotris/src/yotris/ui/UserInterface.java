@@ -1,5 +1,7 @@
 package yotris.ui;
 
-public interface UserInterface {
+import java.util.Observer;
+
+public interface UserInterface extends Observer {
 	
 }
