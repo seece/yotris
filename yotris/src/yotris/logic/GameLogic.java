@@ -7,6 +7,7 @@ public class GameLogic {
 	private UserInterface ui;
 	private Grid grid;
 	private Settings settings;
+	private Piece fallingPiece;
 
 	public GameLogic(UserInterface ui, Settings settings)	 {
 		this.ui = ui;
