@@ -14,6 +14,8 @@ public class GameLogic extends Observable {
 		this.ui = ui;
 		this.settings = settings;
 		this.reset(settings);
+
+		addObserver(ui);
 	}
 
 	private void reset(Settings settings) {
