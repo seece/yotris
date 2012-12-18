@@ -8,7 +8,7 @@ public class ScoreDAO {
 	private ArrayList<ScoreEntry> scorelist;
 
 	public ScoreDAO() {
-		this("data/scores.dat");
+		this("scores.dat");
 	}	
 
 	public ScoreDAO(String filepath) {
@@ -24,6 +24,11 @@ public class ScoreDAO {
 		return true;
 	}
 
+	public boolean setContent(ArrayList<ScoreEntry> scorelist) {
+		this.scorelist = scorelist;
+		saveScorelist();
+		return true;
+	}
 
 
 }
