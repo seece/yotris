@@ -15,6 +15,32 @@ public class Grid {
 		map = new Tile[height][width];
 	}
 
+	public Tile getTile(int x, int y) {
+		if (x < 0 || x >= getWidth()) {
+			return null;
+		}
+
+		if (y < 0 || y >= getHeight()) {
+			return null;
+		}
+
+		return map[y][x];
+	}
+
+	public boolean setTile(int x, int y, Tile t) {
+		if (x < 0 || x >= getWidth()) {
+			return false;
+		}
+
+		if (y < 0 || y >= getHeight()) {
+			return false;
+		}
+
+		map[y][x] = t;
+
+		return true;
+	}
+
 	public int getWidth() {
 		return width;
 	}
