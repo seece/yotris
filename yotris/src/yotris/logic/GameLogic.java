@@ -22,16 +22,24 @@ public class GameLogic extends Observable {
 		this.grid = new Grid(settings.getGridWidth(), settings.getGridHeight());	
 		fallingPiece = null;
 		score = 0;
+
+		GameState state = getGameState();
+		notifyObservers(state);
 	}
 
 	public GameState update() {
+		GameState state = getGameState();
+		notifyObservers(state);
+
+		return state;
+	}
+
+	public GameState getGameState() {
 		GameState state = new GameState(true);	
 		state.running = false;
 
 		Grid renderGrid = getRenderGrid();
 		state.renderGrid = renderGrid;
-
-		notifyObservers(state);
 
 		return state;
 	}
