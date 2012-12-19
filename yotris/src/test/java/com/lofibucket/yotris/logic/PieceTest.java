@@ -21,19 +21,20 @@ public class PieceTest {
 
 	private static final Tile[][] tiles_long_down = 
 		{
-		{null, null, 	blue, null},
-		{null, null, 	blue, null},
-		{null, null, 	blue, null},
-		{null, null, 	blue, null}
+		{null, blue, 	null, null},
+		{null, blue, 	null, null},
+		{null, blue, 	null, null},
+		{null, blue, 	null, null}
 		};
 
 	private static final Tile[][] tiles_long_left = 
 		{
 		{null, null, 	null, null},
-		{null, null, 	null, null},
 		{blue, blue, 	blue, blue},
+		{null, null, 	null, null},
 		{null, null, 	null, null}
 		};
+
 
     public PieceTest() {
 
@@ -86,7 +87,6 @@ public class PieceTest {
 		Grid tiles = piece_long.getRotatedTiles();
 		assertArrayEquals(tiles.getTiles(), tiles_long_right);
 
-
 		piece_long.rotateClockwise();
 		tiles = piece_long.getRotatedTiles();
 		assertArrayEquals(tiles.getTiles(), tiles_long_down);
@@ -99,6 +99,16 @@ public class PieceTest {
 		piece_long.rotateCounterClockwise();
 		tiles = piece_long.getRotatedTiles();
 		assertArrayEquals(tiles.getTiles(), tiles_long_right);
+	}
+
+	@Test
+	public void testPieceMirrorRotationTiles() {
+		Piece piece_long = new Piece(Tetrimino.I, TileColor.BLUE, new Position(0, 0));
+		piece_long.rotateClockwise();
+		piece_long.rotateClockwise();
+		Grid tiles = piece_long.getRotatedTiles();
+
+		assertArrayEquals(tiles.getTiles(), tiles_long_down);
 	}
 
 	@Test

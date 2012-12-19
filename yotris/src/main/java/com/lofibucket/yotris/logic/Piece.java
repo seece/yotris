@@ -89,8 +89,26 @@ public class Piece {
 	}
 
 	public Grid getRotatedTiles() {
-		// TODO add proper rotation
-		return tiles;
+		Grid rotated = new Grid(tiles.getTiles());
+
+		switch (rotation) {
+			case UP:
+				break;
+			case LEFT:
+				rotated.rotateOnceClockwise();
+				rotated.flipAroundX();
+				break;
+			case DOWN:
+				rotated.flipAroundY();
+				break;
+			case RIGHT:
+				rotated.rotateOnceClockwise();
+				break;
+			default:
+				break;
+		}
+
+		return rotated;
 	}
 
 	public void setTiles(Grid tiles) {

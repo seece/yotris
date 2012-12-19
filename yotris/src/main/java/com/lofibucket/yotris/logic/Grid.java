@@ -89,4 +89,37 @@ public class Grid {
 		*/
 	}
 
+	public void flipAroundX() {
+		Grid temp = new Grid(tiles);
+		for (int y=0;y<height;y++) {
+			for (int x=0;x<width;x++) {
+				setTile(x, y, temp.getTile(width-x-1, y));
+			}
+		}
+
+		this.tiles = temp.getTiles();
+	}
+
+	public void flipAroundY() {
+		Grid temp = new Grid(tiles);
+		for (int y=0;y<height;y++) {
+			for (int x=0;x<width;x++) {
+				setTile(x, y, temp.getTile(x, height-y-1));
+			}
+		}
+
+		this.tiles = temp.getTiles();
+	}
+
+	public void rotateOnceClockwise() {
+		Grid temp = new Grid(tiles);
+		for (int y=0;y<height;y++) {
+			for (int x=0;x<width;x++) {
+				setTile(x, y, temp.getTile(y, width-x-1));
+			}
+		}
+
+		//this.tiles = temp.getTiles();
+	}
+
 }
