@@ -54,7 +54,16 @@ public class Grid {
 	}
 
 	public void plotPiece(Piece piece) {
+		Tile[][] tiles = piece.getRotatedTiles();
 
+		for (int y=0;y<piece.getHeight();y++) {
+		for (int x=0;x<piece.getWidth();x++) {
+			int tile_offset_x = piece.getPos().x + x;
+			int tile_offset_y = piece.getPos().y + y;
+			Tile tile = tiles[y][x];
+			setTile(tile_offset_x, tile_offset_y, tile);
+		}
+		}
 	}
 
 }

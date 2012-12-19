@@ -87,6 +87,11 @@ public class Piece {
 		return tiles;
 	}
 
+	public Tile[][] getRotatedTiles() {
+		// TODO add proper rotation
+		return tiles;
+	}
+
 	public void setTiles(Tile[][] tiles) {
 		this.tiles = tiles;
 	}
@@ -105,6 +110,14 @@ public class Piece {
 
 	public int getHeight() {
 		return tiles.length;
+	}
+
+	public TileColor getColor() {
+		return color;
+	}
+
+	public void setColor(TileColor color) {
+		this.color = color;
 	}
 
 
