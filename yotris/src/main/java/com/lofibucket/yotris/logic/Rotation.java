@@ -5,8 +5,7 @@
 package com.lofibucket.yotris.logic;
 
 /**
- *
- * @author pekkavaa
+ * A rotation enum used by the Piece class to represent current orientation.
  */
 public enum Rotation {
 	/**

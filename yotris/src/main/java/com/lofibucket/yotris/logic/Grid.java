@@ -3,12 +3,19 @@ package com.lofibucket.yotris.logic;
 import java.util.Arrays;
 import com.lofibucket.yotris.logic.Tile;
 
+/**
+ *	The grid class used to represent the game area
+ */
 public class Grid {
 	private int width;
 	private int height;
 
 	private Tile[][] tiles;
 
+	/**
+	 *	A semi copy constructor, builds a new grid from a 2D Tile array
+	 * @param tiles	A two dimensional array to use as a base for new grid
+	 */
 	public Grid(Tile[][] tiles) {
 		int w = tiles[0].length;		
 		int h = tiles.length;		
@@ -28,6 +35,11 @@ public class Grid {
 		}
 	}
 
+	/**
+	 * The default constructor
+	 * @param width	grid width in tiles
+	 * @param height grid height in tiles
+	 */
 	public Grid(int width, int height) {
 		this.width = width;
 		this.height = height;
@@ -35,6 +47,12 @@ public class Grid {
 		this.tiles = new Tile[height][width];
 	}
 
+	/**
+	 * Tile getter. 
+	 * @param x x-coordinate of the tile to be read
+	 * @param y y-coordinate of the tile to be read
+	 * @return the Tile object at (x, y), null if coordinates out of bounds
+	 */
 	public Tile getTile(int x, int y) {
 		if (x < 0 || x >= getWidth()) {
 			return null;
@@ -47,6 +65,13 @@ public class Grid {
 		return tiles[y][x];
 	}
 
+	/**
+	 * Sets the value of an arbitrary tile. 
+	 * @param x	x-coordinate where to insert the tile
+	 * @param y	y-coordinate where to insert the tile
+	 * @param t	the tile to insert
+	 * @return	true if successful, false if coordinate out of bounds
+	 */
 	public boolean setTile(int x, int y, Tile t) {
 		if (x < 0 || x >= getWidth()) {
 			return false;
@@ -61,18 +86,35 @@ public class Grid {
 		return true;
 	}
 
+	/**
+	 *
+	 * @return grid width
+	 */
 	public int getWidth() {
 		return width;
 	}
 
+	/**
+	 *
+	 * @return grid height
+	 */
 	public int getHeight() {
 		return height;
 	}
 
+	/**
+	 *
+	 * @return internal tile array representation of the grid
+	 */
 	public Tile[][] getTiles() {
 		return tiles;
 	}
 
+	/**
+	 * Adds tiles of a Piece instance to the grid. The coordinates are read
+	 * from the piece argument attributes.
+	 * @param piece	The piece to be added to the grid
+	 */
 	public void plotPiece(Piece piece) {
 		Grid piece_tiles = piece.getRotatedTiles();
 		return;
@@ -89,6 +131,9 @@ public class Grid {
 		*/
 	}
 
+	/**
+	 *	Mirrors the grid horizontally.
+	 */
 	public void flipAroundX() {
 		Grid temp = new Grid(tiles);
 		for (int y=0;y<height;y++) {
@@ -100,6 +145,9 @@ public class Grid {
 		this.tiles = temp.getTiles();
 	}
 
+	/**
+	 *	Mirrors the grid vertically.
+	 */
 	public void flipAroundY() {
 		Grid temp = new Grid(tiles);
 		for (int y=0;y<height;y++) {
@@ -111,6 +159,9 @@ public class Grid {
 		this.tiles = temp.getTiles();
 	}
 
+	/**
+	 *	Rotates the grid 90 degrees clockwise.
+	 */
 	public void rotateOnceClockwise() {
 		Grid temp = new Grid(tiles);
 		for (int y=0;y<height;y++) {

@@ -2,9 +2,16 @@
 package com.lofibucket.yotris.logic;
 import com.lofibucket.yotris.util.TileColor;
 
+/**
+ *	A tetris block tile.
+ */
 public class Tile {
 	TileColor color;
 
+	/**
+	 * The default constructor.
+	 * @param color	Tile color
+	 */
 	public Tile(TileColor color) {
 		this.color = color;
 	}
@@ -13,10 +20,18 @@ public class Tile {
 		this.color = tile.color;
 	}
 
+	/**
+	 *
+	 * @return	Tile color
+	 */
 	public TileColor getColor() {
 		return color;
 	}
 
+	/**
+	 *
+	 * @param color	The new tile color
+	 */
 	public void setColor(TileColor color) {
 		this.color = color;
 	}

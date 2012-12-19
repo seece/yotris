@@ -3,6 +3,10 @@ package com.lofibucket.yotris.logic;
 
 import com.lofibucket.yotris.util.TileColor;
 
+/**
+ *
+ * A single tetris piece consisting of a Tile Grid.
+ */
 public class Piece {
 	private Position pos;
 	//private Tile tiles[][];	
@@ -10,6 +14,12 @@ public class Piece {
 	private Rotation rotation;
 	private TileColor color;
 
+	/**
+	 * Default constructor
+	 * @param tetrimino	The tetrimino shape for this piece
+	 * @param color		The color of this piece
+	 * @param pos		Position in the game grid, used when plotting
+	 */
 	public Piece(boolean [][] tetrimino, TileColor color, Position pos) {
 		this.rotation = Rotation.UP;
 		this.color = color;
@@ -34,6 +44,10 @@ public class Piece {
 		return tilearray;
 	}
 
+	/**
+	 * Rotates the piece clockwise 
+	 * @return The new orientation
+	 */
 	public Rotation rotateClockwise() {
 		switch (rotation) {
 			case UP:
@@ -55,6 +69,10 @@ public class Piece {
 		return rotation;
 	}
 
+	/**
+	 * Rotates the piece in counter clockwise direction
+	 * @return The new orientation
+	 */
 	public Rotation rotateCounterClockwise() {
 		switch (rotation) {
 			case UP:
@@ -76,18 +94,34 @@ public class Piece {
 		return rotation;
 	}
 
+	/**
+	 * Piece position getter
+	 * @return position
+	 */
 	public Position getPos() {
 		return pos;
 	}
 
+	/**
+	 * Piece position setter
+	 * @param pos New position for this piece
+	 */
 	public void setPos(Position pos) {
 		this.pos = pos;
 	}
 
+	/**
+	 * Internal Grid structure getter
+	 * @return Returns the tiles the piece consists of
+	 */
 	public Grid getTiles() {
 		return tiles;
 	}
 
+	/**
+	 * Returns the piece tiles with the correct rotation
+	 * @return The rotated tile grid
+	 */
 	public Grid getRotatedTiles() {
 		Grid rotated = new Grid(tiles.getTiles());
 
@@ -111,30 +145,58 @@ public class Piece {
 		return rotated;
 	}
 
+	/**
+	 * Change this pieces internal tile grid
+	 * @param tiles New grid to be used
+	 */
 	public void setTiles(Grid tiles) {
 		this.tiles = tiles;
 	}
 
+	/**
+	 * The piece rotation getter
+	 * @return Current orientation
+	 */
 	public Rotation getRotation() {
 		return rotation;
 	}
 
+	/**
+	 * Piece rotation setter
+	 * @param rotation The new rotation 
+	 */
 	public void setRotation(Rotation rotation) {
 		this.rotation = rotation;
 	}
 
+	/**
+	 *
+	 * @return Piece grid width
+	 */
 	public int getWidth() {
 		return tiles.getWidth();
 	}
 
+	/**
+	 *
+	 * @return Piece grid height
+	 */
 	public int getHeight() {
 		return tiles.getWidth();
 	}
 
+	/**
+	 *
+	 * @return Piece color
+	 */
 	public TileColor getColor() {
 		return color;
 	}
 
+	/**
+	 *
+	 * @param color	New color for this piece
+	 */
 	public void setColor(TileColor color) {
 		this.color = color;
 	}
