@@ -82,43 +82,39 @@ public class PieceTest {
 	public void testPieceRotationTiles() {
 		Piece piece_long = new Piece(Tetrimino.I, TileColor.BLUE, new Position(0, 0));
 
-		/*
 		piece_long.rotateClockwise();
-		Tile[][] tiles = piece_long.getRotatedTiles();
-		//printObjectArray(tiles);
-		assertArrayEquals(tiles, tiles_long_right);
+		Grid tiles = piece_long.getRotatedTiles();
+		assertArrayEquals(tiles.getTiles(), tiles_long_right);
+
 
 		piece_long.rotateClockwise();
 		tiles = piece_long.getRotatedTiles();
-		assertArrayEquals(tiles, tiles_long_down);
+		assertArrayEquals(tiles.getTiles(), tiles_long_down);
 
 		piece_long.rotateClockwise();
 		tiles = piece_long.getRotatedTiles();
-		assertArrayEquals(tiles, tiles_long_left);
+		assertArrayEquals(tiles.getTiles(), tiles_long_left);
 
 		piece_long.rotateCounterClockwise();
 		piece_long.rotateCounterClockwise();
 		tiles = piece_long.getRotatedTiles();
-		assertArrayEquals(tiles, tiles_long_right);
-		*/
+		assertArrayEquals(tiles.getTiles(), tiles_long_right);
 	}
 
 	@Test
 	public void testTetriminoParsing() {
-		/*
-		Tile[][] tiles = piece.getTiles();
+		Grid tiles = piece.getTiles();
 
-		assertEquals(tiles[0].length, Tetrimino.O[0].length);
-		assertEquals(tiles.length, Tetrimino.O.length);
+		assertEquals(tiles.getWidth(), Tetrimino.O[0].length);
+		assertEquals(tiles.getHeight(), Tetrimino.O.length);
 
 		for (int y=0;y<piece.getHeight();y++) {
 			for (int x=0;x<piece.getWidth();x++) {
 				if (Tetrimino.O[y][x])	 {
-					assertTrue(tiles[y][x] != null);
+					assertTrue(tiles.getTile(x, y) != null);
 				}
 			}
 		}
-		*/
 
 	}
 
