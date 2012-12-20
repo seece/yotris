@@ -4,3 +4,4 @@ pvm	tunnit	kuvaus
 18.12	5	testien ja luokkien koodailu
 19.12	2	mavenin konfigurointi
 19.12	3	testien ja dokumentaation kirjoittelu
+20.12	2	GameLogic luokan metodien täydennys, dokumentointi
