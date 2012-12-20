@@ -2,3 +2,5 @@ pvm	tunnit	kuvaus
 17.12	3	ssh-avainten säätö, suunnittelu
 17.12	2	luokkien pohjustus
 18.12	5	testien ja luokkien koodailu
+19.12	2	mavenin konfigurointi
+19.12	3	testien ja dokumentaation kirjoittelu
