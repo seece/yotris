@@ -11,7 +11,7 @@ public class ZeroBasedCounter {
 	private int upperLimit;
 
 	/**
-	 *	
+	 *	The default constructor. The limit values are inclusive.
 	 * @param value	The initial value for the counter
 	 * @param upperLimit	The limit to which the value wraps around to when
 	 * under zero

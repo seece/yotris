@@ -111,15 +111,38 @@ public class Grid {
 	}
 
 	/**
+	 * Checks if this grid intersects with the given piece.
+	 * @param piece	The piece to check against to
+	 * @return 	true on intersection, otherwise false
+	 */
+	public boolean checkIntersection(Piece piece) {
+		Grid piece_tiles = piece.getRotatedTiles();
+
+		for (int y=0;y<piece.getHeight();y++) {
+		for (int x=0;x<piece.getWidth();x++) {
+			int tile_offset_x = piece.getPos().x + x;
+			int tile_offset_y = piece.getPos().y + y;
+
+			if (piece_tiles.getTile(x, y) != null) {
+				if (getTile(tile_offset_x, tile_offset_y) != null) {
+					return true;
+				}
+			}
+		}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Adds tiles of a Piece instance to the grid. The coordinates are read
 	 * from the piece argument attributes.
 	 * @param piece	The piece to be added to the grid
 	 */
 	public void plotPiece(Piece piece) {
 		Grid piece_tiles = piece.getRotatedTiles();
-		return;
+		//return;
 
-		/*
 		for (int y=0;y<piece.getHeight();y++) {
 		for (int x=0;x<piece.getWidth();x++) {
 			int tile_offset_x = piece.getPos().x + x;
@@ -128,7 +151,6 @@ public class Grid {
 			setTile(tile_offset_x, tile_offset_y, tile);
 		}
 		}
-		*/
 	}
 
 	/**

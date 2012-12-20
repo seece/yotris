@@ -7,8 +7,7 @@ import com.lofibucket.yotris.util.TileColor;
  *
  * A single tetris piece consisting of a Tile Grid.
  */
-public class Piece {
-	private Position pos;
+public class Piece extends Movable {
 	//private Tile tiles[][];	
 	private Grid tiles;
 	private Rotation rotation;
@@ -199,6 +198,38 @@ public class Piece {
 	 */
 	public void setColor(TileColor color) {
 		this.color = color;
+	}
+
+	/**
+	 *	Moves the piece one step to the right
+	 */
+	@Override
+	public void moveRight() {
+		pos.x++;
+	}
+
+	/**
+	 *	Moves the piece one step to the left
+	 */
+	@Override
+	public void moveLeft() {
+		pos.x--;
+	}
+
+	/**
+	 *	Moves the piece one step up
+	 */
+	@Override
+	public void moveUp() {
+		pos.y--;
+	}
+
+	/**
+	 *	Moves the piece one step down
+	 */
+	@Override
+	public void moveDown() {
+		pos.y++;
 	}
 
 
