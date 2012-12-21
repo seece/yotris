@@ -74,7 +74,7 @@ public class GridTest {
 		grid.plotPiece(piece);	
 
 		Tile[][] gridtiles = grid.getTiles();
-		Grid pieceTiles = piece.getTiles();
+		Grid pieceTiles = piece.getGrid();
 
 		assertTrue(gridtiles.length > 0);
 		assertTrue(gridtiles[0].length > 0);

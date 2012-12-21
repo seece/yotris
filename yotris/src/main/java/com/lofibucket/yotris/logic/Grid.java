@@ -116,12 +116,25 @@ public class Grid {
 	 * @return 	true on intersection, otherwise false
 	 */
 	public boolean checkIntersection(Piece piece) {
-		Grid piece_tiles = piece.getRotatedTiles();
+		return checkIntersection(piece, new Position(0, 0));
+	}
 
-		for (int y=0;y<piece.getHeight();y++) {
-		for (int x=0;x<piece.getWidth();x++) {
-			int tile_offset_x = piece.getPos().x + x;
-			int tile_offset_y = piece.getPos().y + y;
+	/**
+	 * Checks if this grid intersects with the given piece with the given 
+	 * offset.
+	 * @param piece	The piece to check against to
+	 * @param offset	An offset to be applied to the piece position 
+	 * before testing for intersections
+	 * @return 	true on intersection, otherwise false
+	 */
+	public boolean checkIntersection(Piece piece, Position offset) {
+		Piece mockpiece = new Piece(piece);
+		Grid piece_tiles = mockpiece.getRotatedTiles();
+
+		for (int y=0;y<mockpiece.getHeight();y++) {
+		for (int x=0;x<mockpiece.getWidth();x++) {
+			int tile_offset_x = mockpiece.getPos().x + x;
+			int tile_offset_y = mockpiece.getPos().y + y;
 
 			if (piece_tiles.getTile(x, y) != null) {
 				if (getTile(tile_offset_x, tile_offset_y) != null) {

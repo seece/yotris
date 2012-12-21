@@ -26,6 +26,28 @@ public class Piece extends Movable {
 		this.pos = pos;
 	}
 
+	/**
+	 * A constructor that takes in a two dimensional Tile array as parameter
+	 * instead of a boolean array.
+	 * @param tiles		The tile shape array for this piece
+	 * @param color		The color of this piece
+	 * @param pos		Position in the game grid, used when plotting
+	 */
+	public Piece(Tile[][] tiles, TileColor color, Position pos) {
+		this.rotation = Rotation.UP;
+		this.color = color;
+		this.tiles = new Grid(tiles);
+		this.pos = pos;
+	}
+
+	/**
+	 * 	A copy constructor.
+	 * @param piece 	Copies all fields from this piece.
+	 */
+	Piece(Piece piece) {
+		this(piece.getGrid().getTiles(), piece.getColor(), piece.getPos());
+	}
+
 	private Tile[][] parseTileGridFromTetrimino(boolean [][] tetrimino) {
 		int block_width = tetrimino[0].length;
 		int block_height = tetrimino.length;
@@ -97,6 +119,7 @@ public class Piece extends Movable {
 	 * Piece position getter
 	 * @return position
 	 */
+	@Override
 	public Position getPos() {
 		return pos;
 	}
@@ -113,7 +136,7 @@ public class Piece extends Movable {
 	 * Internal Grid structure getter
 	 * @return Returns the tiles the piece consists of
 	 */
-	public Grid getTiles() {
+	public Grid getGrid() {
 		return tiles;
 	}
 
@@ -148,7 +171,7 @@ public class Piece extends Movable {
 	 * Change this pieces internal tile grid
 	 * @param tiles New grid to be used
 	 */
-	public void setTiles(Grid tiles) {
+	public void setGrid(Grid tiles) {
 		this.tiles = tiles;
 	}
 

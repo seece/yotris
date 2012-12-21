@@ -113,7 +113,7 @@ public class PieceTest {
 
 	@Test
 	public void testTetriminoParsing() {
-		Grid tiles = piece.getTiles();
+		Grid tiles = piece.getGrid();
 
 		assertEquals(tiles.getWidth(), Tetrimino.O[0].length);
 		assertEquals(tiles.getHeight(), Tetrimino.O.length);

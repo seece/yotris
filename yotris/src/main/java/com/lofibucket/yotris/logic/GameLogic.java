@@ -51,6 +51,7 @@ public class GameLogic extends Observable {
 	 */
 	public GameState update(ArrayList<Command> commands) {
 		frames++;
+		applyCommands(commands);
 		updateFallingPiece();
 		
 		GameState state = getGameState();
@@ -59,15 +60,28 @@ public class GameLogic extends Observable {
 		return state;
 	}
 
+	private void applyCommands(ArrayList<Command> commands) {
+		for (Command command : commands) {
+			command.apply(this);
+		}
+	}
+
 	private void updateFallingPiece() {
 		pieceFallCounter.decrease();
 
-		if (pieceFallCounter.isZero()) {
-			if (fallingPiece == null) {
-				spawnPiece();
-			} else {
-				fallingPiece.moveDown();
+		if (!pieceFallCounter.isZero()) {
+			return;
+		}
+
+		if (fallingPiece == null) {
+			spawnPiece();
+		} else {
+			if (grid.checkIntersection(fallingPiece, new Position(0, 1))) {
+				grid.plotPiece(fallingPiece);
+				return;
 			}
+
+			fallingPiece.moveDown();
 		}
 	}
 
@@ -112,8 +126,8 @@ public class GameLogic extends Observable {
 	}
 
 	/**
-	 *
-	 * @return
+	 *	Returns the complete game grid, used for rendering the game level in UI.
+	 * @return	the game grid with the falling piece baked in
 	 */
 	public Grid getRenderGrid() {
 		Grid renderGrid = new Grid(this.grid.getWidth(), this.grid.getHeight());
