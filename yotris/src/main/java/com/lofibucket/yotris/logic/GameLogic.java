@@ -1,7 +1,9 @@
 package com.lofibucket.yotris.logic;
+import com.lofibucket.yotris.util.commands.Command;
 import com.lofibucket.yotris.ui.UserInterface;
 import com.lofibucket.yotris.util.Settings;
 import com.lofibucket.yotris.util.TileColor;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Random;
 
@@ -47,7 +49,7 @@ public class GameLogic extends Observable {
 	 *	Runs one cycle of the game.
 	 * @return	state of the game after this step.
 	 */
-	public GameState update() {
+	public GameState update(ArrayList<Command> commands) {
 		frames++;
 		updateFallingPiece();
 		

@@ -28,7 +28,7 @@ public class Game {
 		GameState state;
 
 		do {
-			state = logic.update();
+			state = logic.update(ui.getNewCommands());
 		} while (state.running);
 	}
 }
