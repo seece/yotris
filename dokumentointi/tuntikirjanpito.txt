@@ -1,8 +1,9 @@
 pvm	tunnit	kuvaus
-17.12	3	ssh-avainten sÃ¤Ã¤tÃ¶, suunnittelu
+17.12	3	ssh-avainten säätö, suunnittelu
 17.12	2	luokkien pohjustus
 18.12	5	testien ja luokkien koodailu
 19.12	2	mavenin konfigurointi
 19.12	3	testien ja dokumentaation kirjoittelu
 20.12	2	GameLogic luokan metodien täydennys, dokumentointi
 21.12	1	Grid luokan törmäystestaus, komentojonon suunnittelu
+22.12	3	simppeli GUI, näppäinkuuntelija
