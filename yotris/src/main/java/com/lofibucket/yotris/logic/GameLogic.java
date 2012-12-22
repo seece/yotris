@@ -26,6 +26,7 @@ public class GameLogic extends Observable {
 	 * @param settings	settings for the current session
 	 */
 	public GameLogic(UserInterface ui, Settings settings)	 {
+		super();
 		this.ui = ui;
 		this.settings = settings;
 		this.reset(settings);
@@ -42,6 +43,7 @@ public class GameLogic extends Observable {
 		frames = 0;
 
 		GameState state = getGameState();
+		setChanged();
 		notifyObservers(state);
 	}
 
@@ -55,6 +57,7 @@ public class GameLogic extends Observable {
 		updateFallingPiece();
 		
 		GameState state = getGameState();
+		setChanged();
 		notifyObservers(state);
 
 		return state;
