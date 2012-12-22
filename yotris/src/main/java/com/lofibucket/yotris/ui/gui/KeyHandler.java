@@ -23,10 +23,14 @@ public class KeyHandler implements KeyEventDispatcher {
 		Map<Integer, Command> keymap = settings.getKeymap();
 
 		if (e.getID() == KeyEvent.KEY_PRESSED) {
-			System.out.println("key pressed: " + e.getKeyCode());
+			if (!keymap.containsKey(e.getKeyCode())) {
+				return false;
+			}
+
+			keymap.get(e.getKeyCode()).apply();
+			return true;	// no further action please
 		}		
 
-		//System.out.println("Got key event! " + e.getKeyCode() + " " +e.getID() );
 		return false;
 	}
 
