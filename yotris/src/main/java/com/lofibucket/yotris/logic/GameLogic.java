@@ -34,7 +34,11 @@ public class GameLogic extends Observable {
 		addObserver(ui);
 	}
 
-	private void reset(Settings settings) {
+	/**
+	 * Resets the game state
+	 * @param settings the settings to use for this session
+	 */
+	public void reset(Settings settings) {
 		this.grid = new Grid(settings.getGridWidth(), settings.getGridHeight());	
 		running = true;
 		fallingPiece = null;

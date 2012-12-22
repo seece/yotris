@@ -11,6 +11,7 @@ public class Settings {
 	private DifficultyLevel difficulty;
 	private int gridWidth;
 	private int gridHeight;
+	private String version;
 	private Map<Integer, Command> keymap;
 
 	/**
@@ -29,6 +30,7 @@ public class Settings {
 	 */
 	public Settings(DifficultyLevel difficulty, int gridWidth, int gridHeight) { 
 			
+		this.version = "0.1a";
 		this.difficulty = difficulty;
 		this.gridWidth = gridWidth;
 		this.gridHeight = gridHeight;
@@ -84,5 +86,15 @@ public class Settings {
 	public int getGridHeight() {
 		return gridHeight;
 	}
+
+	/**
+	 * The version string of this version of the game.
+	 * @return this build version as string
+	 */
+	public String getVersion() {
+		return version;
+	}
+
+
 
 }
