@@ -2,6 +2,7 @@
 package com.lofibucket.yotris.logic;
 
 import com.lofibucket.yotris.ui.UserInterface;
+import com.lofibucket.yotris.ui.gui.GUI;
 import com.lofibucket.yotris.util.Settings;
 
 
@@ -10,21 +11,23 @@ import com.lofibucket.yotris.util.Settings;
  */
 public class Game {
 	private UserInterface ui;
+	private Settings settings;
 
 	/**
 	 * Game constructor
-	 * @param ui	The user interface to be used for this session
 	 */
-	public Game(UserInterface ui) {
-		this.ui = ui;
+	public Game() {
 	}
 
 	/**
 	 *	Runs the main game loop. Exits when the game ends.
 	 */
 	public void run() {
-		Settings defaultSettings = new Settings();
-		GameLogic logic = new GameLogic(ui, defaultSettings);
+		GameLogic logic = new GameLogic(ui, settings);
+
+		Settings defaultSettings = new Settings(logic);
+		UserInterface ui = new GUI(defaultSettings);
+
 		GameState state;
 
 		do {

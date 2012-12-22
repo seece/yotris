@@ -65,7 +65,7 @@ public class GameLogic extends Observable {
 
 	private void applyCommands(ArrayList<Command> commands) {
 		for (Command command : commands) {
-			command.apply(this);
+			command.apply();
 		}
 	}
 

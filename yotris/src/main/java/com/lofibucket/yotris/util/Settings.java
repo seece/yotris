@@ -1,22 +1,26 @@
 
 package com.lofibucket.yotris.util;
-import com.lofibucket.yotris.util.DifficultyLevel;
+import com.lofibucket.yotris.logic.GameLogic;
+import com.lofibucket.yotris.util.commands.*;
+import java.awt.event.KeyEvent;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
- * @author pekkavaa
  */
 public class Settings {
 	private DifficultyLevel difficulty;
 	private int gridWidth;
 	private int gridHeight;
+	private Map<Integer, Command> keymap;
 
 	/**
-	 * The constructor with no parameters initialises the default settings. 
+	 * The constructor with no parameters initializes the default settings. 
 	 */
-	public Settings() {
+	public Settings(GameLogic logic) {
 		// the default settings
-		this(DifficultyLevel.EASY, 10, 20);
+		this(DifficultyLevel.EASY, 10, 20, logic);
 	}
 
 	/**
@@ -25,10 +29,28 @@ public class Settings {
 	 * @param gridWidth	The game area width in tiles
 	 * @param gridHeight	The game are height in tiles
 	 */
-	public Settings(DifficultyLevel difficulty, int gridWidth, int gridHeight) {
+	public Settings(DifficultyLevel difficulty, int gridWidth, int gridHeight, 
+			GameLogic logic) {
 		this.difficulty = difficulty;
 		this.gridWidth = gridWidth;
 		this.gridHeight = gridHeight;
+		this.keymap = new HashMap<>();
+
+		addDefaultLayout(keymap, logic);
+	}
+
+	private void addDefaultLayout(Map<Integer, Command> map, GameLogic logic) {
+		map.put(KeyEvent.VK_LEFT, new MoveLeftCommand(logic));
+		map.put(KeyEvent.VK_RIGHT, new MoveRightCommand(logic));
+		map.put(KeyEvent.VK_DOWN, new MoveDownCommand(logic));
+	}
+
+	/**
+	 * The game key configuration, used by the keyboard handler.
+	 * @return 	a map with key codes as keys and command objects as values
+	 */
+	public Map<Integer, Command> getKeymap() {
+		return keymap;
 	}
 
 	/**
