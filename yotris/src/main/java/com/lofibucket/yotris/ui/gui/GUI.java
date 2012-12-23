@@ -52,6 +52,7 @@ public class GUI implements UserInterface, Runnable {
 
 		area.setRenderGrid(state.getRenderGrid());
 
+		area.repaint();
 		//System.out.println("GUI updates: " + logic.getSimulatedFrames());
 	}
 
