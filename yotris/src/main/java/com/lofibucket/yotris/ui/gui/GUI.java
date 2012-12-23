@@ -13,6 +13,7 @@ import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -54,10 +55,8 @@ public class GUI implements UserInterface, Runnable {
 	 * @return the accumulated command objects
 	 */
 	@Override
-	public ArrayList<Command> getNewCommands() {
-		ArrayList<Command> newCommands = (ArrayList<Command>) commandlist.clone();
-		commandlist.clear();
-		return newCommands;
+	public synchronized List<Command> pollCommands() {
+		return commandlist;
 	}
 
 	@Override
@@ -69,7 +68,7 @@ public class GUI implements UserInterface, Runnable {
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		KeyboardFocusManager.getCurrentKeyboardFocusManager()
-		.addKeyEventDispatcher(new KeyHandler(this.commandlist, settings));
+		.addKeyEventDispatcher(new KeyHandler(this, settings));
 		
 		createComponents(frame.getContentPane());
 		createMenu(frame);
@@ -117,7 +116,7 @@ public class GUI implements UserInterface, Runnable {
 
 
 	@Override
-	public void addNewCommand(Command c) {
+	public synchronized void addNewCommand(Command c) {
 		this.commandlist.add(c);
 	}
 

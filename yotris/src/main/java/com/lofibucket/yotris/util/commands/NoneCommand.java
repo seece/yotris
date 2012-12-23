@@ -5,12 +5,11 @@ import com.lofibucket.yotris.logic.GameLogic;
 
 
 public class NoneCommand extends Command {
-	public NoneCommand(GameLogic logic) {
-		super(logic);
+	public NoneCommand() {
 	}
 
 	@Override
-	public void apply() {
+	public void apply(GameLogic logic) {
 		System.out.println("doing nothing");
 	}
 

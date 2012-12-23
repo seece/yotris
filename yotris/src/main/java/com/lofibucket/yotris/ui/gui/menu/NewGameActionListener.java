@@ -16,8 +16,7 @@ public class NewGameActionListener extends CommandActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("start a new game!!!");
-		container.addNewCommand(new StartGameCommand(null));
+		container.addNewCommand(new StartGameCommand());
 	}
 
 }

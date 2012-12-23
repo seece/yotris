@@ -1,18 +1,18 @@
 
 package com.lofibucket.yotris.ui.gui;
 
+import com.lofibucket.yotris.ui.CommandContainer;
 import com.lofibucket.yotris.util.Settings;
 import com.lofibucket.yotris.util.commands.Command;
 import java.awt.KeyEventDispatcher;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.Map;
 
 public class KeyHandler implements KeyEventDispatcher {
-	private ArrayList<Command> commandlist;
+	private CommandContainer commandlist;
 	private Settings settings;
 
-	public KeyHandler(ArrayList<Command> commandlist, Settings settings) {
+	public KeyHandler(CommandContainer commandlist, Settings settings) {
 		super();
 		this.commandlist = commandlist;
 		this.settings = settings;
@@ -27,7 +27,8 @@ public class KeyHandler implements KeyEventDispatcher {
 				return false;
 			}
 
-			keymap.get(e.getKeyCode()).apply();
+			//commandlist.add(keymap.get(e.getKeyCode()));
+			commandlist.addNewCommand(keymap.get(e.getKeyCode()));
 			return true;	// no further action please
 		}		
 

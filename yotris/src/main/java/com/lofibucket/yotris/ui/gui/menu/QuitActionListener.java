@@ -2,6 +2,7 @@
 package com.lofibucket.yotris.ui.gui.menu;
 
 import com.lofibucket.yotris.ui.CommandContainer;
+import com.lofibucket.yotris.util.commands.QuitCommand;
 import java.awt.event.ActionEvent;
 
 
@@ -13,8 +14,7 @@ public class QuitActionListener extends CommandActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("the game should end now");		
-		// container.add(new QuitCommand());
+		container.addNewCommand(new QuitCommand());
 	}
 
 }

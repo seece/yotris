@@ -5,12 +5,11 @@ import com.lofibucket.yotris.logic.GameLogic;
 
 
 public class MoveLeftCommand extends Command {
-	public MoveLeftCommand(GameLogic logic) {
-		super(logic);
+	public MoveLeftCommand() {
 	}
 
 	@Override
-	public void apply() {
+	public void apply(GameLogic logic) {
 		System.out.println("moving left");
 	}
 

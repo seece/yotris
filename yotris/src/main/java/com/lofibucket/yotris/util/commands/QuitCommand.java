@@ -6,12 +6,11 @@ import com.lofibucket.yotris.logic.GameLogic;
 
 public class QuitCommand extends Command {
 
-	public QuitCommand(GameLogic gamelogic) {
-		super(gamelogic);
+	public QuitCommand() {
 	}
 
 	@Override
-	public void apply() {
+	public void apply(GameLogic logic) {
 		System.out.println("game should end now");
 	}
 

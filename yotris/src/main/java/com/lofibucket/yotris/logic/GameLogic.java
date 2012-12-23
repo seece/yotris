@@ -4,6 +4,7 @@ import com.lofibucket.yotris.ui.UserInterface;
 import com.lofibucket.yotris.util.Settings;
 import com.lofibucket.yotris.util.TileColor;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Random;
 
@@ -55,7 +56,7 @@ public class GameLogic extends Observable {
 	 *	Runs one cycle of the game.
 	 * @return	state of the game after this step.
 	 */
-	public GameState update(ArrayList<Command> commands) {
+	public GameState update(List<Command> commands) {
 		frames++;
 		applyCommands(commands);
 		updateFallingPiece();
@@ -67,10 +68,12 @@ public class GameLogic extends Observable {
 		return state;
 	}
 
-	private void applyCommands(ArrayList<Command> commands) {
+	private void applyCommands(List<Command> commands) {
 		for (Command command : commands) {
-			command.apply();
+			command.apply(this);
 		}
+
+		commands.clear();
 	}
 
 	private void updateFallingPiece() {

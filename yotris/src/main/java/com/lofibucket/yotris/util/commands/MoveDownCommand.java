@@ -5,12 +5,11 @@ import com.lofibucket.yotris.logic.GameLogic;
 
 
 public class MoveDownCommand extends Command {
-	public MoveDownCommand(GameLogic logic) {
-		super(logic);
+	public MoveDownCommand() {
 	}
 
 	@Override
-	public void apply() {
+	public void apply(GameLogic logic) {
 		System.out.println("moving Down");
 	}
 

@@ -1,12 +1,12 @@
 package com.lofibucket.yotris.ui;
 
 import com.lofibucket.yotris.util.commands.Command;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
- *	Describes an interface to a class that can contain commands.
+ *	Describes an interface to a class that can contain a command queue.
  */
 public interface CommandContainer {
 	public void addNewCommand(Command c);
-	public ArrayList<Command> getNewCommands();
+	public List<Command> pollCommands();
 }

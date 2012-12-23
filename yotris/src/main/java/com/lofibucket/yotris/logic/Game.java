@@ -30,17 +30,16 @@ public class Game {
 		Settings defaultSettings = new Settings();
 		this.settings = defaultSettings;
 
-		UserInterface ui = new GUI(defaultSettings);
+		ui = new GUI(defaultSettings);
+
 		GameLogic logic = new GameLogic(ui, settings);
-
 		defaultSettings.setKeymap(getDefaultLayout(logic));
-
 		GameState state;
 
 		ui.start();
 
 		do {
-			state = logic.update(ui.getNewCommands());
+			state = logic.update(ui.pollCommands());
 		} while (state.running);
 	}
 
@@ -48,9 +47,9 @@ public class Game {
 	private Map<Integer, Command> getDefaultLayout(GameLogic logic) {
 		Map<Integer, Command> map = new HashMap<>();
 
-		map.put(KeyEvent.VK_LEFT, new MoveLeftCommand(logic));
-		map.put(KeyEvent.VK_RIGHT, new MoveRightCommand(logic));
-		map.put(KeyEvent.VK_DOWN, new MoveDownCommand(logic));
+		map.put(KeyEvent.VK_LEFT, new MoveLeftCommand());
+		map.put(KeyEvent.VK_RIGHT, new MoveRightCommand());
+		map.put(KeyEvent.VK_DOWN, new MoveDownCommand());
 
 		return map;
 	}
