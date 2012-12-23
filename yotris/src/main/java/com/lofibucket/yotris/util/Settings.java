@@ -14,6 +14,7 @@ public class Settings {
 	private String version;
 	private boolean debug;
 	private Map<Integer, Command> keymap;
+	private double targetFPS;
 
 	/**
 	 * The constructor with no parameters initializes the default settings. 
@@ -37,6 +38,7 @@ public class Settings {
 		this.gridHeight = gridHeight;
 		this.keymap = new HashMap<>();
 		this.debug = false;
+		this.targetFPS = 20.0;
 
 		//addDefaultLayout(keymap, logic);
 	}
@@ -119,6 +121,11 @@ public class Settings {
 		return version;
 	}
 
+	public long getFrameDelay() {
+		return (long)(1000.0/this.targetFPS);
+	}
 
+
+	
 
 }

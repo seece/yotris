@@ -101,6 +101,10 @@ public class GameLogic extends Observable {
 	}
 
 	private void spawnPiece() {
+		if (settings.debugEnabled()) {
+			System.out.println("Spawning a new block.");
+		}
+
 		Position center = new Position(grid.getWidth()/2, 0);
 		fallingPiece = new Piece(getRandomTetrimino(), getRandomColor(), center);
 
@@ -149,6 +153,9 @@ public class GameLogic extends Observable {
 		if (fallingPiece != null) {
 			renderGrid.plotPiece(fallingPiece);
 		}
+		
+		//renderGrid.setTile(frames % 10, 2, new Tile(TileColor.BLUE));
+
 		return renderGrid;
 	}
 

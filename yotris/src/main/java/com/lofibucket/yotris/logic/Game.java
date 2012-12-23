@@ -41,6 +41,11 @@ public class Game {
 
 		do {
 			state = logic.update(ui.pollCommands());
+			try {
+				Thread.sleep(settings.getFrameDelay());
+			} catch (InterruptedException e) {
+
+			}
 		} while (state.running);
 
 		ui.stop();

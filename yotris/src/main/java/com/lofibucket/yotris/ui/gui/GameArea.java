@@ -52,12 +52,10 @@ public class GameArea extends JPanel {
 				int tile_x = x * tile_width;
 				int tile_y = y * tile_height;
 
-				if (Math.random() > 0.5) {
+				if (renderGrid.getTile(x, y) != null) {
 					graphics.setColor(Color.GREEN);
-				} else {
-					graphics.setColor(Color.RED);
+					graphics.fillRect(tile_x, tile_y, tile_width, tile_height);
 				}
-				graphics.fillRect(tile_x, tile_y, tile_width, tile_height);
 			}
 		}
 
