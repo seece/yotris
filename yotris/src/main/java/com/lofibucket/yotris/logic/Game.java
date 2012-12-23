@@ -29,6 +29,7 @@ public class Game {
 	public void run() {
 		Settings defaultSettings = new Settings();
 		this.settings = defaultSettings;
+		this.settings.enableDebug();
 
 		ui = new GUI(defaultSettings);
 
@@ -41,6 +42,12 @@ public class Game {
 		do {
 			state = logic.update(ui.pollCommands());
 		} while (state.running);
+
+		ui.stop();
+
+		if (settings.debugEnabled()) {
+			System.out.println("Closing the application.");
+		}
 	}
 
 	// TODO move this somewhere else

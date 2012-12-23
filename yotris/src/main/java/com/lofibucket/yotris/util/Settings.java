@@ -12,6 +12,7 @@ public class Settings {
 	private int gridWidth;
 	private int gridHeight;
 	private String version;
+	private boolean debug;
 	private Map<Integer, Command> keymap;
 
 	/**
@@ -35,8 +36,31 @@ public class Settings {
 		this.gridWidth = gridWidth;
 		this.gridHeight = gridHeight;
 		this.keymap = new HashMap<>();
+		this.debug = false;
 
 		//addDefaultLayout(keymap, logic);
+	}
+
+	/**
+	 * Enable debug flag.
+	 */
+	public void enableDebug() {
+		this.debug = true;
+	}
+
+	/**
+	 * Disable debug flag.
+	 */
+	public void disableDebug() {
+		this.debug = false;
+	}
+
+	/**
+	 * Checks if debug feature is enabled.
+	 * @return the state of the debug flag
+	 */
+	public boolean debugEnabled() {
+		return debug;
 	}
 
 	/*

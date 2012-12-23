@@ -7,6 +7,7 @@ import com.lofibucket.yotris.ui.gui.menu.NewGameActionListener;
 import com.lofibucket.yotris.ui.gui.menu.QuitActionListener;
 import com.lofibucket.yotris.util.Settings;
 import com.lofibucket.yotris.util.commands.Command;
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.KeyboardFocusManager;
@@ -55,14 +56,14 @@ public class GUI implements UserInterface, Runnable {
 	 * @return the accumulated command objects
 	 */
 	@Override
-	public synchronized List<Command> pollCommands() {
+	public List<Command> pollCommands() {
 		return commandlist;
 	}
 
 	@Override
 	public void run() {
 		frame = new JFrame("yotris " + settings.getVersion());
-		frame.setPreferredSize(new Dimension(500, 700));
+		frame.setPreferredSize(new Dimension(400, 550));
 		frame.setResizable(false);
 		
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -82,11 +83,18 @@ public class GUI implements UserInterface, Runnable {
 		run();
 	}
 
+	@Override
+	public void stop() {
+		frame.setVisible(false);
+	}
+
 	private void createComponents(Container container) {
 		//container.addKeyListener(keylistener);
-
+		Canvas canvas = new Canvas();
+		container.add(canvas, BorderLayout.CENTER);
+		
 		JLabel teksti = new JLabel("labell!");
-        container.add(teksti);
+        container.add(teksti, BorderLayout.LINE_END);
 	}
 
 	private void createMenu(JFrame frame) {

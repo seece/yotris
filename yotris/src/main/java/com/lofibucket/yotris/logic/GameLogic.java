@@ -41,6 +41,7 @@ public class GameLogic extends Observable {
 	 */
 	public void reset(Settings settings) {
 		this.grid = new Grid(settings.getGridWidth(), settings.getGridHeight());	
+		this.settings = settings;
 		running = true;
 		fallingPiece = null;
 		pieceFallCounter = new ZeroBasedCounter(0, 10);
@@ -50,6 +51,10 @@ public class GameLogic extends Observable {
 		GameState state = getGameState();
 		setChanged();
 		notifyObservers(state);
+
+		if (settings.debugEnabled())  {
+			System.out.println("Game settings reset.");
+		}
 	}
 
 	/**
@@ -171,5 +176,8 @@ public class GameLogic extends Observable {
 		this.settings = settings;
 	}
 
+	public void endGame() {
+		this.running = false;
+	}
 
 }
