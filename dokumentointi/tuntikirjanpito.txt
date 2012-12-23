@@ -6,4 +6,4 @@ pvm	tunnit	kuvaus
 19.12	3	testien ja dokumentaation kirjoittelu
 20.12	2	GameLogic luokan metodien täydennys, dokumentointi
 21.12	1	Grid luokan törmäystestaus, komentojonon suunnittelu
-22.12	3	simppeli GUI, näppäinkuuntelija
+22.12	4	simppeli GUI, näppäinkuuntelija
