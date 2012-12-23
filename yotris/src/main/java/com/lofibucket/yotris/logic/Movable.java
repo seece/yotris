@@ -5,6 +5,7 @@ package com.lofibucket.yotris.logic;
 public abstract class Movable {
 	protected Position pos;
 
+	abstract public void move(Position offset);
 	abstract public void moveRight();	
 	abstract public void moveLeft();	
 	abstract public void moveUp();	

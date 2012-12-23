@@ -255,5 +255,14 @@ public class Piece extends Movable {
 		pos.y++;
 	}
 
+	@Override
+	public void move(Position offset) {
+		pos.x += offset.x;
+		pos.y += offset.y;
+	}
+
+	
+
+
 
 }

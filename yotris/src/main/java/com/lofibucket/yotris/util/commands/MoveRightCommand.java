@@ -2,6 +2,7 @@
 package com.lofibucket.yotris.util.commands;
 
 import com.lofibucket.yotris.logic.GameLogic;
+import com.lofibucket.yotris.logic.Position;
 
 
 public class MoveRightCommand extends Command {
@@ -10,7 +11,7 @@ public class MoveRightCommand extends Command {
 
 	@Override
 	public void apply(GameLogic logic) {
-		System.out.println("moving Right");
+		logic.moveFallingPiece(new Position(1, 0));
 	}
 
 

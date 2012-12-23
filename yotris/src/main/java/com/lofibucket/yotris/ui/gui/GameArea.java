@@ -53,6 +53,7 @@ public class GameArea extends JPanel {
 				int tile_y = y * tile_height;
 
 				if (renderGrid.getTile(x, y) != null) {
+					// TODO add proper graphics here
 					graphics.setColor(Color.GREEN);
 					graphics.fillRect(tile_x, tile_y, tile_width, tile_height);
 				}

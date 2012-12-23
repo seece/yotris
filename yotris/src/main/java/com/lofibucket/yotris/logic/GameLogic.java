@@ -187,4 +187,12 @@ public class GameLogic extends Observable {
 		this.running = false;
 	}
 
+	public void moveFallingPiece(Position offset) {
+		if (fallingPiece == null) {
+			return;
+		}
+
+		fallingPiece.move(offset);
+	}
+
 }
