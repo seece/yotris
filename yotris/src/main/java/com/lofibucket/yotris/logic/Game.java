@@ -64,6 +64,7 @@ public class Game {
 		map.put(KeyEvent.VK_LEFT, new MoveLeftCommand());
 		map.put(KeyEvent.VK_RIGHT, new MoveRightCommand());
 		map.put(KeyEvent.VK_DOWN, new MoveDownCommand());
+		map.put(KeyEvent.VK_UP, new RotateCommand());
 
 		return map;
 	}

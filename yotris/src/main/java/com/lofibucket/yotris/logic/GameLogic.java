@@ -127,7 +127,7 @@ public class GameLogic extends Observable {
 	}
 
 	private boolean[][] getRandomTetrimino() {
-		return Tetrimino.O;	// TODO add proper random here
+		return Tetrimino.I;	// TODO add proper random here
 	}
 
 	/**
@@ -183,16 +183,34 @@ public class GameLogic extends Observable {
 		this.settings = settings;
 	}
 
+	/**
+	 * Ends the game.
+	 */
 	public void endGame() {
 		this.running = false;
 	}
 
+	/**
+	 * Moves the currently falling piece. 
+	 * @param offset The amount and direction to move the piece.
+	 */
 	public void moveFallingPiece(Position offset) {
 		if (fallingPiece == null) {
 			return;
 		}
 
 		fallingPiece.move(offset);
+	}
+
+	/**
+	 * Rotates the falling piece clockwise.
+	 */
+	public void rotateFallingPiece() {
+		if (fallingPiece == null) {
+			return;
+		}
+
+		fallingPiece.rotateClockwise();
 	}
 
 }
