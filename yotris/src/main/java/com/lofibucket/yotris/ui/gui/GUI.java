@@ -31,6 +31,7 @@ public class GUI implements UserInterface, Runnable {
 	private JMenuBar menubar;
 	private JMenu gameMenu;
 	private Settings settings;
+	private GameArea area;
 	private int tilesize = 18;
 
 	public GUI(Settings settings) {
@@ -48,6 +49,9 @@ public class GUI implements UserInterface, Runnable {
 	public void update(Observable obs, Object arg) {
 		GameLogic logic = (GameLogic)obs;
 		GameState state = (GameState)arg;
+
+		area.setRenderGrid(state.getRenderGrid());
+
 		//System.out.println("GUI updates: " + logic.getSimulatedFrames());
 	}
 
@@ -90,8 +94,8 @@ public class GUI implements UserInterface, Runnable {
 
 	private void createComponents(Container container) {
 		//container.addKeyListener(keylistener);
-		Canvas canvas = new Canvas();
-		container.add(canvas, BorderLayout.CENTER);
+		area = new GameArea(null);
+		container.add(area, BorderLayout.CENTER);
 		
 		JLabel teksti = new JLabel("labell!");
         container.add(teksti, BorderLayout.LINE_END);

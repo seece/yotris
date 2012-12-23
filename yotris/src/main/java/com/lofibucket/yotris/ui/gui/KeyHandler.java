@@ -8,13 +8,21 @@ import java.awt.KeyEventDispatcher;
 import java.awt.event.KeyEvent;
 import java.util.Map;
 
+/**
+ *	Catches the game key presses.
+ */
 public class KeyHandler implements KeyEventDispatcher {
-	private CommandContainer commandlist;
+	private CommandContainer container;
 	private Settings settings;
 
+	/**
+	 * Default constructor.
+	 * @param container	The CommandContainer where new commands are pushed.
+	 * @param settings	Current settings to use (includes key layout)
+	 */
 	public KeyHandler(CommandContainer commandlist, Settings settings) {
 		super();
-		this.commandlist = commandlist;
+		this.container = commandlist;
 		this.settings = settings;
 	}
 
@@ -28,7 +36,7 @@ public class KeyHandler implements KeyEventDispatcher {
 			}
 
 			//commandlist.add(keymap.get(e.getKeyCode()));
-			commandlist.addNewCommand(keymap.get(e.getKeyCode()));
+			container.addNewCommand(keymap.get(e.getKeyCode()));
 			return true;	// no further action please
 		}		
 
