@@ -152,10 +152,12 @@ public class Piece extends Movable {
 				break;
 			case LEFT:
 				rotated.rotateOnceClockwise();
-				rotated.flipAroundX();
+				rotated.rotateOnceClockwise();
+				rotated.rotateOnceClockwise();
 				break;
 			case DOWN:
-				rotated.flipAroundY();
+				rotated.rotateOnceClockwise();
+				rotated.rotateOnceClockwise();
 				break;
 			case RIGHT:
 				rotated.rotateOnceClockwise();
