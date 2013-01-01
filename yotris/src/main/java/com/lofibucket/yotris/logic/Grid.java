@@ -4,7 +4,7 @@ import java.util.Arrays;
 import com.lofibucket.yotris.logic.Tile;
 
 /**
- *	The grid class used to represent the game area
+ *	The grid class used to represent the game area and also tetrimino pieces.
  */
 public class Grid {
 	private int width;

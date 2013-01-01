@@ -11,7 +11,7 @@ import java.util.Random;
 /**
  *	The main logic class. Takes care of the falling piece movement & collisions.
  */
-public class GameLogic extends Observable {
+public final class GameLogic extends Observable {
 	private UserInterface ui;
 	private Grid grid;
 	private Settings settings;
@@ -127,7 +127,7 @@ public class GameLogic extends Observable {
 	}
 
 	private boolean[][] getRandomTetrimino() {
-		return Tetrimino.I;	// TODO add proper random here
+		return TetriminoShape.getRandomShape();
 	}
 
 	/**

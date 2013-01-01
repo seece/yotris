@@ -1,4 +1,3 @@
-
 package com.lofibucket.yotris.logic;
 
 import org.junit.Test;
@@ -9,48 +8,40 @@ import com.lofibucket.yotris.util.TileColor;
 public class PieceTest {
 
 	private Piece piece;
-
 	private static final Tile blue = new Tile(TileColor.BLUE);
-	private static final Tile[][] tiles_long_right = 
-		{
-		{null, null, 	null, null},
-		{blue, blue, 	blue, blue},
-		{null, null, 	null, null},
-		{null, null, 	null, null}
-		};
+	private static final Tile[][] tiles_long_right = {
+		{null, null, null, null},
+		{blue, blue, blue, blue},
+		{null, null, null, null},
+		{null, null, null, null}
+	};
+	private static final Tile[][] tiles_long_down = {
+		{null, blue, null, null},
+		{null, blue, null, null},
+		{null, blue, null, null},
+		{null, blue, null, null}
+	};
+	private static final Tile[][] tiles_long_left = {
+		{null, null, null, null},
+		{blue, blue, blue, blue},
+		{null, null, null, null},
+		{null, null, null, null}
+	};
 
-	private static final Tile[][] tiles_long_down = 
-		{
-		{null, blue, 	null, null},
-		{null, blue, 	null, null},
-		{null, blue, 	null, null},
-		{null, blue, 	null, null}
-		};
+	public PieceTest() {
+	}
 
-	private static final Tile[][] tiles_long_left = 
-		{
-		{null, null, 	null, null},
-		{blue, blue, 	blue, blue},
-		{null, null, 	null, null},
-		{null, null, 	null, null}
-		};
-
-
-    public PieceTest() {
-
-    }
-
-	public void printObjectArray(Object [][] arr) {
+	public void printObjectArray(Object[][] arr) {
 		int width = arr[0].length;
 		int height = arr.length;
-		for (int y=0;y<height;y++) {
-			for (int x=0;x<width;x++) {
+		for (int y = 0; y < height; y++) {
+			for (int x = 0; x < width; x++) {
 				String c = "X";
 
 				if (arr[y][x] == null) {
 					c = ".";
 				}
-				System.out.print(c);		
+				System.out.print(c);
 			}
 			System.out.println("");
 		}
@@ -58,7 +49,7 @@ public class PieceTest {
 
 	@Before
 	public void initPiece() {
-		piece = new Piece(Tetrimino.O, TileColor.BLUE, new Position(0, 0));
+		piece = new Piece(TetriminoShape.getShape("O"), TileColor.BLUE, new Position(0, 0));
 	}
 
 	@Test
@@ -81,7 +72,7 @@ public class PieceTest {
 
 	@Test
 	public void testPieceRotationTiles() {
-		Piece piece_long = new Piece(Tetrimino.I, TileColor.BLUE, new Position(0, 0));
+		Piece piece_long = new Piece(TetriminoShape.getShape("I"), TileColor.BLUE, new Position(0, 0));
 
 		piece_long.rotateClockwise();
 		Grid tiles = piece_long.getRotatedTiles();
@@ -103,7 +94,7 @@ public class PieceTest {
 
 	@Test
 	public void testPieceMirrorRotationTiles() {
-		Piece piece_long = new Piece(Tetrimino.I, TileColor.BLUE, new Position(0, 0));
+		Piece piece_long = new Piece(TetriminoShape.getShape("I"), TileColor.BLUE, new Position(0, 0));
 		piece_long.rotateClockwise();
 		piece_long.rotateClockwise();
 		Grid tiles = piece_long.getRotatedTiles();
@@ -114,18 +105,18 @@ public class PieceTest {
 	@Test
 	public void testTetriminoParsing() {
 		Grid tiles = piece.getGrid();
+		boolean[][] o_shape = TetriminoShape.getShape("O");
 
-		assertEquals(tiles.getWidth(), Tetrimino.O[0].length);
-		assertEquals(tiles.getHeight(), Tetrimino.O.length);
+		assertEquals(tiles.getWidth(), o_shape[0].length);
+		assertEquals(tiles.getHeight(), o_shape.length);
 
-		for (int y=0;y<piece.getHeight();y++) {
-			for (int x=0;x<piece.getWidth();x++) {
-				if (Tetrimino.O[y][x])	 {
+		for (int y = 0; y < piece.getHeight(); y++) {
+			for (int x = 0; x < piece.getWidth(); x++) {
+				if (o_shape[y][x]) {
 					assertTrue(tiles.getTile(x, y) != null);
 				}
 			}
 		}
 
 	}
-
 }
