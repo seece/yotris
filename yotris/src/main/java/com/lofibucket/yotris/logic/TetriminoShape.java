@@ -11,10 +11,8 @@ public class TetriminoShape {
 	private static final boolean[][] O = 
 			new boolean[][] 
 			{
-			{false, true, 	true, false},
-			{false, true, 	true, false},
-			{false, false, 	false, false},
-			{false, false, 	false, false}
+			{true, 	true},
+			{true, 	true},
 			};
 
 	private static final boolean[][] I = 
