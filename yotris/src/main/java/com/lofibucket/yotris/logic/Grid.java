@@ -2,6 +2,7 @@
 package com.lofibucket.yotris.logic;
 import java.util.Arrays;
 import com.lofibucket.yotris.logic.Tile;
+import com.lofibucket.yotris.util.TileColor;
 
 /**
  *	The grid class used to represent the game area and also tetrimino pieces.
@@ -35,6 +36,12 @@ public class Grid {
 		}
 	}
 
+	public Grid(boolean[][] shape, TileColor color) {
+		this.tiles = parseTileGridFromTetrimino(shape, color);
+		this.width = this.tiles[0].length;
+		this.height = this.tiles.length;
+	}
+
 	/**
 	 * The default constructor
 	 * @param width	grid width in tiles
@@ -63,6 +70,23 @@ public class Grid {
 		}
 
 		return tiles[y][x];
+	}
+
+	private Tile[][] parseTileGridFromTetrimino(boolean [][] tetrimino, TileColor color) {
+		int block_width = tetrimino[0].length;
+		int block_height = tetrimino.length;
+
+		Tile[][] tilearray= new Tile[block_width][block_height];
+		
+		for (int y=0;y<block_height;y++) {
+			for (int x=0;x<block_width;x++) {
+				if (tetrimino[y][x]) {
+					tilearray[y][x]	= new Tile(color);
+				}
+			}
+		}
+		
+		return tilearray;
 	}
 
 	/**
@@ -115,9 +139,11 @@ public class Grid {
 	 * @param piece	The piece to check against to
 	 * @return 	true on intersection, otherwise false
 	 */
+	/*
 	public boolean checkIntersection(Piece piece) {
 		return checkIntersection(piece, new Position(0, 0));
 	}
+	*/
 
 	/**
 	 * Checks if this grid intersects with the given piece with the given 
@@ -127,6 +153,7 @@ public class Grid {
 	 * before testing for intersections
 	 * @return 	true on intersection, otherwise false
 	 */
+	/*
 	public boolean checkIntersection(Piece piece, Position offset) {
 		Piece mockpiece = new Piece(piece);
 		Grid piece_tiles = mockpiece.getRotatedTiles();
@@ -146,6 +173,7 @@ public class Grid {
 
 		return false;
 	}
+	*/
 
 	/**
 	 * Adds tiles of a Piece instance to the grid. The coordinates are read

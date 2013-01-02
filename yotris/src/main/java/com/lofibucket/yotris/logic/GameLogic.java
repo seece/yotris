@@ -114,7 +114,7 @@ public final class GameLogic extends Observable {
 		Position center = new Position(grid.getWidth()/2, 0);
 		fallingPiece = new Piece(getRandomTetrimino(), getRandomColor(), center);
 
-		if (grid.checkIntersection(fallingPiece)) {
+		if (grid.checkIfCollides(fallingPiece)) {
 			running = false;
 			// TODO broadcast a gameover message?
 		}

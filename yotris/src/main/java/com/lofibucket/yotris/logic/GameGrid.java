@@ -14,7 +14,7 @@ public class GameGrid extends Grid {
 
 	/**
 	 * Checks if a given piece collides with this GameGrid. Takes also the
-	 * grid borders into account, unlike checkIntersection.
+	 * grid borders into account.
 	 * @param piece	The piece to test against to.
 	 * @return 	True if a collision occurs, otherwise false.
 	 */

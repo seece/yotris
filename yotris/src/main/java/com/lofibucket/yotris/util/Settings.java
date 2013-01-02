@@ -32,7 +32,7 @@ public class Settings {
 	 */
 	public Settings(DifficultyLevel difficulty, int gridWidth, int gridHeight) { 
 			
-		this.version = "0.1a";
+		this.version = "0.2";
 		this.difficulty = difficulty;
 		this.gridWidth = gridWidth;
 		this.gridHeight = gridHeight;

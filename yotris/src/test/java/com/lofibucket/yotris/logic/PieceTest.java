@@ -31,22 +31,6 @@ public class PieceTest {
 	public PieceTest() {
 	}
 
-	public void printObjectArray(Object[][] arr) {
-		int width = arr[0].length;
-		int height = arr.length;
-		for (int y = 0; y < height; y++) {
-			for (int x = 0; x < width; x++) {
-				String c = "X";
-
-				if (arr[y][x] == null) {
-					c = ".";
-				}
-				System.out.print(c);
-			}
-			System.out.println("");
-		}
-	}
-
 	@Before
 	public void initPiece() {
 		piece = new Piece(TetriminoShape.getShape("O"), TileColor.BLUE, new Position(0, 0));

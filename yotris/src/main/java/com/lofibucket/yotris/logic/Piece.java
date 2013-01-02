@@ -22,7 +22,7 @@ public class Piece extends Movable {
 	public Piece(boolean [][] tetrimino, TileColor color, Position pos) {
 		this.rotation = Rotation.UP;
 		this.color = color;
-		this.tiles = new Grid(parseTileGridFromTetrimino(tetrimino));
+		this.tiles = new Grid(tetrimino, this.color);
 		this.pos = pos;
 	}
 
@@ -50,22 +50,7 @@ public class Piece extends Movable {
 		this.rotation = piece.getRotation();
 	}
 
-	private Tile[][] parseTileGridFromTetrimino(boolean [][] tetrimino) {
-		int block_width = tetrimino[0].length;
-		int block_height = tetrimino.length;
 
-		Tile[][] tilearray= new Tile[block_width][block_height];
-		
-		for (int y=0;y<block_height;y++) {
-			for (int x=0;x<block_width;x++) {
-				if (tetrimino[y][x]) {
-					tilearray[y][x]	= new Tile(this.color);
-				}
-			}
-		}
-		
-		return tilearray;
-	}
 
 	/**
 	 * Rotates the piece clockwise 
