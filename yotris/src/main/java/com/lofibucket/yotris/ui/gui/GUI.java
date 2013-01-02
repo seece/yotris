@@ -14,6 +14,7 @@ import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
 import javax.swing.JFrame;
@@ -26,7 +27,7 @@ import javax.swing.WindowConstants;
 
 public class GUI implements UserInterface, Runnable {
 
-	private ArrayList<Command> commandlist;
+	private List<Command> commandlist;
 	private JFrame frame;
 	private JMenuBar menubar;
 	private JMenu gameMenu;
@@ -36,7 +37,7 @@ public class GUI implements UserInterface, Runnable {
 
 	public GUI(Settings settings) {
 		super();
-		commandlist = new ArrayList<>();
+		commandlist = Collections.synchronizedList(new ArrayList<Command>());
 		this.settings = settings;
 	}
 	
@@ -127,9 +128,8 @@ public class GUI implements UserInterface, Runnable {
 		frame.setJMenuBar(menubar);
 	}
 
-
 	@Override
-	public synchronized void addNewCommand(Command c) {
+	public void addNewCommand(Command c) {
 		this.commandlist.add(c);
 	}
 

@@ -53,8 +53,6 @@ public class Game {
 		if (settings.debugEnabled()) {
 			System.out.println("Closing the application.");
 		}
-
-		System.exit(0);
 	}
 
 	// TODO move this somewhere else

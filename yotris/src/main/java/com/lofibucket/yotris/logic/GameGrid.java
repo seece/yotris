@@ -13,7 +13,8 @@ public class GameGrid extends Grid {
 	}
 
 	/**
-	 * Checks if a given piece collides with this GameGrid.
+	 * Checks if a given piece collides with this GameGrid. Takes also the
+	 * grid borders into account, unlike checkIntersection.
 	 * @param piece	The piece to test against to.
 	 * @return 	True if a collision occurs, otherwise false.
 	 */
@@ -49,7 +50,7 @@ public class GameGrid extends Grid {
 	}
 
 	/**
-	 * Checks if a given piece has tiles underneath it.
+	 * Checks if a given piece has tiles or a grid border underneath it.
 	 * @param piece	The piece to check against to.
 	 * @return True if collision occurs, otherwise false.
 	 */

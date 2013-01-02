@@ -90,14 +90,20 @@ public final class GameLogic extends Observable {
 
 		if (fallingPiece == null) {
 			spawnPiece();
-		} else {
-			if (grid.checkIntersection(fallingPiece, new Position(0, 1))) {
-				grid.plotPiece(fallingPiece);
-				return;
-			}
-
-			fallingPiece.moveDown();
+			return;
 		}
+
+		if (grid.checkIfBottomCollides(fallingPiece)) {
+			grid.plotPiece(fallingPiece);
+			fallingPiece = null;
+			return;
+		}
+
+		if (!checkIfMoveIsLegal(fallingPiece, new Position(0, 1))) {
+			return;
+		}
+
+		fallingPiece.moveDown();
 	}
 
 	private void spawnPiece() {
@@ -149,13 +155,12 @@ public final class GameLogic extends Observable {
 	 * @return	the game grid with the falling piece baked in
 	 */
 	public Grid getRenderGrid() {
-		Grid renderGrid = new Grid(this.grid.getWidth(), this.grid.getHeight());
+		Grid renderGrid = new Grid(grid.getTiles());
+
 		if (fallingPiece != null) {
 			renderGrid.plotPiece(fallingPiece);
 		}
 		
-		//renderGrid.setTile(frames % 10, 2, new Tile(TileColor.BLUE));
-
 		return renderGrid;
 	}
 
@@ -199,7 +204,34 @@ public final class GameLogic extends Observable {
 			return;
 		}
 
+		if (!checkIfMoveIsLegal(fallingPiece, offset)) {
+			return;
+		}
+
 		fallingPiece.move(offset);
+	}
+
+	/**
+	 * Checks if a piece would collide if the given movement was applied to it.
+	 * @param piece	The piece to move
+	 * @param offset	The movement amount
+	 * @return True if move is legal, otherwise false
+	 */
+	public boolean checkIfMoveIsLegal(Piece piece, Position offset) {
+		Piece temp = new Piece(piece);
+		temp.move(offset);
+		return !grid.checkIfCollides(temp);
+	}
+
+	/**
+	 * Checks if a piece would collide if it was rotated once clockwise.
+	 * @param piece	The piece to rotate
+	 * @return True if move is legal, otherwise false
+	 */
+	public boolean checkIfRotationIsLegal(Piece piece) {
+		Piece temp = new Piece(piece);
+		temp.rotateClockwise();
+		return !grid.checkIfCollides(temp);
 	}
 
 	/**
@@ -207,6 +239,10 @@ public final class GameLogic extends Observable {
 	 */
 	public void rotateFallingPiece() {
 		if (fallingPiece == null) {
+			return;
+		}
+
+		if (!checkIfRotationIsLegal(fallingPiece)) {
 			return;
 		}
 

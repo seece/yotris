@@ -41,11 +41,13 @@ public class Piece extends Movable {
 	}
 
 	/**
-	 * 	A copy constructor.
+	 * 	A copy constructor. Note that it also copies the rotation field
+	 * that's missing from the other constructors.
 	 * @param piece 	Copies all fields from this piece.
 	 */
 	Piece(Piece piece) {
 		this(piece.getGrid().getTiles(), piece.getColor(), new Position(piece.getPos()));
+		this.rotation = piece.getRotation();
 	}
 
 	private Tile[][] parseTileGridFromTetrimino(boolean [][] tetrimino) {
@@ -262,9 +264,5 @@ public class Piece extends Movable {
 		pos.x += offset.x;
 		pos.y += offset.y;
 	}
-
-	
-
-
 
 }

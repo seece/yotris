@@ -23,8 +23,26 @@ public class GameGridTest {
 	}
 
 	@Test
-	public void testNoCollision() {
+	public void testNoCollisionTopBorder() {
 		piece.setPos(new Position(0, 0));
+		assertFalse(grid.checkIfCollides(piece));
+	}
+
+	@Test
+	public void testNoCollisionBottomBorder() {
+		piece.setPos(new Position(0, grid.getHeight()-piece.getHeight()));
+		assertFalse(grid.checkIfCollides(piece));
+	}
+
+	@Test
+	public void testNoCollisionLeftBorder() {
+		piece.setPos(new Position(0, 2));
+		assertFalse(grid.checkIfCollides(piece));
+	}
+
+	@Test
+	public void testNoCollisionRightBorder() {
+		piece.setPos(new Position(grid.getWidth()-piece.getWidth(), 2));
 		assertFalse(grid.checkIfCollides(piece));
 	}
 

@@ -161,6 +161,11 @@ public class Grid {
 			int tile_offset_x = piece.getPos().x + x;
 			int tile_offset_y = piece.getPos().y + y;
 			Tile tile = piece_tiles.getTile(x, y);
+
+			if (tile == null) {
+				continue;
+			}
+
 			setTile(tile_offset_x, tile_offset_y, tile);
 		}
 		}
