@@ -86,9 +86,8 @@ public class TetriminoShape {
 		}
 	}
 
-	public static boolean[][] getRandomShape() {
+	private static ArrayList<boolean[][]> getAllShapes() {
 		ArrayList<boolean[][]> shapes = new ArrayList<>();
-		Random random = new Random();
 
 		shapes.add(I);
 		shapes.add(J);
@@ -97,6 +96,13 @@ public class TetriminoShape {
 		shapes.add(S);
 		shapes.add(T);
 		shapes.add(Z);
+
+		return shapes;
+	}
+
+	public static boolean[][] getRandomShape() {
+		ArrayList<boolean[][]> shapes = getAllShapes();
+		Random random = new Random();
 
 		return shapes.get(random.nextInt(shapes.size()));
 	}
