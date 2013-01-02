@@ -45,7 +45,7 @@ public class Piece extends Movable {
 	 * @param piece 	Copies all fields from this piece.
 	 */
 	Piece(Piece piece) {
-		this(piece.getGrid().getTiles(), piece.getColor(), piece.getPos());
+		this(piece.getGrid().getTiles(), piece.getColor(), new Position(piece.getPos()));
 	}
 
 	private Tile[][] parseTileGridFromTetrimino(boolean [][] tetrimino) {

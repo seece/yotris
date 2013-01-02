@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public final class GameLogic extends Observable {
 	private UserInterface ui;
-	private Grid grid;
+	private GameGrid grid;
 	private Settings settings;
 	private Piece fallingPiece;
 	private int score;
@@ -40,7 +40,7 @@ public final class GameLogic extends Observable {
 	 * @param settings the settings to use for this session
 	 */
 	public void reset(Settings settings) {
-		this.grid = new Grid(settings.getGridWidth(), settings.getGridHeight());	
+		this.grid = new GameGrid(settings.getGridWidth(), settings.getGridHeight());	
 		this.settings = settings;
 		running = true;
 		fallingPiece = null;

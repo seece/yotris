@@ -24,4 +24,13 @@ public class Position {
 		this.x = x;
 		this.y = y;
 	}
+
+	/**
+	 * A copy constructor.
+	 * @param pos The instance to clone.
+	 */
+	public Position(Position pos) {
+		this.x = pos.x;
+		this.y = pos.y;
+	}
 }
