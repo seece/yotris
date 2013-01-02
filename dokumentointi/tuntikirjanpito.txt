@@ -14,3 +14,4 @@ vuosi vaihtuu
 1.1	1	mavenin konfigurointi
 1.1	2	palikoiden lisäily, pyörityskoodin uusiminen
 2.1	4	törmäystarkistus
+2.1	1	Grid-luokan testejä 
