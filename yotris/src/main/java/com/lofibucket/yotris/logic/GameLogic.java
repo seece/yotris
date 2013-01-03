@@ -1,22 +1,17 @@
 package com.lofibucket.yotris.logic;
-import com.lofibucket.yotris.util.commands.Command;
 import com.lofibucket.yotris.ui.UserInterface;
 import com.lofibucket.yotris.util.Settings;
-import com.lofibucket.yotris.util.TileColor;
-import java.util.ArrayList;
+import com.lofibucket.yotris.util.commands.Command;
 import java.util.List;
 import java.util.Observable;
-import java.util.Random;
 
 /**
  *	The main logic class. Takes care of the falling piece movement & collisions.
  */
 public final class GameLogic extends Observable {
 	private UserInterface ui;
-	//private GameGrid grid;
 	private GameField field;
 	private Settings settings;
-	//private Piece fallingPiece;
 	private int score;
 	private int frames = 0;
 	private boolean running;
@@ -40,10 +35,8 @@ public final class GameLogic extends Observable {
 	 * @param settings the settings to use for this session
 	 */
 	public void reset(Settings settings) {
-		//this.grid = new GameGrid(settings.getGridWidth(), settings.getGridHeight());	
 		this.settings = settings;
 		running = true;
-		//fallingPiece = null;
 		score = 0;
 		frames = 0;
 
@@ -74,6 +67,10 @@ public final class GameLogic extends Observable {
 		return state;
 	}
 
+	/**
+	 * Applies every command in a command list.
+	 * @param commands The list of command to apply
+	 */
 	private void applyCommands(List<Command> commands) {
 		for (Command command : commands) {
 			command.apply(this);

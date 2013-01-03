@@ -1,12 +1,76 @@
 
 package com.lofibucket.yotris.logic;
 
+import com.lofibucket.yotris.ui.MockUserInterface;
+import com.lofibucket.yotris.ui.UserInterface;
+import com.lofibucket.yotris.util.Settings;
+import com.lofibucket.yotris.util.commands.Command;
+import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 
 public class GameLogicTest {
 
+	MockUserInterface ui;
+	GameLogic logic;
+	Settings settings;
+
     public GameLogicTest() {
     }
+
+	@Before
+	public void initLogic() {
+		ui = new MockUserInterface();
+		settings = new Settings();
+		logic = new GameLogic(ui, settings);
+	}
+
+	@Test
+	public void testFrameCounterIncrement() {
+		logic.reset(settings);
+		logic.update(ui.pollCommands());
+		assertEquals(1, logic.getSimulatedFrames());
+	}
+	
+	@Test
+	public void testFrameCounterZeroAtInit() {
+		logic.reset(settings);
+		assertEquals(0, logic.getSimulatedFrames());
+	}
+
+	@Test
+	public void testCommandGetsApplied() {
+		ArrayList<Integer> testlist = new ArrayList<>();
+		testlist.add(1);
+
+		logic.reset(settings);
+		ui.addNewCommand(new MockCommand(testlist));
+		logic.update(ui.pollCommands());
+
+		assertEquals(2, testlist.size());
+	}
+
+	@Test
+	public void testObserverUpdateGetsCalled() {
+		logic.reset(settings);
+		logic.update(ui.pollCommands());
+		assertTrue(ui.updated > 0);
+	}
+
+}
+
+class MockCommand extends Command {
+	private ArrayList<Integer> list;
+
+	public MockCommand(ArrayList<Integer> list) {
+		this.list = list;
+	}
+
+	@Override
+	public void apply(GameLogic logic) {
+		this.list.add(2);
+	}
+
 
 }

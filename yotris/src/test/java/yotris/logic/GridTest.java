@@ -50,6 +50,23 @@ public class GridTest {
 		assertEquals(t2.getColor(), grid.getTile(0, 1).getColor());
 	}
 
+	@Test
+	public void testTileGetter() {
+		Tile t = new Tile(TileColor.BLUE);
+
+		Tile[][] tiles = {	{t,		t,		t},
+							{null, 	null, 	null}, 
+							{t,		t,		t}};
+
+		Grid grid2 = new Grid(tiles);
+
+		assertEquals(t, grid2.getTile(0, 0));
+		assertEquals(t, grid2.getTile(2, 0));
+		assertEquals(t, grid2.getTile(2, 2));
+		assertEquals(null, grid2.getTile(0, 1));
+		assertEquals(null, grid2.getTile(1, 1));
+	}
+
 	@Test 
 	public void testTileGetterOutOfBounds() {
 		assertEquals(null, grid.getTile(-1, -1));
