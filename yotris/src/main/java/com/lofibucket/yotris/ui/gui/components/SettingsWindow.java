@@ -1,5 +1,5 @@
 
-package com.lofibucket.yotris.ui.gui;
+package com.lofibucket.yotris.ui.gui.components;
 
 import java.awt.Dimension;
 import javax.swing.JFrame;

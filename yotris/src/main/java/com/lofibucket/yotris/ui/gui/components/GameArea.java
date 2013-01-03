@@ -1,5 +1,5 @@
 
-package com.lofibucket.yotris.ui.gui;
+package com.lofibucket.yotris.ui.gui.components;
 
 import com.lofibucket.yotris.logic.Grid;
 import java.awt.Color;

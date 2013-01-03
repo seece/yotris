@@ -1,5 +1,6 @@
 package com.lofibucket.yotris.ui.gui;
 
+import com.lofibucket.yotris.ui.gui.components.MainWindow;
 import com.lofibucket.yotris.logic.GameLogic;
 import com.lofibucket.yotris.logic.GameState;
 import com.lofibucket.yotris.ui.UserInterface;

@@ -1,8 +1,10 @@
 
-package com.lofibucket.yotris.ui.gui;
+package com.lofibucket.yotris.ui.gui.components;
 
+import com.lofibucket.yotris.ui.gui.components.GameArea;
 import com.lofibucket.yotris.logic.GameState;
 import com.lofibucket.yotris.ui.CommandContainer;
+import com.lofibucket.yotris.ui.gui.View;
 import com.lofibucket.yotris.ui.gui.menu.NewGameActionListener;
 import com.lofibucket.yotris.ui.gui.menu.PauseActionListener;
 import com.lofibucket.yotris.ui.gui.menu.QuitActionListener;
@@ -30,7 +32,7 @@ public class MainWindow extends JFrame implements View {
 	private CommandContainer commandlist;
 	private SettingsWindow settingsWindow;
 
-	MainWindow(Settings settings, CommandContainer commandlist) {
+	public MainWindow(Settings settings, CommandContainer commandlist) {
 		super("yotris " + settings.getVersion().toString());
 
 		this.commandlist = commandlist;

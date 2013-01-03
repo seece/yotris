@@ -2,7 +2,7 @@
 package com.lofibucket.yotris.ui.gui.menu;
 
 import com.lofibucket.yotris.ui.CommandContainer;
-import com.lofibucket.yotris.ui.gui.SettingsWindow;
+import com.lofibucket.yotris.ui.gui.components.SettingsWindow;
 import com.lofibucket.yotris.util.commands.PauseCommand;
 import java.awt.event.ActionEvent;
 

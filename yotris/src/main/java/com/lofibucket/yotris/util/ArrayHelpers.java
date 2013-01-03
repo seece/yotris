@@ -1,9 +1,16 @@
 
 package com.lofibucket.yotris.util;
 
-
+/**
+ * A collection of static Array helper functions.
+ */
 public class ArrayHelpers {
 
+	/**
+	 * Prints a 2D array as a grid where '.' denotes a null object and an 'X' 
+	 * character a non-null object.
+	 * @param arr The array to print.
+	 */
 	public static void printObjectArray(Object[][] arr) {
 		int width = arr[0].length;
 		int height = arr.length;
