@@ -51,7 +51,6 @@ public class GUI implements UserInterface, Runnable {
 
 		mainwindow.updateState(state);
 
-
 		//System.out.println("GUI updates: " + logic.getSimulatedFrames());
 	}
 

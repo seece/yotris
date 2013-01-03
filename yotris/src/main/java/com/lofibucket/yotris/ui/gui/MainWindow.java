@@ -5,6 +5,7 @@ import com.lofibucket.yotris.logic.GameState;
 import com.lofibucket.yotris.ui.CommandContainer;
 import com.lofibucket.yotris.ui.gui.menu.NewGameActionListener;
 import com.lofibucket.yotris.ui.gui.menu.QuitActionListener;
+import com.lofibucket.yotris.ui.gui.menu.ShowSettingsActionListener;
 import com.lofibucket.yotris.util.Settings;
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -23,13 +24,16 @@ import javax.swing.WindowConstants;
 public class MainWindow extends JFrame implements View {
 	private JMenuBar menubar;
 	private JMenu gameMenu;
+	private JMenu editMenu;
 	private GameArea area;
 	private CommandContainer commandlist;
-
+	private SettingsWindow settingsWindow;
 	MainWindow(Settings settings, CommandContainer commandlist) {
 		super("yotris " + settings.getVersion().toString());
 
 		this.commandlist = commandlist;
+
+		settingsWindow = new SettingsWindow();
 
 		setPreferredSize(new Dimension(400, 550));
 		setResizable(false);
@@ -45,16 +49,20 @@ public class MainWindow extends JFrame implements View {
 		area = new GameArea(null);
 		container.add(area, BorderLayout.CENTER);
 		
-		JLabel teksti = new JLabel("labell!");
+		JLabel teksti = new JLabel("Score:");
         container.add(teksti, BorderLayout.LINE_END);
 	}
 
 	private void createMenu(JFrame frame) {
 		menubar = new JMenuBar();
 		gameMenu = new JMenu("Game");
+		editMenu = new JMenu("Edit");
+
 		menubar.add(gameMenu);
+		menubar.add(editMenu);
 
 		JMenuItem startItem = new JMenuItem("New game");
+		JMenuItem pauseItem = new JMenuItem("Toggle pause");
 		JMenuItem quitItem = new JMenuItem("Quit");
 
 		startItem.getAccessibleContext().setAccessibleDescription(
@@ -64,12 +72,21 @@ public class MainWindow extends JFrame implements View {
 
 		startItem.setAccelerator(KeyStroke.getKeyStroke(
         KeyEvent.VK_N, ActionEvent.ALT_MASK));
+		pauseItem.setAccelerator(KeyStroke.getKeyStroke(
+        KeyEvent.VK_P, ActionEvent.ALT_MASK));
+		quitItem.setAccelerator(KeyStroke.getKeyStroke(
+        KeyEvent.VK_Q, ActionEvent.ALT_MASK));
 
 		gameMenu.add(startItem);
+		gameMenu.add(pauseItem);
 		gameMenu.add(quitItem);
+
+		JMenuItem settingsItem = new JMenuItem("Settings");
+		editMenu.add(settingsItem);
 
 		startItem.addActionListener(new NewGameActionListener(commandlist));
 		quitItem.addActionListener(new QuitActionListener(commandlist));
+		settingsItem.addActionListener(new ShowSettingsActionListener(commandlist, settingsWindow));
 
 		frame.setJMenuBar(menubar);
 	}
