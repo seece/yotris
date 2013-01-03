@@ -3,27 +3,13 @@ package com.lofibucket.yotris.ui.gui;
 import com.lofibucket.yotris.logic.GameLogic;
 import com.lofibucket.yotris.logic.GameState;
 import com.lofibucket.yotris.ui.UserInterface;
-import com.lofibucket.yotris.ui.gui.menu.NewGameActionListener;
-import com.lofibucket.yotris.ui.gui.menu.QuitActionListener;
 import com.lofibucket.yotris.util.Settings;
 import com.lofibucket.yotris.util.commands.Command;
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.KeyboardFocusManager;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.KeyStroke;
-import javax.swing.WindowConstants;
 
 public class GUI implements UserInterface, Runnable {
 

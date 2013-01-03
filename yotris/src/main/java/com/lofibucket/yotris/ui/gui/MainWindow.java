@@ -4,6 +4,7 @@ package com.lofibucket.yotris.ui.gui;
 import com.lofibucket.yotris.logic.GameState;
 import com.lofibucket.yotris.ui.CommandContainer;
 import com.lofibucket.yotris.ui.gui.menu.NewGameActionListener;
+import com.lofibucket.yotris.ui.gui.menu.PauseActionListener;
 import com.lofibucket.yotris.ui.gui.menu.QuitActionListener;
 import com.lofibucket.yotris.ui.gui.menu.ShowSettingsActionListener;
 import com.lofibucket.yotris.util.Settings;
@@ -28,6 +29,7 @@ public class MainWindow extends JFrame implements View {
 	private GameArea area;
 	private CommandContainer commandlist;
 	private SettingsWindow settingsWindow;
+
 	MainWindow(Settings settings, CommandContainer commandlist) {
 		super("yotris " + settings.getVersion().toString());
 
@@ -71,11 +73,11 @@ public class MainWindow extends JFrame implements View {
 		quitItem.setMnemonic(KeyEvent.VK_Q);
 
 		startItem.setAccelerator(KeyStroke.getKeyStroke(
-        KeyEvent.VK_N, ActionEvent.ALT_MASK));
+			KeyEvent.VK_N, ActionEvent.ALT_MASK));
 		pauseItem.setAccelerator(KeyStroke.getKeyStroke(
-        KeyEvent.VK_P, ActionEvent.ALT_MASK));
+			KeyEvent.VK_P, ActionEvent.ALT_MASK));
 		quitItem.setAccelerator(KeyStroke.getKeyStroke(
-        KeyEvent.VK_Q, ActionEvent.ALT_MASK));
+			KeyEvent.VK_Q, ActionEvent.ALT_MASK));
 
 		gameMenu.add(startItem);
 		gameMenu.add(pauseItem);
@@ -85,6 +87,7 @@ public class MainWindow extends JFrame implements View {
 		editMenu.add(settingsItem);
 
 		startItem.addActionListener(new NewGameActionListener(commandlist));
+		pauseItem.addActionListener(new PauseActionListener(commandlist));
 		quitItem.addActionListener(new QuitActionListener(commandlist));
 		settingsItem.addActionListener(new ShowSettingsActionListener(commandlist, settingsWindow));
 

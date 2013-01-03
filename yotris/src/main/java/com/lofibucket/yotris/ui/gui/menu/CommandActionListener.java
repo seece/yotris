@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
  * constructor parameter.
  */
 abstract public class CommandActionListener implements ActionListener {
-	CommandContainer container;
+	protected CommandContainer container;
 
 	public CommandActionListener(CommandContainer container) {
 		this.container = container;
