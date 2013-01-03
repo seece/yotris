@@ -59,4 +59,13 @@ public class GameGrid extends Grid {
 		temp.moveDown();
 		return checkIfCollides(temp);
 	}
+
+	public boolean checkIfLineIsSolid(int y) {
+		for (int x=0;x<this.getWidth();x++) {
+			if (getTile(x, y) == null) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

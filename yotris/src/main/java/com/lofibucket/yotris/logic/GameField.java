@@ -130,6 +130,13 @@ public class GameField {
 		fallingPiece.rotateClockwise();
 	}
 
+	public int clearLines() {
+		int lines = 0;
+
+
+		return lines;
+	}
+
 	// TODO move this somewhere else
 	private TileColor getRandomColor() {
 		TileColor[] colors;

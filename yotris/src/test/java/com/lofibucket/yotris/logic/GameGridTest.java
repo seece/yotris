@@ -78,4 +78,24 @@ public class GameGridTest {
 		assertTrue(grid.checkIfBottomCollides(piece));
 	}
 
+	@Test
+	public void testSolidLineCheckFilled() {
+		for (int x=0;x<grid.getWidth();x++) {
+			grid.setTile(x, 1, new Tile(TileColor.CYAN));
+		}
+
+		assertTrue(grid.checkIfLineIsSolid(1));
+	}
+
+	@Test
+	public void testSolidLineCheckWithSingleTile() {
+		grid.setTile(2, 1, new Tile(TileColor.CYAN));
+		assertFalse(grid.checkIfLineIsSolid(1));
+	}
+
+	@Test
+	public void testSolidLineCheckEmpty() {
+		assertFalse(grid.checkIfLineIsSolid(0));
+	}
+
 }
