@@ -15,3 +15,5 @@ vuosi vaihtuu
 1.1	2	palikoiden lisäily, pyörityskoodin uusiminen
 2.1	4	törmäystarkistus
 2.1	1	Grid-luokan testejä 
+3.1	4	GUI:n refaktorointi
+3.1	1	GameLogic-luokan testien kirjoittelu, UML:n päivitys
