@@ -28,11 +28,9 @@ import javax.swing.WindowConstants;
 public class GUI implements UserInterface, Runnable {
 
 	private List<Command> commandlist;
-	private JFrame frame;
-	private JMenuBar menubar;
-	private JMenu gameMenu;
+	private MainWindow mainwindow;
 	private Settings settings;
-	private GameArea area;
+
 	private int tilesize = 18;
 
 	public GUI(Settings settings) {
@@ -51,9 +49,9 @@ public class GUI implements UserInterface, Runnable {
 		GameLogic logic = (GameLogic)obs;
 		GameState state = (GameState)arg;
 
-		area.setRenderGrid(state.getRenderGrid());
+		mainwindow.updateState(state);
 
-		area.repaint();
+
 		//System.out.println("GUI updates: " + logic.getSimulatedFrames());
 	}
 
@@ -68,20 +66,13 @@ public class GUI implements UserInterface, Runnable {
 
 	@Override
 	public void run() {
-		frame = new JFrame("yotris " + settings.getVersion());
-		frame.setPreferredSize(new Dimension(400, 550));
-		frame.setResizable(false);
-		
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		mainwindow = new MainWindow(settings, this);
 
 		KeyboardFocusManager.getCurrentKeyboardFocusManager()
 		.addKeyEventDispatcher(new KeyHandler(this, settings));
 		
-		createComponents(frame.getContentPane());
-		createMenu(frame);
-		
-		frame.pack();
-		frame.setVisible(true);	
+		mainwindow.pack();
+		mainwindow.setVisible(true);	
 	}
 
 	@Override
@@ -91,47 +82,11 @@ public class GUI implements UserInterface, Runnable {
 
 	@Override
 	public void stop() {
-		frame.setVisible(false);
-	}
-
-	private void createComponents(Container container) {
-		//container.addKeyListener(keylistener);
-		area = new GameArea(null);
-		container.add(area, BorderLayout.CENTER);
-		
-		JLabel teksti = new JLabel("labell!");
-        container.add(teksti, BorderLayout.LINE_END);
-	}
-
-	private void createMenu(JFrame frame) {
-		menubar = new JMenuBar();
-		gameMenu = new JMenu("Game");
-		menubar.add(gameMenu);
-
-		JMenuItem startItem = new JMenuItem("New game");
-		JMenuItem quitItem = new JMenuItem("Quit");
-
-		startItem.getAccessibleContext().setAccessibleDescription(
-				"Start a new game");
-		startItem.setMnemonic(KeyEvent.VK_N);
-		quitItem.setMnemonic(KeyEvent.VK_Q);
-
-		startItem.setAccelerator(KeyStroke.getKeyStroke(
-        KeyEvent.VK_N, ActionEvent.ALT_MASK));
-
-		gameMenu.add(startItem);
-		gameMenu.add(quitItem);
-
-		startItem.addActionListener(new NewGameActionListener(this));
-		quitItem.addActionListener(new QuitActionListener(this));
-
-		frame.setJMenuBar(menubar);
+		mainwindow.setVisible(false);
 	}
 
 	@Override
 	public void addNewCommand(Command c) {
 		this.commandlist.add(c);
 	}
-
 }
-

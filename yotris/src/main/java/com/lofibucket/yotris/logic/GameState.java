@@ -4,6 +4,7 @@ package com.lofibucket.yotris.logic;
 public class GameState {
 	public boolean running;
 	public Grid renderGrid;
+	public int score;
 
 	public GameState(boolean running) {
 		this.running = running;

@@ -146,6 +146,7 @@ public final class GameLogic extends Observable {
 
 		Grid renderGrid = getRenderGrid();
 		state.renderGrid = renderGrid;
+		state.score = this.score;
 
 		return state;
 	}
