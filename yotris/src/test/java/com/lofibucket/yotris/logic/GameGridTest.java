@@ -13,7 +13,7 @@ public class GameGridTest {
 	@Before
 	public void initTests() {
 		grid = new GameGrid(10, 20);	
-		piece = new Piece(TetriminoShape.getShape("O"), TileColor.BLUE, new Position(0,0));
+		piece = new Piece(TetrominoShape.getShape("O"), TileColor.BLUE, new Position(0,0));
 	}
 
 	@Test

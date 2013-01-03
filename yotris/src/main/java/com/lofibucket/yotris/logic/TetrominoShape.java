@@ -4,7 +4,7 @@ package com.lofibucket.yotris.logic;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class TetriminoShape {
+public class TetrominoShape {
 
 	private static final boolean[][] I = 
 			new boolean[][] 

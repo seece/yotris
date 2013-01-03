@@ -13,12 +13,12 @@ import java.util.Random;
  */
 public final class GameLogic extends Observable {
 	private UserInterface ui;
-	private GameGrid grid;
+	//private GameGrid grid;
+	private GameField field;
 	private Settings settings;
-	private Piece fallingPiece;
+	//private Piece fallingPiece;
 	private int score;
 	private int frames = 0;
-	private ZeroBasedCounter pieceFallCounter;
 	private boolean running;
 	
 	/**
@@ -40,13 +40,14 @@ public final class GameLogic extends Observable {
 	 * @param settings the settings to use for this session
 	 */
 	public void reset(Settings settings) {
-		this.grid = new GameGrid(settings.getGridWidth(), settings.getGridHeight());	
+		//this.grid = new GameGrid(settings.getGridWidth(), settings.getGridHeight());	
 		this.settings = settings;
 		running = true;
-		fallingPiece = null;
-		pieceFallCounter = new ZeroBasedCounter(0, 10);
+		//fallingPiece = null;
 		score = 0;
 		frames = 0;
+
+		field = new GameField(settings);
 
 		GameState state = getGameState();
 		setChanged();
@@ -64,7 +65,7 @@ public final class GameLogic extends Observable {
 	public GameState update(List<Command> commands) {
 		frames++;
 		applyCommands(commands);
-		updateFallingPiece();
+		field.updateFallingPiece();
 		
 		GameState state = getGameState();
 		setChanged();
@@ -81,61 +82,6 @@ public final class GameLogic extends Observable {
 		commands.clear();
 	}
 
-	private void updateFallingPiece() {
-		pieceFallCounter.decrease();
-
-		if (!pieceFallCounter.isZero()) {
-			return;
-		}
-
-		if (fallingPiece == null) {
-			spawnPiece();
-			return;
-		}
-
-		if (grid.checkIfBottomCollides(fallingPiece)) {
-			grid.plotPiece(fallingPiece);
-			fallingPiece = null;
-			return;
-		}
-
-		if (!checkIfMoveIsLegal(fallingPiece, new Position(0, 1))) {
-			return;
-		}
-
-		fallingPiece.moveDown();
-	}
-
-	private void spawnPiece() {
-		if (settings.debugEnabled()) {
-			System.out.println("Spawning a new block.");
-		}
-
-		Position center = new Position(grid.getWidth()/2, 0);
-		fallingPiece = new Piece(getRandomTetrimino(), getRandomColor(), center);
-
-		if (grid.checkIfCollides(fallingPiece)) {
-			running = false;
-			// TODO broadcast a gameover message?
-		}
-	}
-
-	private TileColor getRandomColor() {
-		TileColor[] colors;
-		int choice;
-
-		colors = TileColor.class.getEnumConstants();
-
-		Random r = new Random();
-		choice = r.nextInt(colors.length);
-
-		return colors[choice];
-	}
-
-	private boolean[][] getRandomTetrimino() {
-		return TetriminoShape.getRandomShape();
-	}
-
 	/**
 	 *	Builds a GameState object of the current GameLogic state.	
 	 * @return current game state
@@ -144,25 +90,11 @@ public final class GameLogic extends Observable {
 		GameState state = new GameState(true);	
 		state.running = this.running;
 
-		Grid renderGrid = getRenderGrid();
+		Grid renderGrid = field.getRenderGrid();
 		state.renderGrid = renderGrid;
 		state.score = this.score;
 
 		return state;
-	}
-
-	/**
-	 *	Returns the complete game grid, used for rendering the game level in UI.
-	 * @return	the game grid with the falling piece baked in
-	 */
-	public Grid getRenderGrid() {
-		Grid renderGrid = new Grid(grid.getTiles());
-
-		if (fallingPiece != null) {
-			renderGrid.plotPiece(fallingPiece);
-		}
-		
-		return renderGrid;
 	}
 
 	/**
@@ -190,10 +122,17 @@ public final class GameLogic extends Observable {
 	}
 
 	/**
-	 * Ends the game.
+	 * Quits the game.
 	 */
 	public void endGame() {
 		this.running = false;
+	}
+
+	/**
+	 * Rotates the falling piece clockwise.
+	 */
+	public void rotateFallingPiece() {
+		field.rotateFallingPiece();
 	}
 
 	/**
@@ -201,53 +140,7 @@ public final class GameLogic extends Observable {
 	 * @param offset The amount and direction to move the piece.
 	 */
 	public void moveFallingPiece(Position offset) {
-		if (fallingPiece == null) {
-			return;
-		}
-
-		if (!checkIfMoveIsLegal(fallingPiece, offset)) {
-			return;
-		}
-
-		fallingPiece.move(offset);
-	}
-
-	/**
-	 * Checks if a piece would collide if the given movement was applied to it.
-	 * @param piece	The piece to move
-	 * @param offset	The movement amount
-	 * @return True if move is legal, otherwise false
-	 */
-	public boolean checkIfMoveIsLegal(Piece piece, Position offset) {
-		Piece temp = new Piece(piece);
-		temp.move(offset);
-		return !grid.checkIfCollides(temp);
-	}
-
-	/**
-	 * Checks if a piece would collide if it was rotated once clockwise.
-	 * @param piece	The piece to rotate
-	 * @return True if move is legal, otherwise false
-	 */
-	public boolean checkIfRotationIsLegal(Piece piece) {
-		Piece temp = new Piece(piece);
-		temp.rotateClockwise();
-		return !grid.checkIfCollides(temp);
-	}
-
-	/**
-	 * Rotates the falling piece clockwise.
-	 */
-	public void rotateFallingPiece() {
-		if (fallingPiece == null) {
-			return;
-		}
-
-		if (!checkIfRotationIsLegal(fallingPiece)) {
-			return;
-		}
-
-		fallingPiece.rotateClockwise();
+		field.moveFallingPiece(offset);
 	}
 
 }

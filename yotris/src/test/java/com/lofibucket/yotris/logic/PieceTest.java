@@ -33,7 +33,7 @@ public class PieceTest {
 
 	@Before
 	public void initPiece() {
-		piece = new Piece(TetriminoShape.getShape("O"), TileColor.BLUE, new Position(0, 0));
+		piece = new Piece(TetrominoShape.getShape("O"), TileColor.BLUE, new Position(0, 0));
 	}
 
 	@Test
@@ -56,7 +56,7 @@ public class PieceTest {
 
 	@Test
 	public void testPieceRotationTiles() {
-		Piece piece_long = new Piece(TetriminoShape.getShape("I"), TileColor.BLUE, new Position(0, 0));
+		Piece piece_long = new Piece(TetrominoShape.getShape("I"), TileColor.BLUE, new Position(0, 0));
 
 		piece_long.rotateClockwise();
 		Grid tiles = piece_long.getRotatedTiles();
@@ -78,7 +78,7 @@ public class PieceTest {
 
 	@Test
 	public void testPieceMirrorRotationTiles() {
-		Piece piece_long = new Piece(TetriminoShape.getShape("I"), TileColor.BLUE, new Position(0, 0));
+		Piece piece_long = new Piece(TetrominoShape.getShape("I"), TileColor.BLUE, new Position(0, 0));
 		piece_long.rotateClockwise();
 		piece_long.rotateClockwise();
 		Grid tiles = piece_long.getRotatedTiles();
@@ -89,7 +89,7 @@ public class PieceTest {
 	@Test
 	public void testTetriminoParsing() {
 		Grid tiles = piece.getGrid();
-		boolean[][] o_shape = TetriminoShape.getShape("O");
+		boolean[][] o_shape = TetrominoShape.getShape("O");
 
 		assertEquals(tiles.getWidth(), o_shape[0].length);
 		assertEquals(tiles.getHeight(), o_shape.length);

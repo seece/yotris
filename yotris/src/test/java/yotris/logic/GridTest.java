@@ -4,7 +4,7 @@ package yotris.logic;
 import com.lofibucket.yotris.logic.Tile;
 import com.lofibucket.yotris.logic.Grid;
 import com.lofibucket.yotris.logic.Position;
-import com.lofibucket.yotris.logic.TetriminoShape;
+import com.lofibucket.yotris.logic.TetrominoShape;
 import com.lofibucket.yotris.logic.Piece;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -70,7 +70,7 @@ public class GridTest {
 
 	@Test
 	public void testPlotter() {
-		Piece piece = new Piece(TetriminoShape.getShape("O"), TileColor.BLUE, new Position(0, 0));
+		Piece piece = new Piece(TetrominoShape.getShape("O"), TileColor.BLUE, new Position(0, 0));
 		grid.plotPiece(piece);	
 
 		Tile[][] gridtiles = grid.getTiles();
