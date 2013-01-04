@@ -1,7 +1,7 @@
 
 package com.lofibucket.yotris.logic;
 
-import com.lofibucket.yotris.ui.MockUserInterface;
+import com.lofibucket.yotris.ui.UserInterfaceMock;
 import com.lofibucket.yotris.ui.UserInterface;
 import com.lofibucket.yotris.util.Settings;
 import com.lofibucket.yotris.util.commands.Command;
@@ -12,7 +12,7 @@ import org.junit.Before;
 
 public class GameLogicTest {
 
-	MockUserInterface ui;
+	UserInterfaceMock ui;
 	GameLogic logic;
 	Settings settings;
 
@@ -21,7 +21,7 @@ public class GameLogicTest {
 
 	@Before
 	public void initLogic() {
-		ui = new MockUserInterface();
+		ui = new UserInterfaceMock();
 		settings = new Settings();
 		logic = new GameLogic(ui, settings);
 	}

@@ -1,16 +1,16 @@
 package com.lofibucket.yotris.util;
 
-import com.lofibucket.yotris.util.ScoreDAO;
+import com.lofibucket.yotris.util.FileDAO;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class HighScores {
 	private ArrayList<ScoreEntry> scorelist;
-	private ScoreDAO dao;
+	private FileDAO dao;
 
 	public HighScores() {
-		this.dao = new ScoreDAO();
+		this.dao = new FileDAO();
 		this.scorelist = dao.getScorelist();
 	}
 

@@ -2,7 +2,7 @@
 package yotris.util;
 
 import com.lofibucket.yotris.util.ScoreEntry;
-import com.lofibucket.yotris.util.ScoreDAO;
+import com.lofibucket.yotris.util.FileDAO;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,12 +13,12 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 
-public class ScoreDAOTest {
+public class FileDAOTest {
 	public static final String filepath = "testscores.dat";
-	public ScoreDAO dao;
+	public FileDAO dao;
 	public ArrayList<ScoreEntry> mockdata;
 
-	public ScoreDAOTest() {
+	public FileDAOTest() {
 		mockdata = new ArrayList<>();
 		mockdata.add(new ScoreEntry("kaapo", 100));
 		mockdata.add(new ScoreEntry("miika", 200));
@@ -26,7 +26,7 @@ public class ScoreDAOTest {
 		mockdata.add(new ScoreEntry("kirsi", 350));
 		mockdata.add(new ScoreEntry("kirsi", 450));
 
-		dao = new ScoreDAO(filepath);
+		dao = new FileDAO(filepath);
 	}
 
 	public void writeMockData(FileWriter writer) throws IOException {
