@@ -9,3 +9,4 @@ testscores.dat
 
 # maven
 target/
+yotris/build/
