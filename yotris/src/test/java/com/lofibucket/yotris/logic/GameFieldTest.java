@@ -2,6 +2,7 @@
 package com.lofibucket.yotris.logic;
 
 import com.lofibucket.yotris.util.Settings;
+import com.lofibucket.yotris.util.TileColor;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -32,13 +33,36 @@ public class GameFieldTest {
 	}
 
 	@Test
-	public void testFallingPieceRotationWorks() {
+	public void testFallingPieceRotation() {
 		init();
 
 		field.updateFallingPiece(logic);
 		field.updateFallingPiece(logic);
 		field.rotateFallingPiece();
 		assertEquals(field.fallingPiece.getRotation(), Rotation.RIGHT);
+	}
+
+	@Test
+	public void testFallingPieceFalls() {
+		init();
+
+		field.updateFallingPiece(logic);
+		field.updateFallingPiece(logic);
+		Position origpos = new Position(field.fallingPiece.getPos());
+		field.moveFallingPiece(new Position(0, 1));
+		assertEquals(origpos.x, field.fallingPiece.getPos().x);
+		assertTrue(origpos.y < field.fallingPiece.getPos().y);
+	}
+
+	@Test
+	public void testOutOfBoundaryMovesAreIllegal() {
+		init();
+		Piece p = new Piece(TetrominoShape.getShape("O"), TileColor.BLUE,
+				new Position(0,0));
+		assertFalse(field.checkIfMoveIsLegal(p, new Position(0, 100)));
+		assertFalse(field.checkIfMoveIsLegal(p, new Position(0, -100)));
+		assertFalse(field.checkIfMoveIsLegal(p, new Position(100, 0)));
+		assertFalse(field.checkIfMoveIsLegal(p, new Position(-100, 0)));
 	}
 
 }

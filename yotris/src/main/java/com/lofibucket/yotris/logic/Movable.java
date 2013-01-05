@@ -1,7 +1,6 @@
 
 package com.lofibucket.yotris.logic;
 
-
 public abstract class Movable {
 	protected Position pos;
 

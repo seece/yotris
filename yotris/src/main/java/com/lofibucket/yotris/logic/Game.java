@@ -38,7 +38,7 @@ public class Game {
 
 		do {
 			GameLogic logic = new GameLogic(ui, settings);
-			defaultSettings.setKeymap(getDefaultLayout(logic));
+			defaultSettings.setKeymap(getDefaultLayout());
 			GameState state;
 
 			do {
@@ -62,7 +62,7 @@ public class Game {
 	}
 
 	// TODO move this somewhere else
-	private Map<Integer, Command> getDefaultLayout(GameLogic logic) {
+	private Map<Integer, Command> getDefaultLayout() {
 		Map<Integer, Command> map = new HashMap<>();
 
 		map.put(KeyEvent.VK_LEFT, new MoveLeftCommand());
