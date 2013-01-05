@@ -7,6 +7,7 @@ public class GameState {
 	public Grid renderGrid;
 	public int score;
 	public int frames;
+	public int level;
 
 	public GameState(boolean running) {
 		this.running = running;

@@ -30,6 +30,7 @@ public class MainWindow extends JFrame implements View {
 	private JMenu editMenu;
 	private GameArea area;
 	private CommandContainer commandlist;
+	private StatusBar statusbar;
 	private SettingsWindow settingsWindow;
 	private Settings settings;
 
@@ -55,8 +56,9 @@ public class MainWindow extends JFrame implements View {
 		area = new GameArea(null, settings.getTheme());
 		container.add(area, BorderLayout.CENTER);
 		
-		JLabel teksti = new JLabel("Score:");
-        container.add(teksti, BorderLayout.LINE_END);
+		statusbar = new StatusBar();
+
+        container.add(statusbar, BorderLayout.NORTH);
 	}
 
 	private void createMenu(JFrame frame) {
@@ -102,7 +104,7 @@ public class MainWindow extends JFrame implements View {
 	public void updateState(GameState state) {
 		area.setRenderGrid(state.getRenderGrid());
 		area.repaint();
-
+		statusbar.updateState(state);
 	}
 
 }

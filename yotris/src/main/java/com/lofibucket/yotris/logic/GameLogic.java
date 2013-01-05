@@ -63,6 +63,8 @@ public class GameLogic extends Observable {
 		applyCommands(commands);
 		field.updateFallingPiece(this);
 		increaseScore(field.clearLines());	
+		state.level = getLevel();
+		field.updateCounterLimit(state.level);
 		
 		setChanged();
 		notifyObservers(getGameState());
@@ -174,4 +176,12 @@ public class GameLogic extends Observable {
 		return settings.getFrameDelay();
 	}
 
+	/**
+	 * Game level getter. Game level affects game running speed.
+	 * @return The current game level
+	 */
+	public int getLevel() {
+		double partialLevel = 0.001 + (double)state.score / 500.0;
+		return (int)Math.ceil(partialLevel);
+	}
 }

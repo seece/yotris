@@ -72,6 +72,14 @@ public class ZeroBasedCounter {
 		return value==0;
 	}
 
+	/**
+	 * Sets the counter upper limit.
+	 * @param newLimit The new upper limit to use.
+	 */
+	public void setLimit(int newLimit) {
+		upperLimit = newLimit;
+	}
+
 	private void checkLimit() {
 		if (value < lowerLimit) {
 			value = upperLimit;

@@ -28,6 +28,15 @@ public class GameField {
 		pieceFallCounter = new ZeroBasedCounter(0, 10);
 	}
 
+	/**
+	 * Updates the time limit we use to measure the delay between successive
+	 * game updates.
+	 * @param level Current game level.
+	 */
+	public void updateCounterLimit(int level) {
+		pieceFallCounter.setLimit(Math.max(3, 10 - level));
+	}
+
 	protected void updateFallingPiece(GameLogic logic) {
 		pieceFallCounter.decrease();
 
