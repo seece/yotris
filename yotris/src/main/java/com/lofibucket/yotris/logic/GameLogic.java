@@ -2,6 +2,8 @@ package com.lofibucket.yotris.logic;
 import com.lofibucket.yotris.ui.UserInterface;
 import com.lofibucket.yotris.util.Settings;
 import com.lofibucket.yotris.util.commands.Command;
+import com.lofibucket.yotris.util.commands.TogglePauseCommand;
+import com.lofibucket.yotris.util.commands.UnpauseCommand;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
@@ -13,9 +15,6 @@ public class GameLogic extends Observable {
 	private UserInterface ui;
 	private GameField field;
 	private Settings settings;
-	//private int score;
-	//private int frames = 0;
-	//private boolean running;
 	private GameState state;
 	
 	/**
@@ -59,12 +58,11 @@ public class GameLogic extends Observable {
 	 * @return	state of the game after this step.
 	 */
 	public GameState update(List<Command> commands) {
-		state.frames++;
 		applyCommands(commands);
-		field.updateFallingPiece(this);
-		increaseScore(field.clearLines());	
-		state.level = getLevel();
-		field.updateCounterLimit(state.level);
+
+		if (!state.paused) {
+			updateGame();
+		}
 		
 		setChanged();
 		notifyObservers(getGameState());
@@ -72,6 +70,18 @@ public class GameLogic extends Observable {
 		return state;
 	}
 
+	private void updateGame() {
+		state.frames++;
+		field.updateFallingPiece(this);
+		increaseScore(field.clearLines());	
+		state.level = getLevel();
+		field.updateCounterLimit(state.level);
+	}
+
+	/**
+	 * Increases the player score with the given multiplier.
+	 * @param multiplier how many lines were cleared simultaneously
+	 */
 	public void increaseScore(int multiplier) {
 		if (multiplier == 0) {
 			return;
@@ -93,7 +103,17 @@ public class GameLogic extends Observable {
 			Iterator<Command> it = commands.iterator();
 
 			while (it.hasNext()) {
-				it.next().apply(this);
+				Command command = it.next();
+
+				// TODO clean this mess up
+				if (state.paused) {
+					if (command.getClass() != UnpauseCommand.class && 
+							command.getClass() != TogglePauseCommand.class) {
+						continue;
+					}
+				}
+
+				command.apply(this);
 			}
 
 			commands.clear();
@@ -181,7 +201,30 @@ public class GameLogic extends Observable {
 	 * @return The current game level
 	 */
 	public int getLevel() {
-		double partialLevel = 0.001 + (double)state.score / 500.0;
+		double partialLevel = 0.001 + (double)state.score / 400.0;
 		return (int)Math.ceil(partialLevel);
+	}
+
+	/**
+	 * Toggles game pause state.
+	 */
+	/*
+	public void togglePause() {
+		state.togglePause();
+	}
+	*/
+
+	/**
+	 * Pauses the game.
+	 */
+	public void pauseGame() {
+		state.paused = true;
+	}
+
+	/**
+	 * Continues the game.
+	 */
+	public void unPauseGame() {
+		state.paused = false;
 	}
 }

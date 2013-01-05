@@ -8,7 +8,11 @@ public class TogglePauseCommand extends Command {
 
 	@Override
 	public void apply(GameLogic logic) {
-		System.out.println("Togglepause");
+		if (logic.getGameState().paused) {
+			logic.unPauseGame();
+		} else {
+			logic.pauseGame();
+		}
 	}
 
 }

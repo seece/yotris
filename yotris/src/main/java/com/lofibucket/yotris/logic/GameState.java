@@ -3,6 +3,7 @@ package com.lofibucket.yotris.logic;
 
 public class GameState {
 	public boolean running;
+	public boolean paused;
 	public boolean gameover;
 	public Grid renderGrid;
 	public int score;
@@ -13,6 +14,7 @@ public class GameState {
 		this.running = running;
 		this.gameover = false;
 		this.frames = 0;
+		this.paused = false;
 	}
 
 	public boolean isRunning() {
@@ -29,6 +31,10 @@ public class GameState {
 
 	public void setRenderGrid(Grid renderGrid) {
 		this.renderGrid = renderGrid;
+	}
+
+	public void togglePause() {
+		paused = !paused;
 	}
 
 }

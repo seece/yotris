@@ -16,8 +16,8 @@ public class StatusBar extends JPanel implements View {
 
 	private String msgScore = "Score: ";
 	private String msgLevel = "Level: ";
-	private String msgPaused = "Game paused";
-	private String msgNotPaused = "-";
+	private String msgPaused = "     Game paused";
+	private String msgNotPaused = "";
 
 	public StatusBar(LayoutManager layout) {
 		super(layout);
@@ -42,10 +42,20 @@ public class StatusBar extends JPanel implements View {
 		score.setText(msgScore + scoreAmount);
 	}
 
+	private void updatePaused(GameState state) {
+		if (state.paused) {
+			paused.setText(msgPaused);
+		} else {
+			paused.setText(msgNotPaused);
+		}
+
+	}
+
 	@Override
 	public void updateState(GameState state) {
 		updateScore(state.score);
 		level.setText(msgLevel + state.level);
+		updatePaused(state);
 
 		this.repaint();
 	}

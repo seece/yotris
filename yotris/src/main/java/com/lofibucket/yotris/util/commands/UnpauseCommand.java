@@ -8,7 +8,7 @@ public class UnpauseCommand extends Command {
 
 	@Override
 	public void apply(GameLogic logic) {
-		System.out.println("Unpause");
+		logic.unPauseGame();
 	}
 
 }

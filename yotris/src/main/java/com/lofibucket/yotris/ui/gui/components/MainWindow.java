@@ -40,7 +40,7 @@ public class MainWindow extends JFrame implements View {
 		this.settings = settings;
 		this.commandlist = commandlist;
 
-		settingsWindow = new SettingsWindow();
+		settingsWindow = new SettingsWindow(commandlist, settings);
 
 		setPreferredSize(new Dimension(350, 532));
 		setResizable(false);
