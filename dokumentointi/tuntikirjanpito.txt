@@ -7,7 +7,7 @@ pvm	tunnit	kuvaus
 20.12	2	GameLogic luokan metodien täydennys, dokumentointi
 21.12	1	Grid luokan törmäystestaus, komentojonon suunnittelu
 22.12	4	simppeli GUI, näppäinkuuntelija
-23.12	2	ruudukon piirto ruudulle rullaa, komentojonototeutusta siistitytty
+23.12	2	ruudukon piirto ruudulle rullaa, komentojonototeutusta siistitty
 
 vuosi vaihtuu
 
@@ -17,3 +17,5 @@ vuosi vaihtuu
 2.1	1	Grid-luokan testejä 
 3.1	4	GUI:n refaktorointi
 3.1	1	GameLogic-luokan testien kirjoittelu, UML:n päivitys
+4.1	1	Testiluokkien luonti
+5.1	3	testien siistiminen, pelilogiikan viimeistely

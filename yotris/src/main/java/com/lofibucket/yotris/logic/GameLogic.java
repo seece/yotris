@@ -62,7 +62,7 @@ public final class GameLogic extends Observable implements Endable {
 		state.frames++;
 		applyCommands(commands);
 		field.updateFallingPiece(this);
-		field.clearLines();
+		field.clearLines();	// TODO increase score when lines are cleared
 		
 		setChanged();
 		notifyObservers(getGameState());

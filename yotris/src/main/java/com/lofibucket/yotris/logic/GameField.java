@@ -13,8 +13,13 @@ import java.util.Random;
 public class GameField {
 	private Settings settings;
 	private GameGrid grid;
-	private Piece fallingPiece;
+	protected Piece fallingPiece;
 	private ZeroBasedCounter pieceFallCounter;
+
+	public GameField(Settings settings, int counterLimit) {
+		this(settings);
+		pieceFallCounter = new ZeroBasedCounter(0, counterLimit);
+	}
 
 	public GameField(Settings settings) {
 		this.settings = settings;
@@ -42,7 +47,6 @@ public class GameField {
 		if (grid.checkIfBottomCollides(fallingPiece)) {
 			grid.plotPiece(fallingPiece);
 			fallingPiece = null;
-			checkLines();
 			pieceFallCounter.setValue(1);	// spawn a new block next frame
 			return;
 		}
@@ -54,9 +58,8 @@ public class GameField {
 		fallingPiece.moveDown();
 	}
 
-	protected void checkLines() {
-		int lines_cleared = grid.clearLines();
-		System.out.println("cleared " + lines_cleared + " lines");
+	protected int checkLines() {
+		return grid.clearLines();
 	}
 
 	protected boolean spawnPiece() {
@@ -143,10 +146,7 @@ public class GameField {
 	}
 
 	public int clearLines() {
-		int lines = 0;
-
-
-		return lines;
+		return checkLines();
 	}
 
 	// TODO move this somewhere else
