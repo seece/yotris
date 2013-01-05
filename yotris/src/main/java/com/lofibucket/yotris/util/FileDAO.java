@@ -1,9 +1,14 @@
 package com.lofibucket.yotris.util;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
+/**
+ * Takes care of file access.
+ */
 public class FileDAO implements ScoreDAO, SettingsDAO {
 	private String filepath;
 	private ArrayList<ScoreEntry> scorelist;
@@ -14,13 +19,33 @@ public class FileDAO implements ScoreDAO, SettingsDAO {
 	}	
 
 	public FileDAO(String filepath) {
+		 this(new File(filepath));
 		 this.filepath = filepath;
-		 this.scorelist = new ArrayList<>();
 	}	
 
 	public FileDAO(File file) {
-		 this.scorelist = new ArrayList<>();
+		 this.file = file;
+
+		 try {
+			 this.scorelist = loadScoreList();
+		 } catch (FileNotFoundException e) {
+			// file not found, so we'll create it when saving
+			this.scorelist = new ArrayList<>();
+		 }
 	}	
+
+	private ArrayList<ScoreEntry> loadScoreList() throws FileNotFoundException {
+		ArrayList<ScoreEntry> scores = new ArrayList<>();
+
+		try (Scanner reader = new Scanner(file, "UTF-8")) {
+			while (reader.hasNextLine()) {
+				String line = reader.nextLine();
+				System.out.println(line);
+			}
+		}
+		
+		return scores;
+	}
 
 	@Override
 	public ArrayList<ScoreEntry> getScorelist() {
@@ -38,6 +63,5 @@ public class FileDAO implements ScoreDAO, SettingsDAO {
 		saveScorelist();
 		return true;
 	}
-
 
 }

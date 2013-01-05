@@ -3,6 +3,7 @@ package yotris.util;
 
 import com.lofibucket.yotris.util.ScoreEntry;
 import com.lofibucket.yotris.util.FileDAO;
+import com.lofibucket.yotris.util.FileMock;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -26,7 +27,8 @@ public class FileDAOTest {
 		mockdata.add(new ScoreEntry("kirsi", 350));
 		mockdata.add(new ScoreEntry("kirsi", 450));
 
-		dao = new FileDAO(filepath);
+		FileMock file = new FileMock(filepath);
+		dao = new FileDAO(file);
 	}
 
 	public void writeMockData(FileWriter writer) throws IOException {
@@ -64,24 +66,22 @@ public class FileDAOTest {
 	}
 
 	@Test
-	public void scoreListAmount() {
+	public void testScoreListAmount() {
 		ArrayList<ScoreEntry> scorelist = dao.getScorelist();
 		
 		checkSize(scorelist);
 	}
 
 	@Test
-	public void scoreListOrder() {
+	public void testScoreListOrder() {
 		ArrayList<ScoreEntry> scorelist = dao.getScorelist();
 
-		checkSize(scorelist);
-		
 		assertEquals(scorelist.get(0).getName(), mockdata.get(0).getName());
 		assertEquals(scorelist.get(4).getName(), mockdata.get(4).getName());
 	}
 
 	@Test
-	public void scoreListScores() {
+	public void testScoreListScores() {
 		ArrayList<ScoreEntry> scorelist = dao.getScorelist();
 
 		checkSize(scorelist);
@@ -91,7 +91,7 @@ public class FileDAOTest {
 	}
 
 	@Test
-	public void scoresAndNamesCombined() {
+	public void testScoresAndNamesCombined() {
 		ArrayList<ScoreEntry> scorelist = dao.getScorelist();
 		
 		checkSize(scorelist);
