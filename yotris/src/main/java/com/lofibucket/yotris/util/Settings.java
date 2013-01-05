@@ -34,7 +34,7 @@ public class Settings {
 	 * @param gridHeight	The game are height in tiles
 	 */
 	public Settings(DifficultyLevel difficulty, int gridWidth, int gridHeight) { 
-		this.version = "0.2";
+		this.version = "0.5";
 		this.difficulty = difficulty;
 		this.gridWidth = gridWidth;
 		this.gridHeight = gridHeight;
