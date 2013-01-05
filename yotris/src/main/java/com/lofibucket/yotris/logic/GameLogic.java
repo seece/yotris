@@ -62,12 +62,24 @@ public class GameLogic extends Observable {
 		state.frames++;
 		applyCommands(commands);
 		field.updateFallingPiece(this);
-		field.clearLines();	// TODO increase score when lines are cleared
+		increaseScore(field.clearLines());	
 		
 		setChanged();
 		notifyObservers(getGameState());
 
 		return state;
+	}
+
+	public void increaseScore(int multiplier) {
+		if (multiplier == 0) {
+			return;
+		}
+
+		state.score += 100 * Math.pow(multiplier, 1.5);
+
+		if (settings.debugEnabled()) {
+			System.out.println("Score: " + state.score);
+		}
 	}
 
 	/**

@@ -41,7 +41,7 @@ public class MainWindow extends JFrame implements View {
 
 		settingsWindow = new SettingsWindow();
 
-		setPreferredSize(new Dimension(350, 521));
+		setPreferredSize(new Dimension(350, 532));
 		setResizable(false);
 		
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
