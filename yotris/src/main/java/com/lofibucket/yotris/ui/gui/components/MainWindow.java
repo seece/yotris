@@ -31,10 +31,12 @@ public class MainWindow extends JFrame implements View {
 	private GameArea area;
 	private CommandContainer commandlist;
 	private SettingsWindow settingsWindow;
+	private Settings settings;
 
 	public MainWindow(Settings settings, CommandContainer commandlist) {
 		super("yotris " + settings.getVersion().toString());
 
+		this.settings = settings;
 		this.commandlist = commandlist;
 
 		settingsWindow = new SettingsWindow();
@@ -50,7 +52,7 @@ public class MainWindow extends JFrame implements View {
 
 	private void createComponents(Container container) {
 		//container.addKeyListener(keylistener);
-		area = new GameArea(null);
+		area = new GameArea(null, settings.getTheme());
 		container.add(area, BorderLayout.CENTER);
 		
 		JLabel teksti = new JLabel("Score:");

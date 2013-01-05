@@ -38,7 +38,7 @@ public class Game {
 
 		do {
 			GameLogic logic = new GameLogic(ui, settings);
-			defaultSettings.setKeymap(getDefaultLayout());
+			defaultSettings.setKeymap(settings.getDefaultLayout());
 			GameState state;
 
 			do {
@@ -61,15 +61,5 @@ public class Game {
 		}
 	}
 
-	// TODO move this somewhere else
-	private Map<Integer, Command> getDefaultLayout() {
-		Map<Integer, Command> map = new HashMap<>();
 
-		map.put(KeyEvent.VK_LEFT, new MoveLeftCommand());
-		map.put(KeyEvent.VK_RIGHT, new MoveRightCommand());
-		map.put(KeyEvent.VK_DOWN, new MoveDownCommand());
-		map.put(KeyEvent.VK_UP, new RotateCommand());
-
-		return map;
-	}
 }

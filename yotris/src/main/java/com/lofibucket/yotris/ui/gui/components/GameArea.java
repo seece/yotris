@@ -2,14 +2,17 @@
 package com.lofibucket.yotris.ui.gui.components;
 
 import com.lofibucket.yotris.logic.Grid;
+import com.lofibucket.yotris.logic.Tile;
+import com.lofibucket.yotris.ui.gui.Theme;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
 public class GameArea extends JPanel {
 	private Grid renderGrid;
-	private int tileSize;
+	private Theme theme;
 
+	/*
 	public int getTileSize() {
 		return tileSize;
 	}
@@ -17,15 +20,12 @@ public class GameArea extends JPanel {
 	public void setTileSize(int tileSize) {
 		this.tileSize = tileSize;
 	}
+	*/
 
-	public GameArea(Grid renderGrid) {
-		this(renderGrid, 18);
-	}
-
-	public GameArea(Grid renderGrid, int tileSize) {
+	public GameArea(Grid renderGrid, Theme theme) {
 		super.setBackground(Color.BLACK);
 		this.renderGrid = renderGrid;
-		this.tileSize = tileSize;
+		this.theme = theme;
 	}
 
 	public Grid getRenderGrid() {
@@ -51,12 +51,14 @@ public class GameArea extends JPanel {
 			for (int x=0;x<renderGrid.getWidth();x++) {
 				int tile_x = x * tile_width;
 				int tile_y = y * tile_height;
+				Tile tile = renderGrid.getTile(x, y);
 
-				if (renderGrid.getTile(x, y) != null) {
-					// TODO add proper graphics here
-					graphics.setColor(Color.GREEN);
-					graphics.fillRect(tile_x, tile_y, tile_width, tile_height);
+				if (tile == null) {
+					continue;
 				}
+
+				graphics.setColor(theme.getPaletteColor(tile.getColor()));
+				graphics.fillRect(tile_x, tile_y, tile_width, tile_height);
 			}
 		}
 

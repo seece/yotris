@@ -1,6 +1,8 @@
 
 package com.lofibucket.yotris.util;
+import com.lofibucket.yotris.ui.gui.Theme;
 import com.lofibucket.yotris.util.commands.*;
+import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +17,7 @@ public class Settings {
 	private boolean debug;
 	private Map<Integer, Command> keymap;
 	private double targetFPS;
+	private Theme theme;
 
 	/**
 	 * The constructor with no parameters initializes the default settings. 
@@ -31,7 +34,6 @@ public class Settings {
 	 * @param gridHeight	The game are height in tiles
 	 */
 	public Settings(DifficultyLevel difficulty, int gridWidth, int gridHeight) { 
-			
 		this.version = "0.2";
 		this.difficulty = difficulty;
 		this.gridWidth = gridWidth;
@@ -39,6 +41,7 @@ public class Settings {
 		this.keymap = new HashMap<>();
 		this.debug = false;
 		this.targetFPS = 20.0;
+		this.theme = new Theme();
 
 		//addDefaultLayout(keymap, logic);
 	}
@@ -125,7 +128,22 @@ public class Settings {
 		return (long)(1000.0/this.targetFPS);
 	}
 
+	public static Map<Integer, Command> getDefaultLayout() {
+		Map<Integer, Command> map = new HashMap<>();
 
-	
+		map.put(KeyEvent.VK_LEFT, new MoveLeftCommand());
+		map.put(KeyEvent.VK_RIGHT, new MoveRightCommand());
+		map.put(KeyEvent.VK_DOWN, new MoveDownCommand());
+		map.put(KeyEvent.VK_UP, new RotateCommand());
 
+		return map;
+	}
+
+	public Theme getTheme() {
+		return theme;
+	}
+
+	public void setTheme(Theme theme) {
+		this.theme = theme;
+	}
 }
