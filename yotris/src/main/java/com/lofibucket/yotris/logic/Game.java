@@ -46,7 +46,7 @@ public class Game {
 				running = state.running;
 
 				try {
-					Thread.sleep(settings.getFrameDelay());
+					Thread.sleep(logic.getFrameDelay());
 				} catch (InterruptedException e) {
 
 				}

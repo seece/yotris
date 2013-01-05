@@ -152,4 +152,13 @@ public final class GameLogic extends Observable implements Endable {
 		field.moveFallingPiece(offset);
 	}
 
+	/**
+	 * How long (in milliseconds) do we wait in the main loop. This changes
+	 * as the game advances to make the game faster.
+	 * @return delay in milliseconds
+	 */
+	public long getFrameDelay() {
+		return settings.getFrameDelay();
+	}
+
 }
