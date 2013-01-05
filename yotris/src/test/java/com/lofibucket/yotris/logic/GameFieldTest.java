@@ -1,6 +1,8 @@
 
 package com.lofibucket.yotris.logic;
 
+import com.lofibucket.yotris.ui.UserInterface;
+import com.lofibucket.yotris.ui.UserInterfaceMock;
 import com.lofibucket.yotris.util.Settings;
 import com.lofibucket.yotris.util.TileColor;
 import org.junit.Test;
@@ -11,7 +13,8 @@ public class GameFieldTest {
 
 	private Settings settings;
 	private GameField field;
-	private Endable logic;
+	private GameLogic logic;
+	private UserInterface ui;
 
     public GameFieldTest() {
     }
@@ -19,8 +22,9 @@ public class GameFieldTest {
 	@Before
 	public void init() {
 		settings = new Settings();
+		ui = new UserInterfaceMock();
 		field = new GameField(settings, 1);
-		logic = new GameLogicMock();
+		logic = new GameLogicMock(ui, settings);
 	}
 
 	@Test

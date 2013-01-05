@@ -5,10 +5,11 @@ import com.lofibucket.yotris.ui.UserInterface;
 import com.lofibucket.yotris.util.Settings;
 
 
-public class GameLogicMock implements Endable {
+public class GameLogicMock extends GameLogic {
 	public boolean ended;
 	
-	public GameLogicMock() {
+	public GameLogicMock(UserInterface ui, Settings settings) {
+		super(ui, settings);
 		ended = false;
 	}
 

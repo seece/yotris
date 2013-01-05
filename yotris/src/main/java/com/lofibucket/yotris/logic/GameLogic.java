@@ -9,7 +9,7 @@ import java.util.Observable;
 /**
  *	The main logic class. Keeps the game running.
  */
-public final class GameLogic extends Observable implements Endable {
+public class GameLogic extends Observable {
 	private UserInterface ui;
 	private GameField field;
 	private Settings settings;
@@ -130,7 +130,6 @@ public final class GameLogic extends Observable implements Endable {
 	/**
 	 * Ends the current game.
 	 */
-	@Override
 	public void endGame() {
 		state.gameover = true;
 

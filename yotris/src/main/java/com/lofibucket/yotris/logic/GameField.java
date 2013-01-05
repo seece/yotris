@@ -28,7 +28,7 @@ public class GameField {
 		pieceFallCounter = new ZeroBasedCounter(0, 10);
 	}
 
-	protected void updateFallingPiece(Endable endable) {
+	protected void updateFallingPiece(GameLogic logic) {
 		pieceFallCounter.decrease();
 
 		if (!pieceFallCounter.isZero()) {
@@ -39,7 +39,7 @@ public class GameField {
 			if (spawnPiece()) {
 				return;
 			} else { 
-				endable.endGame();
+				logic.endGame();
 				return;
 			}
 		}
