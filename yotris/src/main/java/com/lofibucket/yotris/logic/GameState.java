@@ -3,11 +3,15 @@ package com.lofibucket.yotris.logic;
 
 public class GameState {
 	public boolean running;
+	public boolean gameover;
 	public Grid renderGrid;
 	public int score;
+	public int frames;
 
 	public GameState(boolean running) {
 		this.running = running;
+		this.gameover = false;
+		this.frames = 0;
 	}
 
 	public boolean isRunning() {

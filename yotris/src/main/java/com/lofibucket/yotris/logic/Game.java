@@ -32,21 +32,27 @@ public class Game {
 		this.settings.enableDebug();
 
 		ui = new GUI(defaultSettings);
-
-		GameLogic logic = new GameLogic(ui, settings);
-		defaultSettings.setKeymap(getDefaultLayout(logic));
-		GameState state;
-
 		ui.start();
 
-		do {
-			state = logic.update(ui.pollCommands());
-			try {
-				Thread.sleep(settings.getFrameDelay());
-			} catch (InterruptedException e) {
+		boolean running = true;
 
-			}
-		} while (state.running);
+		do {
+			GameLogic logic = new GameLogic(ui, settings);
+			defaultSettings.setKeymap(getDefaultLayout(logic));
+			GameState state;
+
+			do {
+				state = logic.update(ui.pollCommands());
+				running = state.running;
+
+				try {
+					Thread.sleep(settings.getFrameDelay());
+				} catch (InterruptedException e) {
+
+				}
+			} while (!state.gameover && running);
+
+		} while (running);
 
 		ui.stop();
 

@@ -6,15 +6,16 @@ import java.util.List;
 import java.util.Observable;
 
 /**
- *	The main logic class. Takes care of the falling piece movement & collisions.
+ *	The main logic class. 
  */
-public final class GameLogic extends Observable {
+public final class GameLogic extends Observable implements Endable {
 	private UserInterface ui;
 	private GameField field;
 	private Settings settings;
-	private int score;
-	private int frames = 0;
-	private boolean running;
+	//private int score;
+	//private int frames = 0;
+	//private boolean running;
+	private GameState state;
 	
 	/**
 	 *
@@ -36,13 +37,14 @@ public final class GameLogic extends Observable {
 	 */
 	public void reset(Settings settings) {
 		this.settings = settings;
-		running = true;
-		score = 0;
-		frames = 0;
+		this.state = new GameState(true);
+		this.state.running = true;
+		this.state.score = 0;
+		this.state.frames = 0;
 
 		field = new GameField(settings);
 
-		GameState state = getGameState();
+		//GameState state = getGameState();
 		setChanged();
 		notifyObservers(state);
 
@@ -56,13 +58,12 @@ public final class GameLogic extends Observable {
 	 * @return	state of the game after this step.
 	 */
 	public GameState update(List<Command> commands) {
-		frames++;
+		state.frames++;
 		applyCommands(commands);
-		field.updateFallingPiece();
+		field.updateFallingPiece(this);
 		
-		GameState state = getGameState();
 		setChanged();
-		notifyObservers(state);
+		notifyObservers(getGameState());
 
 		return state;
 	}
@@ -84,12 +85,11 @@ public final class GameLogic extends Observable {
 	 * @return current game state
 	 */
 	public GameState getGameState() {
-		GameState state = new GameState(true);	
-		state.running = this.running;
+		//GameState state = new GameState(true);	
+		//state.running = this.running;
 
-		Grid renderGrid = field.getRenderGrid();
-		state.renderGrid = renderGrid;
-		state.score = this.score;
+		state.renderGrid = field.getRenderGrid();
+		//state.score = this.score;
 
 		return state;
 	}
@@ -99,7 +99,7 @@ public final class GameLogic extends Observable {
 	 * @return	the amount of frames (update cycles) we have done
 	 */
 	public int getSimulatedFrames() {
-		return frames;
+		return state.frames;
 	}
 
 	/**
@@ -121,8 +121,20 @@ public final class GameLogic extends Observable {
 	/**
 	 * Quits the game.
 	 */
+	public void quitGame() {
+		state.running = false;
+	}
+
+	/**
+	 * Ends the current game.
+	 */
+	@Override
 	public void endGame() {
-		this.running = false;
+		state.gameover = true;
+
+		if (settings.debugEnabled()) {
+			System.out.println("Game Over!");
+		}
 	}
 
 	/**

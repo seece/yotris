@@ -23,7 +23,7 @@ public class GameField {
 		pieceFallCounter = new ZeroBasedCounter(0, 10);
 	}
 
-	protected void updateFallingPiece() {
+	protected void updateFallingPiece(Endable endable) {
 		pieceFallCounter.decrease();
 
 		if (!pieceFallCounter.isZero()) {
@@ -31,13 +31,18 @@ public class GameField {
 		}
 
 		if (fallingPiece == null) {
-			spawnPiece();
-			return;
+			if (spawnPiece()) {
+				return;
+			} else { 
+				endable.endGame();
+				return;
+			}
 		}
 
 		if (grid.checkIfBottomCollides(fallingPiece)) {
 			grid.plotPiece(fallingPiece);
 			fallingPiece = null;
+			pieceFallCounter.setValue(1);	// spawn a new block next frame
 			return;
 		}
 
@@ -48,7 +53,7 @@ public class GameField {
 		fallingPiece.moveDown();
 	}
 
-	protected void spawnPiece() {
+	protected boolean spawnPiece() {
 		if (settings.debugEnabled()) {
 			System.out.println("Spawning a new block.");
 		}
@@ -57,9 +62,10 @@ public class GameField {
 		fallingPiece = new Piece(TetrominoShape.getRandomShape(), getRandomColor(), center);
 
 		if (grid.checkIfCollides(fallingPiece)) {
-			//running = false;
-			// TODO broadcast a gameover message?
+			return false;
 		}
+
+		return true;
 	}
 
 	/**

@@ -11,7 +11,7 @@ public class QuitCommand extends Command {
 
 	@Override
 	public void apply(GameLogic logic) {
-		logic.endGame();
+		logic.quitGame();
 	}
 
 
