@@ -71,30 +71,6 @@ public static final boolean[][] testShapeRotatedClockwise =
 	}
 
 	@Test
-	public void testHorizontalMirroring() {
-		Grid grid;
-		grid = new Grid(GridTest.testShape, TileColor.CYAN);
-		grid.flipAroundX();
-
-		//ArrayHelpers.printObjectArray(grid.getTiles());
-
-		assertTrue(ArrayHelpers.checkIfNullObjectsEqual(grid.getTiles(),
-				GridTest.testShapeMirroredHorizontally));
-	}
-
-	@Test
-	public void testVerticalMirroring() {
-		Grid grid;
-		grid = new Grid(GridTest.testShape, TileColor.CYAN);
-		grid.flipAroundY();
-
-		//ArrayHelpers.printObjectArray(grid.getTiles());
-
-		assertTrue(ArrayHelpers.checkIfNullObjectsEqual(grid.getTiles(),
-				GridTest.testShapeMirroredVertically));
-	}
-
-	@Test
 	public void testRotation() {
 		Grid grid;
 		grid = new Grid(GridTest.testShape, TileColor.CYAN);

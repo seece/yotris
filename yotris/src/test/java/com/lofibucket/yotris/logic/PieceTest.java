@@ -1,30 +1,34 @@
 package com.lofibucket.yotris.logic;
 
-import org.junit.Test;
+import com.lofibucket.yotris.util.TileColor;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import com.lofibucket.yotris.util.TileColor;
+import org.junit.Test;
 
 public class PieceTest {
 
 	private Piece piece;
+	private Piece piece_long;
 	private static final Tile blue = new Tile(TileColor.BLUE);
+
 	private static final Tile[][] tiles_long_right = {
 		{null, null, null, null},
 		{blue, blue, blue, blue},
 		{null, null, null, null},
 		{null, null, null, null}
 	};
+
 	private static final Tile[][] tiles_long_down = {
-		{null, blue, null, null},
-		{null, blue, null, null},
-		{null, blue, null, null},
-		{null, blue, null, null}
+		{null, null, blue, null},
+		{null, null, blue, null},
+		{null, null, blue, null},
+		{null, null, blue, null},
 	};
+
 	private static final Tile[][] tiles_long_left = {
 		{null, null, null, null},
-		{blue, blue, blue, blue},
 		{null, null, null, null},
+		{blue, blue, blue, blue},
 		{null, null, null, null}
 	};
 
@@ -54,26 +58,36 @@ public class PieceTest {
 		assertEquals(Rotation.UP, piece.getRotation());
 	}
 
+	public void initLongPiece() { 
+		piece_long = new Piece(TetrominoShape.getShape("I"), TileColor.BLUE, new Position(0, 0));
+	}
+
 	@Test
-	public void testPieceRotationTiles() {
-		Piece piece_long = new Piece(TetrominoShape.getShape("I"), TileColor.BLUE, new Position(0, 0));
+	public void testPieceRotationTilesRight() {
+		initLongPiece();
 
 		piece_long.rotateClockwise();
 		Grid tiles = piece_long.getRotatedTiles();
 		assertArrayEquals(tiles.getTiles(), tiles_long_right);
+	}
 
+	@Test
+	public void testPieceRotationTilesDown() {
+		initLongPiece();
 		piece_long.rotateClockwise();
-		tiles = piece_long.getRotatedTiles();
+		piece_long.rotateClockwise();
+		Grid tiles = piece_long.getRotatedTiles();
 		assertArrayEquals(tiles.getTiles(), tiles_long_down);
+	}
 
+	@Test
+	public void testPieceRotationTilesLeft() {
+		initLongPiece();
 		piece_long.rotateClockwise();
-		tiles = piece_long.getRotatedTiles();
+		piece_long.rotateClockwise();
+		piece_long.rotateClockwise();
+		Grid tiles = piece_long.getRotatedTiles();
 		assertArrayEquals(tiles.getTiles(), tiles_long_left);
-
-		piece_long.rotateCounterClockwise();
-		piece_long.rotateCounterClockwise();
-		tiles = piece_long.getRotatedTiles();
-		assertArrayEquals(tiles.getTiles(), tiles_long_right);
 	}
 
 	@Test

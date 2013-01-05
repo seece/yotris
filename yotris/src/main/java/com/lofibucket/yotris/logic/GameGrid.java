@@ -68,4 +68,46 @@ public class GameGrid extends Grid {
 		}
 		return true;
 	}
+
+	public int clearLines() {
+		int cleared_lines;
+		int total = 0;
+
+		do {
+			cleared_lines = 0;
+
+			for (int y=0;y<=this.getHeight();y++) {
+				if (this.checkIfLineIsSolid(y)) {
+					deleteRow(y);
+					cleared_lines++;
+					break;
+				}
+			}
+
+			total += cleared_lines;
+		} while (cleared_lines > 0);
+
+		return total;
+	}
+
+	protected void deleteRow(int start_y) throws IndexOutOfBoundsException {
+		if (start_y < 0 || start_y >= this.getHeight()) {
+			throw new IndexOutOfBoundsException("Grid vertical index " + start_y 
+					+ " is out of bounds.");
+		}
+
+		// move all rows from y upwards one tile down
+		for (int y=start_y;y>0;y--) {
+			for (int x=0;x<this.getWidth();x++) {
+				setTile(x, y, getTile(x, y-1));
+			}
+		}
+
+		// clear the topmost row
+		for (int x=0;x<this.getWidth();x++) {
+			setTile(x, 0, null);
+		}
+
+	}
+
 }

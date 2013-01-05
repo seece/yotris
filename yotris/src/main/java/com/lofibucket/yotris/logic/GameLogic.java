@@ -2,11 +2,12 @@ package com.lofibucket.yotris.logic;
 import com.lofibucket.yotris.ui.UserInterface;
 import com.lofibucket.yotris.util.Settings;
 import com.lofibucket.yotris.util.commands.Command;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 
 /**
- *	The main logic class. 
+ *	The main logic class. Keeps the game running.
  */
 public final class GameLogic extends Observable implements Endable {
 	private UserInterface ui;
@@ -61,6 +62,7 @@ public final class GameLogic extends Observable implements Endable {
 		state.frames++;
 		applyCommands(commands);
 		field.updateFallingPiece(this);
+		field.clearLines();
 		
 		setChanged();
 		notifyObservers(getGameState());
@@ -73,11 +75,15 @@ public final class GameLogic extends Observable implements Endable {
 	 * @param commands The list of command to apply
 	 */
 	private void applyCommands(List<Command> commands) {
-		for (Command command : commands) {
-			command.apply(this);
-		}
+		synchronized(commands) {
+			Iterator<Command> it = commands.iterator();
 
-		commands.clear();
+			while (it.hasNext()) {
+				it.next().apply(this);
+			}
+
+			commands.clear();
+		}
 	}
 
 	/**
@@ -85,11 +91,7 @@ public final class GameLogic extends Observable implements Endable {
 	 * @return current game state
 	 */
 	public GameState getGameState() {
-		//GameState state = new GameState(true);	
-		//state.running = this.running;
-
 		state.renderGrid = field.getRenderGrid();
-		//state.score = this.score;
 
 		return state;
 	}
