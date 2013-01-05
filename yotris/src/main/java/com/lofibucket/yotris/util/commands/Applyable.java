@@ -14,4 +14,11 @@ public interface Applyable {
 	 * @param logic 	The GameLogic object to apply the command to.
 	 */	
 	public void apply(GameLogic logic);
+
+	/**
+	 * Pause override flag.
+	 * @return true if this command must me applied even when the game is paused
+	 * otherwise false
+	 */
+	public boolean overridePause();
 }

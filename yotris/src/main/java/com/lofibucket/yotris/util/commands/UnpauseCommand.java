@@ -10,5 +10,10 @@ public class UnpauseCommand extends Command {
 	public void apply(GameLogic logic) {
 		logic.unPauseGame();
 	}
+	
+	@Override
+	public boolean overridePause() {
+		return true;
+	}
 
 }

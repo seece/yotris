@@ -105,12 +105,9 @@ public class GameLogic extends Observable {
 			while (it.hasNext()) {
 				Command command = it.next();
 
-				// TODO clean this mess up
-				if (state.paused) {
-					if (command.getClass() != UnpauseCommand.class && 
-							command.getClass() != TogglePauseCommand.class) {
-						continue;
-					}
+				// only allow the select few commands when paused
+				if (state.paused && !command.overridePause()) {
+					continue;
 				}
 
 				command.apply(this);

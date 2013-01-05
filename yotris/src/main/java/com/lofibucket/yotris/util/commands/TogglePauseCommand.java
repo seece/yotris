@@ -15,4 +15,8 @@ public class TogglePauseCommand extends Command {
 		}
 	}
 
+	@Override
+	public boolean overridePause() {
+		return true;
+	}
 }
