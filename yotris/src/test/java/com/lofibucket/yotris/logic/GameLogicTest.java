@@ -58,6 +58,28 @@ public class GameLogicTest {
 		assertTrue(ui.updated > 0);
 	}
 
+	@Test
+	public void testScoreIncreasesWhenClearingLine() {
+		logic.reset(settings);
+		int startscore = logic.getGameState().score;
+		logic.increaseScore(4);
+		assertTrue(logic.getGameState().score > startscore);
+	}
+
+	@Test
+	public void testScoreIncreasesWhenBlockHitsBottom() {
+		logic.reset(settings);
+		int startscore = logic.getGameState().score;
+		logic.increaseScoreHitBottom();
+		assertTrue(logic.getGameState().score > startscore);
+	}
+
+	@Test
+	public void testLevelIncreasesWithScore() {
+		logic.reset(settings);
+		logic.increaseScore(100);
+		assertTrue(logic.getLevel() > 1);
+	}
 }
 
 class MockCommand extends Command {
