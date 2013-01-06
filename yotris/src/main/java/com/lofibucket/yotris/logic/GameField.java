@@ -30,13 +30,17 @@ public class GameField {
 
 	/**
 	 * Updates the time limit we use to measure the delay between successive
-	 * game updates.
+	 * game updates. Speeds up the game as levels increase.
 	 * @param level Current game level.
 	 */
 	public void updateCounterLimit(int level) {
-		pieceFallCounter.setLimit(Math.max(3, 10 - level));
+		pieceFallCounter.setLimit(Math.max(3, 19 - level));
 	}
 
+	/**
+	 * Updates the falling piece (moves it downwards, checks for collisions)
+	 * @param logic the current GameLogic object (used to issue score updates)
+	 */
 	protected void updateFallingPiece(GameLogic logic) {
 		pieceFallCounter.decrease();
 
@@ -57,6 +61,7 @@ public class GameField {
 			grid.plotPiece(fallingPiece);
 			fallingPiece = null;
 			pieceFallCounter.setValue(1);	// spawn a new block next frame
+			logic.increaseScoreHitBottom();
 			return;
 		}
 
@@ -77,7 +82,10 @@ public class GameField {
 		}
 
 		Position center = new Position(grid.getWidth()/2, 0);
-		fallingPiece = new Piece(TetrominoShape.getRandomShape(), getRandomColor(), center);
+		fallingPiece = new Piece(TetrominoShape.getRandomShape(), 
+				getRandomColor(), center);
+		// center the piece
+		fallingPiece.move(new Position(-fallingPiece.getWidth()/2, 0)); 
 
 		if (grid.checkIfCollides(fallingPiece)) {
 			return false;

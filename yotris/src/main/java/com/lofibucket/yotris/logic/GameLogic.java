@@ -87,11 +87,11 @@ public class GameLogic extends Observable {
 			return;
 		}
 
-		state.score += 100 * Math.pow(multiplier, 1.5);
+		state.score += 110 * Math.pow(multiplier, 1.6);
+	}
 
-		if (settings.debugEnabled()) {
-			System.out.println("Score: " + state.score);
-		}
+	public void increaseScoreHitBottom() {
+		state.score += 12;
 	}
 
 	/**
@@ -198,7 +198,7 @@ public class GameLogic extends Observable {
 	 * @return The current game level
 	 */
 	public int getLevel() {
-		double partialLevel = 0.001 + (double)state.score / 400.0;
+		double partialLevel = 0.001 + Math.pow((double)state.score, 0.9) / 200.0;
 		return (int)Math.ceil(partialLevel);
 	}
 

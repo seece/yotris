@@ -34,16 +34,15 @@ public class Settings {
 	 * @param gridHeight	The game are height in tiles
 	 */
 	public Settings(DifficultyLevel difficulty, int gridWidth, int gridHeight) { 
-		this.version = "0.5";
+		this.version = "0.6";
 		this.difficulty = difficulty;
 		this.gridWidth = gridWidth;
 		this.gridHeight = gridHeight;
 		this.keymap = new HashMap<>();
 		this.debug = false;
-		this.targetFPS = 20.0;
+		this.targetFPS = 30.0;
 		this.theme = new Theme();
 
-		//addDefaultLayout(keymap, logic);
 	}
 
 	/**
