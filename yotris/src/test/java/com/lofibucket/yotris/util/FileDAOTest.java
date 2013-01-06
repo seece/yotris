@@ -1,12 +1,14 @@
 
-package yotris.util;
+package com.lofibucket.yotris.util;
 
 import com.lofibucket.yotris.util.ScoreEntry;
 import com.lofibucket.yotris.util.FileDAO;
-import com.lofibucket.yotris.util.FileMock;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +20,7 @@ public class FileDAOTest {
 	public static final String filepath = "testscores.dat";
 	public FileDAO dao;
 	public ArrayList<ScoreEntry> mockdata;
+	public File file;
 
 	public FileDAOTest() {
 		mockdata = new ArrayList<>();
@@ -27,21 +30,26 @@ public class FileDAOTest {
 		mockdata.add(new ScoreEntry("kirsi", 350));
 		mockdata.add(new ScoreEntry("kirsi", 450));
 
-		FileMock file = new FileMock(filepath);
+		file = new File(filepath);
 		dao = new FileDAO(file);
+		//dao.setContent(mockdata);
 	}
 
-	public void writeMockData(FileWriter writer) throws IOException {
+	public void writeMockData(OutputStreamWriter writer) throws IOException {
+		
 		for (ScoreEntry e : mockdata) {
 			writer.write(e.getName() + " " + Integer.toString(e.getScore()));
 		}
+		
 	}
 
 	public boolean setupTestData() {
-		FileWriter testwriter;
+		
+		OutputStreamWriter testwriter;
 		
 		try {
-			testwriter = new FileWriter(filepath);
+			testwriter = new OutputStreamWriter(new FileOutputStream(filepath),
+					 Charset.forName("UTF-8").newEncoder());
 			writeMockData(testwriter);
 		} catch (IOException ex) {
 			return false;
@@ -52,6 +60,7 @@ public class FileDAOTest {
 		} catch (IOException ex) {
 			return false;
 		}
+		
 
 		return true;
 	}
