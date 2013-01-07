@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 
+/**
+ * Hides the given window when activated.
+ */
 public class HideWindowActionListener implements ActionListener {
 	private JFrame frame;
 

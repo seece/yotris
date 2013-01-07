@@ -8,7 +8,9 @@ import java.awt.LayoutManager;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
+/**
+ * The status bar component visible in the upper part of the main window.
+ */
 public class StatusBar extends JPanel implements View {
 	private JLabel score;
 	private JLabel paused;

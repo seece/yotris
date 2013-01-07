@@ -1,13 +1,11 @@
 package com.lofibucket.yotris.ui.gui.components;
 
-import com.lofibucket.yotris.ui.gui.components.GameArea;
 import com.lofibucket.yotris.logic.GameState;
 import com.lofibucket.yotris.ui.CommandContainer;
 import com.lofibucket.yotris.ui.gui.View;
 import com.lofibucket.yotris.ui.gui.action.NewGameActionListener;
 import com.lofibucket.yotris.ui.gui.action.PauseActionListener;
 import com.lofibucket.yotris.ui.gui.action.QuitActionListener;
-import com.lofibucket.yotris.ui.gui.action.ShowSettingsActionListener;
 import com.lofibucket.yotris.util.Settings;
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -15,13 +13,15 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 
+/**
+ * The main window class.
+ */
 public class MainWindow extends JFrame implements View {
 
 	private JMenuBar menubar;

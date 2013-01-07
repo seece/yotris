@@ -6,6 +6,9 @@ import com.lofibucket.yotris.ui.gui.components.SettingsWindow;
 import com.lofibucket.yotris.util.commands.PauseCommand;
 import java.awt.event.ActionEvent;
 
+/**
+ * Action listener for Settings menu option.
+ */
 public class ShowSettingsActionListener extends CommandActionListener {
 
 	SettingsWindow window;

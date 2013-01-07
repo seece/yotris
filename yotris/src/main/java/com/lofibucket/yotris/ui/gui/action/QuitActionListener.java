@@ -5,7 +5,9 @@ import com.lofibucket.yotris.ui.CommandContainer;
 import com.lofibucket.yotris.util.commands.QuitCommand;
 import java.awt.event.ActionEvent;
 
-
+/**
+ * Action listener for the Quit menu option.
+ */
 public class QuitActionListener extends CommandActionListener {
 
 	public QuitActionListener(CommandContainer container) {

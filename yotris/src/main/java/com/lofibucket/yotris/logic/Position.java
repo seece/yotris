@@ -1,9 +1,8 @@
 
 package com.lofibucket.yotris.logic;
 
-
 /**
- * Simple position class
+ * Simple two-dimensional position class
  */
 public class Position {
 	/**

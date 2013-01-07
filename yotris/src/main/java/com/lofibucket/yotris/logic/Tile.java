@@ -3,7 +3,8 @@ package com.lofibucket.yotris.logic;
 import com.lofibucket.yotris.util.TileColor;
 
 /**
- *	A tetris block tile.
+ *	A tetris block tile. Its color is the only unique property, since its 
+ * position is deduced from array coordinates in Grid.
  */
 public class Tile {
 	TileColor color;

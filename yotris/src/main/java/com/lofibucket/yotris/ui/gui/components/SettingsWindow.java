@@ -10,7 +10,9 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 
-
+/**
+ * The settings window.
+ */
 public class SettingsWindow extends JFrame implements WindowListener {
 	private CommandContainer container;
 	private Settings settings;

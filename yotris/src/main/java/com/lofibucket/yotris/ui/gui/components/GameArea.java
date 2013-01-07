@@ -8,19 +8,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
+/**
+ * The visible game area UI component. Renders a Grid with the given Theme.
+ */
 public class GameArea extends JPanel {
 	private Grid renderGrid;
 	private Theme theme;
-
-	/*
-	public int getTileSize() {
-		return tileSize;
-	}
-
-	public void setTileSize(int tileSize) {
-		this.tileSize = tileSize;
-	}
-	*/
 
 	public GameArea(Grid renderGrid, Theme theme) {
 		super.setBackground(Color.BLACK);

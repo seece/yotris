@@ -4,6 +4,9 @@ package com.lofibucket.yotris.logic;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Provides the Piece-constructor with different tetromino shapes.
+ */
 public class TetrominoShape {
 
 	private static final boolean[][] I = 

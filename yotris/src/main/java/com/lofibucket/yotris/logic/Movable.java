@@ -1,6 +1,9 @@
 
 package com.lofibucket.yotris.logic;
 
+/**
+ * An interface that represents a movable object with position.
+ */
 public abstract class Movable {
 	protected Position pos;
 
