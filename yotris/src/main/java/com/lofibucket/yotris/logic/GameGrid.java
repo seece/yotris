@@ -1,7 +1,9 @@
 
 package com.lofibucket.yotris.logic;
 
-
+/**
+ * A specialized Grid that also handles collision.
+ */
 public class GameGrid extends Grid {
 
 	public GameGrid(Tile[][] tiles) {

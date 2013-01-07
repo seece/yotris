@@ -10,7 +10,6 @@ import java.util.Map;
  * Holds all game settings.
  */
 public class Settings {
-	private DifficultyLevel difficulty;
 	private int gridWidth;
 	private int gridHeight;
 	private String version;
@@ -24,7 +23,7 @@ public class Settings {
 	 */
 	public Settings() {
 		// the default settings
-		this(DifficultyLevel.EASY, 10, 20);
+		this(10, 20);
 	}
 
 	/**
@@ -33,9 +32,8 @@ public class Settings {
 	 * @param gridWidth	The game area width in tiles
 	 * @param gridHeight	The game are height in tiles
 	 */
-	public Settings(DifficultyLevel difficulty, int gridWidth, int gridHeight) { 
+	public Settings(int gridWidth, int gridHeight) { 
 		this.version = "0.6";
-		this.difficulty = difficulty;
 		this.gridWidth = gridWidth;
 		this.gridHeight = gridHeight;
 		this.keymap = new HashMap<>();
@@ -89,14 +87,6 @@ public class Settings {
 	 */
 	public void setKeymap(Map<Integer, Command> keymap) {
 		this.keymap = keymap;
-	}
-
-	/**
-	 *
-	 * @return	difficulty level
-	 */
-	public DifficultyLevel getDifficulty() {
-		return difficulty;
 	}
 
 	/**

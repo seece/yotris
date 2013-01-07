@@ -12,6 +12,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
 
+/**
+ * The Graphical User Interface. Holds current settings, the main window 
+ * component and transmits commands to GameLogic.
+ * @author cce
+ */
 public class GUI implements UserInterface, Runnable {
 
 	private List<Command> commandlist;
@@ -51,6 +56,9 @@ public class GUI implements UserInterface, Runnable {
 		return commandlist;
 	}
 
+	/**
+	 * Runs the game.
+	 */
 	@Override
 	public void run() {
 		mainwindow = new MainWindow(settings, this);
@@ -62,11 +70,17 @@ public class GUI implements UserInterface, Runnable {
 		mainwindow.setVisible(true);	
 	}
 
+	/**
+	 * Starts the GUI.
+	 */
 	@Override
 	public void start() {
 		run();
 	}
 
+	/*
+	 * Hides the main window and hides the GUI.
+	 */
 	@Override
 	public void stop() {
 		mainwindow.setVisible(false);

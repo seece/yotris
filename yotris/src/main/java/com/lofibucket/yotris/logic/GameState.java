@@ -1,6 +1,9 @@
 
 package com.lofibucket.yotris.logic;
 
+/**
+ * A game state container. Used to transmit updated state to the User Interface.
+ */
 public class GameState {
 	public boolean running;
 	public boolean paused;
@@ -25,6 +28,10 @@ public class GameState {
 		this.running = running;
 	}
 
+	/**
+	 * Returns a game field where the currently falling piece is plotted in.
+	 * @return the tile grid to render
+	 */
 	public Grid getRenderGrid() {
 		return renderGrid;
 	}
