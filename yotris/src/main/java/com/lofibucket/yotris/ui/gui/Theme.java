@@ -9,7 +9,6 @@ import java.util.Map;
 /**
  * A class that maps each TileColor to one, real, java.awt.Color used for 
  * rendering.
- * @author cce
  */
 public class Theme {
 	private Map<TileColor, Color> palette;

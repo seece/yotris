@@ -35,7 +35,7 @@ public class FileDAO implements ScoreDAO, SettingsDAO {
 	 * Reloads the score list from file. Mainly used in tests, because in
 	 * normal usage the scores are accessed only through this DAO.
 	 */
-	protected void reloadScoreList() {
+	final protected void reloadScoreList() {
 		 try {
 			 this.scorelist = loadScoreList();
 		 } catch (FileNotFoundException e) {

@@ -42,11 +42,11 @@ public class ScoreEntry implements Comparable<ScoreEntry> {
 
 	@Override
 	public int compareTo(ScoreEntry entry) {
-		if (this.score < entry.getScore()) {
+		if (this.score > entry.getScore()) {
 			return -1;
 		}
 
-		if (this.score > entry.getScore()) {
+		if (this.score < entry.getScore()) {
 			return 1;
 		}
 

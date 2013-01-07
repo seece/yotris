@@ -8,6 +8,7 @@ import com.lofibucket.yotris.util.commands.*;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.SwingUtilities;
 
 
 /**

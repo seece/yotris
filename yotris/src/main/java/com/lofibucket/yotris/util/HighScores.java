@@ -18,7 +18,7 @@ public class HighScores {
 		List<ScoreEntry> topten;
 
 		Collections.sort(scorelist);	
-		topten = scorelist.subList(0, (int)Math.min(scorelist.size(), 9));
+		topten = scorelist.subList(0, (int)Math.min(scorelist.size(), 10));
 		
 		return topten;
 	}
@@ -39,6 +39,26 @@ public class HighScores {
 			return true;
 		}
 		
+		return false;
+	}
+
+	/**
+	 * Checks if the given score is high enough to be included in the hall of 
+	 * fame.
+	 * @param score the score to check
+	 * @return true if the score is high enough, otherwise false
+	 */
+	public boolean isHighScore(int score) {
+		ArrayList<ScoreEntry> list = dao.getScorelist();
+
+		if (list.size() < 10) {
+			return true;
+		}
+
+		if (list.get(9).getScore() < score) {
+			return true;	
+		}
+
 		return false;
 	}
 }

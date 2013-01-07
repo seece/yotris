@@ -33,6 +33,8 @@ public class MainWindow extends JFrame implements View {
 	private SettingsWindow settingsWindow;
 	private ScoreWindow scoreWindow; // score window is created at gameover
 	private Settings settings;
+	private GameState lastState;
+	private boolean scoresShown;
 
 	public MainWindow(Settings settings, CommandContainer commandlist) {
 		super("yotris " + settings.getVersion().toString());
@@ -106,9 +108,16 @@ public class MainWindow extends JFrame implements View {
 		area.repaint();
 		statusbar.updateState(state);
 
-		if ((state.gameover || true) && scoreWindow == null ) {
-			scoreWindow = new ScoreWindow(this.commandlist, this.settings);
+		updateGameoverScreen(state);
+
+	}
+
+	private void updateGameoverScreen(GameState state) {
+		if ((state.gameover) && !scoresShown ) {
+			System.out.println("lol");
+			scoreWindow = new ScoreWindow(commandlist, settings, state);
 			scoreWindow.setVisible(true);
+			scoresShown = true;
 		}
 	}
 
@@ -117,6 +126,7 @@ public class MainWindow extends JFrame implements View {
 	 */
 	public void reset() {
 		scoreWindow = null;
+		scoresShown = false;
 	}
 
 }
