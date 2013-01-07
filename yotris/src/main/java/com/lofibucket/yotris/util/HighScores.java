@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * A class for manipulating and storing the high score table.
+ */
 public class HighScores {
 	private ArrayList<ScoreEntry> scorelist;
 	private FileDAO dao;
@@ -27,6 +30,7 @@ public class HighScores {
 		ScoreEntry entry = new ScoreEntry(name, score);
 
 		List<ScoreEntry> top = getTopTen();
+
 		if (top.size() < 10) {
 			scorelist.add(entry);
 			dao.saveScorelist();

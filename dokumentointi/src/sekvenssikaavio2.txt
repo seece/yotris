@@ -1,0 +1,16 @@
+# compile with http://www.websequencediagrams.com
+
+title high score system
+
+
+GUI->+HighScores: insertScoreEntry(name, score)
+HighScores->FileDAO: add(entry)
+HighScores->+FileDAO: saveScorelist()
+FileDAO->-HighScores: success:boolean
+HighScores-->-GUI: success
+
+GUI->+HighScores: getTopTen()
+HighScores->+FileDAO: subList(0, 10)
+FileDAO-->-HighScores: scores:List<ScoreEntry>
+HighScores-->-GUI: scores
+
