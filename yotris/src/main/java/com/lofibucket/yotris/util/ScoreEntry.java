@@ -49,5 +49,10 @@ public class ScoreEntry implements Comparable<ScoreEntry> {
 
 		return 0;
 	}
+
+	@Override
+	public String toString() {
+		return this.name + "\t" + this.score;	
+	}
 	
 }

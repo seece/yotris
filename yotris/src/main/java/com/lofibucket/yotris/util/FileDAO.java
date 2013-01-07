@@ -2,6 +2,10 @@ package com.lofibucket.yotris.util;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,14 +28,21 @@ public class FileDAO implements ScoreDAO, SettingsDAO {
 
 	public FileDAO(File file) {
 		 this.file = file;
+		 reloadScoreList();
+	}	
 
+	/**
+	 * Reloads the score list from file. Mainly used in tests, because in
+	 * normal usage the scores are accessed only through this DAO.
+	 */
+	protected void reloadScoreList() {
 		 try {
 			 this.scorelist = loadScoreList();
 		 } catch (FileNotFoundException e) {
 			// file not found, so we'll create it when saving
 			this.scorelist = new ArrayList<>();
 		 }
-	}	
+	}
 
 	private ArrayList<ScoreEntry> loadScoreList() throws FileNotFoundException {
 		ArrayList<ScoreEntry> scores = new ArrayList<>();
@@ -58,7 +69,31 @@ public class FileDAO implements ScoreDAO, SettingsDAO {
 
 	@Override
 	public boolean saveScorelist() {
+		OutputStreamWriter testwriter;
+		
+		try {
+			testwriter = new OutputStreamWriter(new FileOutputStream(file),
+					 Charset.forName("UTF-8").newEncoder());
+			writeContent(testwriter);
+			testwriter.flush();
+		} catch (IOException ex) {
+			return false;
+		}
+
+		try {
+			testwriter.close();
+		} catch (IOException ex) {
+			return false;
+		}
+
 		return true;
+	}
+
+	private void writeContent(OutputStreamWriter writer) throws IOException {
+		for (ScoreEntry e : scorelist) {
+			writer.write(e.toString());
+			writer.write("\n");
+		}
 	}
 
 	@Override

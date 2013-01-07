@@ -19,7 +19,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 
 public class FileDAOTest {
-	public static final String filepath = "testscoresx.dat";
+	public static final String readpath = "testscores.dat";
+	public static final String writepath = "testscoresx.dat";
 	public FileDAO dao;
 	public ArrayList<ScoreEntry> mockdata;
 	public File file;
@@ -32,7 +33,7 @@ public class FileDAOTest {
 		mockdata.add(new ScoreEntry("kirsi", 350));
 		mockdata.add(new ScoreEntry("kirsi", 450));
 
-		file = new File(filepath);
+		file = new File(readpath);
 		dao = new FileDAO(file);
 		//dao.setContent(mockdata);
 	}
@@ -60,7 +61,7 @@ public class FileDAOTest {
 		OutputStreamWriter testwriter;
 		
 		try {
-			testwriter = new OutputStreamWriter(new FileOutputStream(filepath),
+			testwriter = new OutputStreamWriter(new FileOutputStream(readpath),
 					 Charset.forName("UTF-8").newEncoder());
 			writeMockData(testwriter);
 			testwriter.flush();
@@ -76,7 +77,7 @@ public class FileDAOTest {
 
 		/*
 		try {
-			readLines(new File(filepath));
+			readLines(new File(readpath));
 		} catch (FileNotFoundException ex) {
 
 		}
@@ -92,17 +93,27 @@ public class FileDAOTest {
 	@Before
 	public void setupDAO() {
 		setupTestData();
+		dao.reloadScoreList();
 	}
 
 	@Test
-	public void testScoreListAmount() {
+	public void testScoreListSaving() {
+		File writefile = new File(writepath);
+		writefile.delete();
+		FileDAO fdao = new FileDAO(writefile);
+		fdao.setContent(mockdata);
+		fdao.saveScorelist();
+	}
+
+	@Test
+	public void testScoreListLoadingAmount() {
 		ArrayList<ScoreEntry> scorelist = dao.getScorelist();
 		
 		checkSize(scorelist);
 	}
 
 	@Test
-	public void testScoreListOrder() {
+	public void testScoreListLoadingOrder() {
 		ArrayList<ScoreEntry> scorelist = dao.getScorelist();
 
 		assertEquals(scorelist.get(0).getName(), mockdata.get(0).getName());
@@ -110,7 +121,7 @@ public class FileDAOTest {
 	}
 
 	@Test
-	public void testScoreListScores() {
+	public void testScoreListLoadingScores() {
 		ArrayList<ScoreEntry> scorelist = dao.getScorelist();
 
 		checkSize(scorelist);
@@ -120,7 +131,7 @@ public class FileDAOTest {
 	}
 
 	@Test
-	public void testScoresAndNamesCombined() {
+	public void testLoadingScoresAndNamesCombined() {
 		ArrayList<ScoreEntry> scorelist = dao.getScorelist();
 		
 		checkSize(scorelist);
