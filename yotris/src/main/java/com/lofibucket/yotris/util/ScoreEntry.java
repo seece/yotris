@@ -6,8 +6,12 @@ public class ScoreEntry implements Comparable<ScoreEntry> {
 	private int score;
 
 	public ScoreEntry(String line) {
-		System.out.println("line: " + line);
 		String[] words = line.split("\t");
+		parseLine(words);
+	}
+
+	private void parseLine(String[] words) {
+		// we assume this line DOES have two columns
 		this.name = words[0];
 		this.score = Integer.parseInt(words[1]);
 	}

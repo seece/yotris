@@ -39,8 +39,12 @@ public class FileDAO implements ScoreDAO, SettingsDAO {
 		try (Scanner reader = new Scanner(file, "UTF-8")) {
 			while (reader.hasNextLine()) {
 				String line = reader.nextLine();
+				if (line.isEmpty()) {
+					continue;
+				}
+
 				ScoreEntry entry = new ScoreEntry(line);
-				scorelist.add(entry);
+				scores.add(entry);
 			}
 		}
 		
