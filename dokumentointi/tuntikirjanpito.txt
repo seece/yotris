@@ -20,3 +20,4 @@ vuosi vaihtuu
 4.1	1	Testiluokkien luonti
 5.1	3	testien siistiminen, pelilogiikan viimeistely
 7.1	2	tiedostokäsittelyn testit, refaktorointia
+7.1	4	pistelistan tallennus, käyttöliittymän ohjelmointi
