@@ -103,6 +103,27 @@ public class FileDAOTest {
 		FileDAO fdao = new FileDAO(writefile);
 		fdao.setContent(mockdata);
 		fdao.saveScorelist();
+		
+		int row = 0;
+
+		try {
+			try (Scanner reader = new Scanner(new File(writepath), "UTF-8")) {
+				while (reader.hasNextLine()) {
+					String line = reader.nextLine();
+					if (line.isEmpty()) {
+						continue;
+					}
+
+					ScoreEntry entry = new ScoreEntry(line);
+					assertEquals(mockdata.get(row).toString(),
+							entry.toString());
+					row++;
+				}
+			}
+		} catch (Exception ex) {
+
+		}
+		
 	}
 
 	@Test
