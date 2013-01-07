@@ -5,10 +5,10 @@ import com.lofibucket.yotris.ui.gui.components.GameArea;
 import com.lofibucket.yotris.logic.GameState;
 import com.lofibucket.yotris.ui.CommandContainer;
 import com.lofibucket.yotris.ui.gui.View;
-import com.lofibucket.yotris.ui.gui.menu.NewGameActionListener;
-import com.lofibucket.yotris.ui.gui.menu.PauseActionListener;
-import com.lofibucket.yotris.ui.gui.menu.QuitActionListener;
-import com.lofibucket.yotris.ui.gui.menu.ShowSettingsActionListener;
+import com.lofibucket.yotris.ui.gui.action.NewGameActionListener;
+import com.lofibucket.yotris.ui.gui.action.PauseActionListener;
+import com.lofibucket.yotris.ui.gui.action.QuitActionListener;
+import com.lofibucket.yotris.ui.gui.action.ShowSettingsActionListener;
 import com.lofibucket.yotris.util.Settings;
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -23,7 +23,6 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 
-
 public class MainWindow extends JFrame implements View {
 	private JMenuBar menubar;
 	private JMenu gameMenu;
@@ -32,6 +31,7 @@ public class MainWindow extends JFrame implements View {
 	private CommandContainer commandlist;
 	private StatusBar statusbar;
 	private SettingsWindow settingsWindow;
+	private ScoreWindow scoreWindow; // score window is created at gameover
 	private Settings settings;
 
 	public MainWindow(Settings settings, CommandContainer commandlist) {
@@ -48,7 +48,7 @@ public class MainWindow extends JFrame implements View {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		createComponents(getContentPane());
-		createMenu(this);
+		createMenu();
 	}
 
 	private void createComponents(Container container) {
@@ -61,7 +61,7 @@ public class MainWindow extends JFrame implements View {
         container.add(statusbar, BorderLayout.NORTH);
 	}
 
-	private void createMenu(JFrame frame) {
+	private void createMenu() {
 		menubar = new JMenuBar();
 		gameMenu = new JMenu("Game");
 		editMenu = new JMenu("Edit");
@@ -97,7 +97,7 @@ public class MainWindow extends JFrame implements View {
 		quitItem.addActionListener(new QuitActionListener(commandlist));
 		settingsItem.addActionListener(new ShowSettingsActionListener(commandlist, settingsWindow));
 
-		frame.setJMenuBar(menubar);
+		this.setJMenuBar(menubar);
 	}
 
 	@Override
@@ -105,6 +105,18 @@ public class MainWindow extends JFrame implements View {
 		area.setRenderGrid(state.getRenderGrid());
 		area.repaint();
 		statusbar.updateState(state);
+
+		if ((state.gameover || true) && scoreWindow == null ) {
+			scoreWindow = new ScoreWindow(this.commandlist, this.settings);
+			scoreWindow.setVisible(true);
+		}
+	}
+
+	/**
+	 * Clears the score window.
+	 */
+	public void reset() {
+		scoreWindow = null;
 	}
 
 }

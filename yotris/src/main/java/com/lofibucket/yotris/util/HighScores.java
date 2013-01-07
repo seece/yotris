@@ -18,7 +18,7 @@ public class HighScores {
 		List<ScoreEntry> topten;
 
 		Collections.sort(scorelist);	
-		topten = scorelist.subList(0, 9);
+		topten = scorelist.subList(0, (int)Math.min(scorelist.size(), 9));
 		
 		return topten;
 	}
@@ -26,9 +26,16 @@ public class HighScores {
 	public boolean insertScoreEntry(String name, int score) {
 		ScoreEntry entry = new ScoreEntry(name, score);
 
-		Collections.sort(scorelist);
-		if (scorelist.get(9).getScore() < entry.getScore()) {
+		List<ScoreEntry> top = getTopTen();
+		if (top.size() < 10) {
 			scorelist.add(entry);
+			dao.saveScorelist();
+			return true;
+		}
+
+		if (top.get(9).getScore() < entry.getScore()) {
+			scorelist.add(entry);
+			dao.saveScorelist();
 			return true;
 		}
 		

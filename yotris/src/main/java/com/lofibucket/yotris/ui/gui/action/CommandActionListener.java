@@ -1,5 +1,5 @@
 
-package com.lofibucket.yotris.ui.gui.menu;
+package com.lofibucket.yotris.ui.gui.action;
 
 import com.lofibucket.yotris.ui.CommandContainer;
 import java.awt.event.ActionListener;

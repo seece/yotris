@@ -46,4 +46,8 @@ public class UserInterfaceMock implements UserInterface {
 		commands.clear();
 	}
 
+	@Override
+	public void reset() {
+	}
+
 }

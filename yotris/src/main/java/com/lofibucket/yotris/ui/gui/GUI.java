@@ -15,7 +15,6 @@ import java.util.Observable;
 /**
  * The Graphical User Interface. Holds current settings, the main window 
  * component and transmits commands to GameLogic.
- * @author cce
  */
 public class GUI implements UserInterface, Runnable {
 
@@ -70,9 +69,6 @@ public class GUI implements UserInterface, Runnable {
 		mainwindow.setVisible(true);	
 	}
 
-	/**
-	 * Starts the GUI.
-	 */
 	@Override
 	public void start() {
 		run();
@@ -84,6 +80,14 @@ public class GUI implements UserInterface, Runnable {
 	@Override
 	public void stop() {
 		mainwindow.setVisible(false);
+	}
+
+	/*
+	 * Resets the GUI state.
+	 */
+	@Override
+	public void reset() {
+		mainwindow.reset();
 	}
 
 	@Override

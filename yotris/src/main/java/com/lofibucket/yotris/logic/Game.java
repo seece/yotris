@@ -27,18 +27,14 @@ public class Game {
 	 *	Runs the main game loop. Exits when the game ends.
 	 */
 	public void run() {
-		Settings defaultSettings = new Settings();
-		this.settings = defaultSettings;
-		this.settings.enableDebug();
-
-		ui = new GUI(defaultSettings);
-		ui.start();
+		init();
 
 		boolean running = true;
 
 		do {
+			ui.reset();
 			GameLogic logic = new GameLogic(ui, settings);
-			defaultSettings.setKeymap(settings.getDefaultLayout());
+			settings.setKeymap(settings.getDefaultLayout());
 			GameState state;
 
 			do {
@@ -61,5 +57,13 @@ public class Game {
 		}
 	}
 
+	private void init() {
+		Settings defaultSettings = new Settings();
+		this.settings = defaultSettings;
+		this.settings.enableDebug();
+
+		ui = new GUI(defaultSettings);
+		ui.start();
+	}
 
 }
