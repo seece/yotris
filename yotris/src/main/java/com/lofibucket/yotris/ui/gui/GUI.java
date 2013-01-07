@@ -94,4 +94,9 @@ public class GUI implements UserInterface, Runnable {
 	public void addNewCommand(Command c) {
 		this.commandlist.add(c);
 	}
+
+	@Override
+	public boolean getWaitState() {
+		return !mainwindow.gameAreaInFocus();
+	}
 }

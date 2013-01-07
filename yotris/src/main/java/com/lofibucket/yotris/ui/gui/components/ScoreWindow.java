@@ -52,7 +52,7 @@ public class ScoreWindow extends JFrame {
 
 	}
 
-	// TODO move this to HighScores
+	// TODO move this to HighScores?
 	private void checkScore() {
 		if (state == null) {
 			System.out.println("null");
@@ -64,6 +64,11 @@ public class ScoreWindow extends JFrame {
 		}
 
 		Object response = JOptionPane.showInputDialog("A new highscore! Please enter your name:");
+
+		if (response == null) {
+			return;
+		}
+
 		String name = (String)response;
 		System.out.println("name: " + name);
 

@@ -35,7 +35,7 @@ public class Game {
 		do {
 			ui.reset();
 			GameLogic logic = new GameLogic(ui, settings);
-			settings.setKeymap(settings.getDefaultLayout());
+			settings.setKeymap(Settings.getDefaultLayout());
 			GameState state;
 
 			do {
@@ -47,7 +47,13 @@ public class Game {
 				} catch (InterruptedException e) {
 
 				}
-			} while (!state.gameover || running);
+			} while (!state.gameover && running);
+
+			/*
+			if (running) {
+				waitForUIToContinue(ui);
+			}
+			*/
 
 		} while (running);
 
@@ -57,6 +63,18 @@ public class Game {
 			System.out.println("Closing the application.");
 		}
 	}
+
+	/*
+	private void waitForUIToContinue(UserInterface ui) {
+		do {
+			try {
+				Thread.sleep(30);
+			} catch (InterruptedException e) {
+
+			}
+		} while (ui.getWaitState());
+	}
+	*/
 
 	private void init() {
 		Settings defaultSettings = new Settings();

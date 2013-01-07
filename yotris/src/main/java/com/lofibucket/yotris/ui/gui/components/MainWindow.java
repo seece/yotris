@@ -1,4 +1,3 @@
-
 package com.lofibucket.yotris.ui.gui.components;
 
 import com.lofibucket.yotris.ui.gui.components.GameArea;
@@ -24,9 +23,10 @@ import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 
 public class MainWindow extends JFrame implements View {
+
 	private JMenuBar menubar;
 	private JMenu gameMenu;
-	private JMenu editMenu;
+	private JMenu viewMenu;
 	private GameArea area;
 	private CommandContainer commandlist;
 	private StatusBar statusbar;
@@ -46,7 +46,7 @@ public class MainWindow extends JFrame implements View {
 
 		setPreferredSize(new Dimension(350, 532));
 		setResizable(false);
-		
+
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		createComponents(getContentPane());
@@ -57,19 +57,19 @@ public class MainWindow extends JFrame implements View {
 		//container.addKeyListener(keylistener);
 		area = new GameArea(null, settings.getTheme());
 		container.add(area, BorderLayout.CENTER);
-		
+
 		statusbar = new StatusBar();
 
-        container.add(statusbar, BorderLayout.NORTH);
+		container.add(statusbar, BorderLayout.NORTH);
 	}
 
 	private void createMenu() {
 		menubar = new JMenuBar();
 		gameMenu = new JMenu("Game");
-		editMenu = new JMenu("Edit");
+		viewMenu = new JMenu("View");
 
 		menubar.add(gameMenu);
-		menubar.add(editMenu);
+		menubar.add(viewMenu);
 
 		JMenuItem startItem = new JMenuItem("New game");
 		JMenuItem pauseItem = new JMenuItem("Toggle pause");
@@ -81,23 +81,23 @@ public class MainWindow extends JFrame implements View {
 		quitItem.setMnemonic(KeyEvent.VK_Q);
 
 		startItem.setAccelerator(KeyStroke.getKeyStroke(
-			KeyEvent.VK_N, ActionEvent.ALT_MASK));
+				KeyEvent.VK_N, ActionEvent.ALT_MASK));
 		pauseItem.setAccelerator(KeyStroke.getKeyStroke(
-			KeyEvent.VK_P, ActionEvent.ALT_MASK));
+				KeyEvent.VK_P, ActionEvent.ALT_MASK));
 		quitItem.setAccelerator(KeyStroke.getKeyStroke(
-			KeyEvent.VK_Q, ActionEvent.ALT_MASK));
+				KeyEvent.VK_Q, ActionEvent.ALT_MASK));
 
 		gameMenu.add(startItem);
 		gameMenu.add(pauseItem);
 		gameMenu.add(quitItem);
 
-		JMenuItem settingsItem = new JMenuItem("Settings");
-		editMenu.add(settingsItem);
+		JMenuItem hallOfFameItem = new JMenuItem("Hall of Fame");
+		viewMenu.add(hallOfFameItem);
 
 		startItem.addActionListener(new NewGameActionListener(commandlist));
 		pauseItem.addActionListener(new PauseActionListener(commandlist));
 		quitItem.addActionListener(new QuitActionListener(commandlist));
-		settingsItem.addActionListener(new ShowSettingsActionListener(commandlist, settingsWindow));
+		//settingsItem.addActionListener(new ShowSettingsActionListener(commandlist, settingsWindow));
 
 		this.setJMenuBar(menubar);
 	}
@@ -113,8 +113,7 @@ public class MainWindow extends JFrame implements View {
 	}
 
 	private void updateGameoverScreen(GameState state) {
-		if ((state.gameover) && !scoresShown ) {
-			System.out.println("lol");
+		if (state.gameover && gameAreaInFocus()) {
 			scoreWindow = new ScoreWindow(commandlist, settings, state);
 			scoreWindow.setVisible(true);
 			scoresShown = true;
@@ -122,11 +121,30 @@ public class MainWindow extends JFrame implements View {
 	}
 
 	/**
+	 * Checks if the game area is in focus. 
+	 * @return true if no other windows are active, otherwise false
+	 */
+	public boolean gameAreaInFocus() {
+		if (scoreWindow == null) {
+			return true;
+		}
+
+		if (scoreWindow.isVisible()) {
+			return false;
+		}
+
+		return false;
+	}
+
+	/**
 	 * Clears the score window.
 	 */
 	public void reset() {
+		if (settings.debugEnabled()) {
+			System.out.println("RESET");
+		}
+
 		scoreWindow = null;
 		scoresShown = false;
 	}
-
 }
