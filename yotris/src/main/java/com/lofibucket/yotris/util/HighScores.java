@@ -9,11 +9,16 @@ import java.util.List;
  * A class for manipulating and storing the high score table.
  */
 public class HighScores {
-	private ArrayList<ScoreEntry> scorelist;
+	private List<ScoreEntry> scorelist;
 	private FileDAO dao;
 
 	public HighScores() {
 		this.dao = new FileDAO();
+		this.scorelist = dao.getScorelist();
+	}
+
+	public HighScores(FileDAO dao) {
+		this.dao = dao;
 		this.scorelist = dao.getScorelist();
 	}
 
@@ -53,7 +58,7 @@ public class HighScores {
 	 * @return true if the score is high enough, otherwise false
 	 */
 	public boolean isHighScore(int score) {
-		ArrayList<ScoreEntry> list = dao.getScorelist();
+		List<ScoreEntry> list = dao.getScorelist();
 
 		if (list.size() < 10) {
 			return true;

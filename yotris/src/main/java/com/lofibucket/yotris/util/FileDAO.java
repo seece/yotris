@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Scanner;
  */
 public class FileDAO implements ScoreDAO, SettingsDAO {
 	private String filepath;
-	private ArrayList<ScoreEntry> scorelist;
+	private List<ScoreEntry> scorelist;
 	private File file;
 
 	public FileDAO() {
@@ -44,8 +45,8 @@ public class FileDAO implements ScoreDAO, SettingsDAO {
 		 }
 	}
 
-	private ArrayList<ScoreEntry> loadScoreList() throws FileNotFoundException {
-		ArrayList<ScoreEntry> scores = new ArrayList<>();
+	private List<ScoreEntry> loadScoreList() throws FileNotFoundException {
+		List<ScoreEntry> scores = new ArrayList<>();
 
 		try (Scanner reader = new Scanner(file, "UTF-8")) {
 			while (reader.hasNextLine()) {
@@ -63,7 +64,7 @@ public class FileDAO implements ScoreDAO, SettingsDAO {
 	}
 
 	@Override
-	public ArrayList<ScoreEntry> getScorelist() {
+	public List<ScoreEntry> getScorelist() {
 		return scorelist;
 	}
 
@@ -97,7 +98,7 @@ public class FileDAO implements ScoreDAO, SettingsDAO {
 	}
 
 	@Override
-	public boolean setContent(ArrayList<ScoreEntry> scorelist) {
+	public boolean setContent(List<ScoreEntry> scorelist) {
 		this.scorelist = scorelist;
 		saveScorelist();
 		return true;

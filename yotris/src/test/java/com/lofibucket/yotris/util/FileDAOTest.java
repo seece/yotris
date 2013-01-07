@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -86,7 +87,7 @@ public class FileDAOTest {
 		return true;
 	}
 
-	public void checkSize(ArrayList<ScoreEntry> list) {
+	public void checkSize(List<ScoreEntry> list) {
 		assertEquals(mockdata.size(), list.size());
 	}
 
@@ -128,14 +129,14 @@ public class FileDAOTest {
 
 	@Test
 	public void testScoreListLoadingAmount() {
-		ArrayList<ScoreEntry> scorelist = dao.getScorelist();
+		List<ScoreEntry> scorelist = dao.getScorelist();
 		
 		checkSize(scorelist);
 	}
 
 	@Test
 	public void testScoreListLoadingOrder() {
-		ArrayList<ScoreEntry> scorelist = dao.getScorelist();
+		List<ScoreEntry> scorelist = dao.getScorelist();
 
 		assertEquals(scorelist.get(0).getName(), mockdata.get(0).getName());
 		assertEquals(scorelist.get(4).getName(), mockdata.get(4).getName());
@@ -143,7 +144,7 @@ public class FileDAOTest {
 
 	@Test
 	public void testScoreListLoadingScores() {
-		ArrayList<ScoreEntry> scorelist = dao.getScorelist();
+		List<ScoreEntry> scorelist = dao.getScorelist();
 
 		checkSize(scorelist);
 		
@@ -153,7 +154,7 @@ public class FileDAOTest {
 
 	@Test
 	public void testLoadingScoresAndNamesCombined() {
-		ArrayList<ScoreEntry> scorelist = dao.getScorelist();
+		List<ScoreEntry> scorelist = dao.getScorelist();
 		
 		checkSize(scorelist);
 

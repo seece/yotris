@@ -35,7 +35,6 @@ public class KeyHandler implements KeyEventDispatcher {
 				return false;
 			}
 
-			//commandlist.add(keymap.get(e.getKeyCode()));
 			container.addNewCommand(keymap.get(e.getKeyCode()));
 			return true;	// no further action please
 		}		
