@@ -8,8 +8,8 @@ import com.lofibucket.yotris.util.TileColor;
  * A single tetris piece consisting of a Tile Grid.
  */
 public class Piece extends Movable {
-	//private Tile tiles[][];	
-	private Grid tiles;
+	//private Tile grid[][];	
+	private Grid grid;
 	private Rotation rotation;
 	private TileColor color;
 
@@ -22,21 +22,21 @@ public class Piece extends Movable {
 	public Piece(boolean [][] tetrimino, TileColor color, Position pos) {
 		this.rotation = Rotation.UP;
 		this.color = color;
-		this.tiles = new Grid(tetrimino, this.color);
+		this.grid = new Grid(tetrimino, this.color);
 		this.pos = pos;
 	}
 
 	/**
 	 * A constructor that takes in a two dimensional Tile array as parameter
 	 * instead of a boolean array.
-	 * @param tiles		The tile shape array for this piece
+	 * @param grid		The tile shape array for this piece
 	 * @param color		The color of this piece
 	 * @param pos		Position in the game grid, used when plotting
 	 */
 	public Piece(Tile[][] tiles, TileColor color, Position pos) {
 		this.rotation = Rotation.UP;
 		this.color = color;
-		this.tiles = new Grid(tiles);
+		this.grid = new Grid(tiles);
 		this.pos = pos;
 	}
 
@@ -49,8 +49,6 @@ public class Piece extends Movable {
 		this(piece.getGrid().getTiles(), piece.getColor(), new Position(piece.getPos()));
 		this.rotation = piece.getRotation();
 	}
-
-
 
 	/**
 	 * Rotates the piece clockwise 
@@ -121,33 +119,33 @@ public class Piece extends Movable {
 
 	/**
 	 * Internal Grid structure getter
-	 * @return Returns the tiles the piece consists of
+	 * @return Returns the grid the piece consists of
 	 */
 	public Grid getGrid() {
-		return tiles;
+		return grid;
 	}
 
 	/**
-	 * Returns the piece tiles with the correct rotation
+	 * Returns the piece grid with the correct rotation
 	 * @return The rotated tile grid
 	 */
 	public Grid getRotatedTiles() {
-		Grid rotated = new Grid(tiles.getTiles());
+		Grid rotated = new Grid(grid.getTiles());
 
 		switch (rotation) {
 			case UP:
 				break;
 			case LEFT:
-				rotated.rotateOnceClockwise();
-				rotated.rotateOnceClockwise();
-				rotated.rotateOnceClockwise();
+				rotated = rotateClockwise(rotated);
+				rotated = rotateClockwise(rotated);
+				rotated = rotateClockwise(rotated);
 				break;
 			case DOWN:
-				rotated.rotateOnceClockwise();
-				rotated.rotateOnceClockwise();
+				rotated = rotateClockwise(rotated);
+				rotated = rotateClockwise(rotated);
 				break;
 			case RIGHT:
-				rotated.rotateOnceClockwise();
+				rotated = rotateClockwise(rotated);
 				break;
 			default:
 				break;
@@ -158,10 +156,10 @@ public class Piece extends Movable {
 
 	/**
 	 * Change this pieces internal tile grid
-	 * @param tiles New grid to be used
+	 * @param grid New grid to be used
 	 */
 	public void setGrid(Grid tiles) {
-		this.tiles = tiles;
+		this.grid = tiles;
 	}
 
 	/**
@@ -185,7 +183,7 @@ public class Piece extends Movable {
 	 * @return Piece grid width
 	 */
 	public int getWidth() {
-		return tiles.getWidth();
+		return grid.getWidth();
 	}
 
 	/**
@@ -193,7 +191,7 @@ public class Piece extends Movable {
 	 * @return Piece grid height
 	 */
 	public int getHeight() {
-		return tiles.getWidth();
+		return grid.getWidth();
 	}
 
 	/**
@@ -248,6 +246,21 @@ public class Piece extends Movable {
 	public void move(Position offset) {
 		pos.x += offset.x;
 		pos.y += offset.y;
+	}
+
+	/**
+	 *	Rotates a given grid 90 degrees clockwise.
+	 */
+	private static Grid rotateClockwise(Grid grid) {
+		Grid temp = new Grid(grid.getWidth(), grid.getHeight());
+
+		for (int y=0;y<grid.getHeight();y++) {
+			for (int x=0;x<grid.getWidth();x++) {
+				temp.setTile(x, y, grid.getTile(y, temp.getWidth()-x-1));
+			}
+		}
+
+		return temp;
 	}
 
 }

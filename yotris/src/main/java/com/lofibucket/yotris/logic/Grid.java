@@ -156,17 +156,6 @@ public class Grid {
 		}
 	}
 
-	/**
-	 *	Rotates the grid 90 degrees clockwise.
-	 */
-	public void rotateOnceClockwise() {
-		Grid temp = new Grid(tiles);
-		for (int y=0;y<height;y++) {
-			for (int x=0;x<width;x++) {
-				setTile(x, y, temp.getTile(y, width-x-1));
-			}
-		}
 
-	}
 
 }

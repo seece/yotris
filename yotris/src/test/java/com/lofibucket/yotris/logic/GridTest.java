@@ -89,18 +89,6 @@ public static final boolean[][] testShapeRotatedClockwise =
 	}
 
 	@Test
-	public void testRotation() {
-		Grid grid;
-		grid = new Grid(GridTest.testShape, TileColor.CYAN);
-		grid.rotateOnceClockwise();
-
-		assertTrue(ArrayHelpers.checkIfNullObjectsEqual(grid.getTiles(),
-				GridTest.testShapeRotatedClockwise));
-	}
-
-
-
-	@Test
 	public void testSizeIsCorrect() {
 		Tile[][] tiles = grid.getTiles();
 
