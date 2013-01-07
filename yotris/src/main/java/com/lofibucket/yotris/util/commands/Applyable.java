@@ -21,4 +21,11 @@ public interface Applyable {
 	 * otherwise false
 	 */
 	public boolean overridePause();
+
+	/**
+	 * Game over override flag.
+	 * @return true if this command must be applied even when the game is in
+	 * game over state
+	 */
+	public boolean overrideGameOver();
 }

@@ -14,5 +14,9 @@ public class QuitCommand extends Command {
 		logic.quitGame();
 	}
 
+	@Override
+	public boolean overrideGameOver() {
+		return true;
+	}
 
 }

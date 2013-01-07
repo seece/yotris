@@ -28,4 +28,9 @@ abstract public class Command implements Applyable {
 		return false;
 	}
 
+	@Override
+	public boolean overrideGameOver() {
+		return false;
+	}
+
 }

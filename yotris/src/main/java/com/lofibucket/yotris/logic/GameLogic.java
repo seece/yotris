@@ -60,7 +60,7 @@ public class GameLogic extends Observable {
 	public GameState update(List<Command> commands) {
 		applyCommands(commands);
 
-		if (!state.paused) {
+		if (!state.paused && !state.gameover) {
 			updateGame();
 		}
 		
@@ -76,6 +76,10 @@ public class GameLogic extends Observable {
 		increaseScore(field.clearLines());	
 		state.level = getLevel();
 		field.updateCounterLimit(state.level);
+
+		if (state.gameover) {
+			field.fallingPiece = null;
+		}
 	}
 
 	/**
@@ -90,6 +94,9 @@ public class GameLogic extends Observable {
 		state.score += 110 * Math.pow(multiplier, 1.6);
 	}
 
+	/**
+	 *  A slight score increase.
+	 */
 	public void increaseScoreHitBottom() {
 		state.score += 12;
 	}
@@ -107,6 +114,11 @@ public class GameLogic extends Observable {
 
 				// only allow the select few commands when paused
 				if (state.paused && !command.overridePause()) {
+					continue;
+				}
+
+				// the same thing for game over
+				if (state.gameover && !command.overrideGameOver()) {
 					continue;
 				}
 
@@ -155,6 +167,7 @@ public class GameLogic extends Observable {
 	 * Quits the game.
 	 */
 	public void quitGame() {
+		state.gameover = true;
 		state.running = false;
 	}
 
@@ -201,15 +214,6 @@ public class GameLogic extends Observable {
 		double partialLevel = 0.001 + Math.pow((double)state.score, 0.9) / 200.0;
 		return (int)Math.ceil(partialLevel);
 	}
-
-	/**
-	 * Toggles game pause state.
-	 */
-	/*
-	public void togglePause() {
-		state.togglePause();
-	}
-	*/
 
 	/**
 	 * Pauses the game.

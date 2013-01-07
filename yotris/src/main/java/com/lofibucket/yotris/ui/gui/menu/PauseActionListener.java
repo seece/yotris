@@ -6,6 +6,9 @@ import com.lofibucket.yotris.util.commands.TogglePauseCommand;
 import java.awt.event.ActionEvent;
 
 
+/**
+ * Command listener for the Pause menu option.
+ */
 public class PauseActionListener extends CommandActionListener {
 
 	public PauseActionListener(CommandContainer container) {
@@ -16,5 +19,4 @@ public class PauseActionListener extends CommandActionListener {
 	public void actionPerformed(ActionEvent e) {
 		this.container.addNewCommand(new TogglePauseCommand());
 	}
-
 }

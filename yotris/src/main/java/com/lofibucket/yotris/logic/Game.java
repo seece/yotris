@@ -50,7 +50,7 @@ public class Game {
 				} catch (InterruptedException e) {
 
 				}
-			} while (!state.gameover && running);
+			} while (!state.gameover || running);
 
 		} while (running);
 

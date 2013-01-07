@@ -13,4 +13,16 @@ public class StartGameCommand extends Command {
 		logic.reset(logic.getSettings());
 	}
 
+	@Override
+	public boolean overridePause() {
+		return true;
+	}
+
+	@Override
+	public boolean overrideGameOver() {
+		return true;
+	}
+
+
+
 }
