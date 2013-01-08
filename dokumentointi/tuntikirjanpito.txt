@@ -22,3 +22,4 @@ vuosi vaihtuu
 7.1	2	tiedostokäsittelyn testit, refaktorointia
 7.1	4	pistelistan tallennus, käyttöliittymän ohjelmointi
 7.1	1	dokumentointi
+8.1	1	bugifiksailua ja refaktorointia
