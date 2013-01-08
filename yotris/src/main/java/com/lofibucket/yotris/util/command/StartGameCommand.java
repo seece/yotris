@@ -3,6 +3,9 @@ package com.lofibucket.yotris.util.command;
 
 import com.lofibucket.yotris.logic.GameLogic;
 
+/**
+ * Command that starts the game.
+ */
 public class StartGameCommand extends Command {
 	public StartGameCommand() {
 	}

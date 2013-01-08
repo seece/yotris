@@ -3,7 +3,9 @@ package com.lofibucket.yotris.util.command;
 
 import com.lofibucket.yotris.logic.GameLogic;
 
-
+/**
+ * Continues a paused game.
+ */
 public class UnpauseCommand extends Command {
 
 	@Override
