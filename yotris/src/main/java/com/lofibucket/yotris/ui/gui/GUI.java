@@ -87,16 +87,11 @@ public class GUI implements UserInterface, Runnable {
 	 */
 	@Override
 	public void reset() {
-		mainwindow.reset();
+		//mainwindow.reset();
 	}
 
 	@Override
 	public void addNewCommand(Command c) {
 		this.commandlist.add(c);
-	}
-
-	@Override
-	public boolean getWaitState() {
-		return !mainwindow.gameAreaInFocus();
 	}
 }

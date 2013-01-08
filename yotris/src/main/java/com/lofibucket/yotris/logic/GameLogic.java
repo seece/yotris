@@ -103,7 +103,7 @@ public class GameLogic extends Observable {
 
 	/**
 	 * Applies every command in a command list.
-	 * @param commands The list of command to apply
+	 * @param commands The list of commands to apply
 	 */
 	private void applyCommands(List<Command> commands) {
 		synchronized(commands) {
@@ -167,7 +167,6 @@ public class GameLogic extends Observable {
 	 * Quits the game.
 	 */
 	public void quitGame() {
-		//state.gameover = true;
 		state.running = false;
 	}
 
@@ -198,8 +197,7 @@ public class GameLogic extends Observable {
 	}
 
 	/**
-	 * How long (in milliseconds) do we wait in the main loop. This changes
-	 * as the game advances to make the game faster.
+	 * How long (in milliseconds) do we wait in the main loop. 
 	 * @return delay in milliseconds
 	 */
 	public long getFrameDelay() {

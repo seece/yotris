@@ -109,28 +109,28 @@ public class MainWindow extends JFrame implements View {
 		statusbar.updateState(state);
 
 		updateGameoverScreen(state);
-
+		lastState = new GameState(state);
 	}
 
 	private void updateGameoverScreen(GameState state) {
-		if (state.gameover && gameAreaInFocus()) {
+		if (gameJustEnded(state)) {
 			scoreWindow = new ScoreWindow(commandlist, settings, state);
 			scoreWindow.setVisible(true);
 			scoresShown = true;
 		}
 	}
 
-	/**
-	 * Checks if the game area is in focus. 
-	 * @return true if no other windows are active, otherwise false
-	 */
-	public boolean gameAreaInFocus() {
-		if (scoreWindow == null) {
-			return true;
+	private boolean gameJustEnded(GameState currentState) {
+		if (currentState == null) {
+			return false;
 		}
 
-		if (scoreWindow.isVisible()) {
+		if (!currentState.gameover) {
 			return false;
+		}
+
+		if (lastState == null || !lastState.gameover) {
+			return true;
 		}
 
 		return false;

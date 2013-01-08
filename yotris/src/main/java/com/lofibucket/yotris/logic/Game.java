@@ -32,11 +32,12 @@ public class Game {
 
 		boolean running = true;
 
+		GameLogic logic = new GameLogic(ui, settings);
+		settings.setKeymap(Settings.getDefaultLayout());
+		GameState state;
+
 		do {
 			ui.reset();
-			GameLogic logic = new GameLogic(ui, settings);
-			settings.setKeymap(Settings.getDefaultLayout());
-			GameState state;
 
 			do {
 				state = logic.update(ui.pollCommands());
@@ -49,12 +50,6 @@ public class Game {
 				}
 			} while (!state.gameover && running);
 
-			/*
-			if (running) {
-				waitForUIToContinue(ui);
-			}
-			*/
-
 		} while (running);
 
 		ui.stop();
@@ -63,18 +58,6 @@ public class Game {
 			System.out.println("Closing the application.");
 		}
 	}
-
-	/*
-	private void waitForUIToContinue(UserInterface ui) {
-		do {
-			try {
-				Thread.sleep(30);
-			} catch (InterruptedException e) {
-
-			}
-		} while (ui.getWaitState());
-	}
-	*/
 
 	private void init() {
 		Settings defaultSettings = new Settings();

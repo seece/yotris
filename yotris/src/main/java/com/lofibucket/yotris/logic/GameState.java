@@ -13,6 +13,20 @@ public class GameState {
 	public int frames;
 	public int level;
 
+	/**
+	 * A copy constructor.
+	 * @param other the other state to use as base
+	 */
+	public GameState(GameState other) {
+		this.running = other.running;
+		this.paused = other.paused;
+		this.gameover = other.gameover;
+		this.renderGrid = other.renderGrid;
+		this.score = other.score;
+		this.frames = other.frames;
+		this.level = other.level;
+	}
+
 	public GameState(boolean running) {
 		this.running = running;
 		this.gameover = false;
