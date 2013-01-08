@@ -6,6 +6,7 @@ import com.lofibucket.yotris.ui.gui.View;
 import com.lofibucket.yotris.ui.gui.action.NewGameActionListener;
 import com.lofibucket.yotris.ui.gui.action.PauseActionListener;
 import com.lofibucket.yotris.ui.gui.action.QuitActionListener;
+import com.lofibucket.yotris.ui.gui.action.ShowWindowActionListener;
 import com.lofibucket.yotris.util.Settings;
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -43,6 +44,7 @@ public class MainWindow extends JFrame implements View {
 		this.commandlist = commandlist;
 
 		settingsWindow = new SettingsWindow(commandlist, settings);
+		scoreWindow = new ScoreWindow(commandlist, settings);
 
 		setPreferredSize(new Dimension(350, 532));
 		setResizable(false);
@@ -97,6 +99,7 @@ public class MainWindow extends JFrame implements View {
 		startItem.addActionListener(new NewGameActionListener(commandlist));
 		pauseItem.addActionListener(new PauseActionListener(commandlist));
 		quitItem.addActionListener(new QuitActionListener(commandlist));
+		hallOfFameItem.addActionListener(new ShowWindowActionListener(scoreWindow));
 		//settingsItem.addActionListener(new ShowSettingsActionListener(commandlist, settingsWindow));
 
 		this.setJMenuBar(menubar);

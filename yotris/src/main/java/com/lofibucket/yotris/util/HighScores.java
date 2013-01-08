@@ -58,7 +58,7 @@ public class HighScores {
 	 * @return true if the score is high enough, otherwise false
 	 */
 	public boolean isHighScore(int score) {
-		List<ScoreEntry> list = dao.getScorelist();
+		List<ScoreEntry> list = getTopTen();
 
 		if (list.size() < 10) {
 			return true;

@@ -33,24 +33,40 @@ public class ScoreWindow extends JFrame {
 			GameState state) {
 		super("Scores");
 
+		init(container, settings);
+
+		this.state = state;
+		scores = new HighScores();
+		checkScore();
+		
+		createComponents();
+		pack();
+	}
+
+	/**
+	 * The constructor used when opened from the menu. We don't try to update
+	 * the scores in this one.
+	 * @param container	the CommandContainer to use (UserInterface)
+	 * @param settings		current settings 
+	 */
+	ScoreWindow(CommandContainer container, Settings settings) {
+		super("Scores");
+		
+		init(container, settings);
+
+		scores = new HighScores();
+		createComponents();
+		pack();
+	}
+
+	private void init(CommandContainer container, Settings settings) {
 		this.container = container;
 		this.settings = settings;
-		this.state = state;
 
 		setPreferredSize(new Dimension(400, 300));
 		setResizable(false);
-
-		//NameDialog dialog = new NameDialog(this);
-
-		scores = new HighScores();
-		checkScore();
-		createComponents();
-		
-		pack();
-
 	}
 
-	// TODO move this to HighScores?
 	private void checkScore() {
 		if (state == null) {
 			System.out.println("null");
