@@ -90,7 +90,6 @@ public class ScoreWindow extends JFrame {
 		}
 
 		String name = (String)response;
-		System.out.println("name: " + name);
 
 		scores.insertScoreEntry(name, state.score);
 	}
@@ -108,7 +107,6 @@ public class ScoreWindow extends JFrame {
 
 		for (int i=0;i<top.size();i++) {
 			ScoreEntry entry = top.get(i);
-			System.out.println(i + ": " + entry.toString());
 			JLabel label = new JLabel((i+1) + ".  " + entry.getName() + 
 					": " + entry.getScore());
 			label.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -119,7 +117,6 @@ public class ScoreWindow extends JFrame {
 
 		title.setAlignmentX(Component.CENTER_ALIGNMENT);
 		nappu.setAlignmentX(Component.CENTER_ALIGNMENT);
-
 
 		pane.add(Box.createVerticalGlue());
 		pane.add(nappu);

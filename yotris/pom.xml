@@ -28,7 +28,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>com.lofibucket.yotris.Yotris</mainClass>
+							<mainClass>yotris.Yotris</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
