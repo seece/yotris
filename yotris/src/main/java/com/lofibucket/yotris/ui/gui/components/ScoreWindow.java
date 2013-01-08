@@ -29,6 +29,12 @@ public class ScoreWindow extends JFrame {
 	private HighScores scores;
 	private GameState state;
 
+	/**
+	 * The constructor used when the window is opened at game over.
+	 * @param container	the CommandContainer to use (UserInterface)
+	 * @param settings		current settings 
+	 * @param state 	the game state at the moment when the game ended
+	 */
 	public ScoreWindow(CommandContainer container, Settings settings, 
 			GameState state) {
 		super("Scores");

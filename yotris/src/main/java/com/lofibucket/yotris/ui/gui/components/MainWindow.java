@@ -31,19 +31,22 @@ public class MainWindow extends JFrame implements View {
 	private GameArea area;
 	private CommandContainer commandlist;
 	private StatusBar statusbar;
-	private SettingsWindow settingsWindow;
 	private ScoreWindow scoreWindow; // score window is created at gameover
 	private Settings settings;
 	private GameState lastState;
 	private boolean scoresShown;
 
+	/**
+	 * The main window constructor.
+	 * @param settings	current game settings
+	 * @param commandlist 	the command container to new commands into
+	 */
 	public MainWindow(Settings settings, CommandContainer commandlist) {
 		super("yotris " + settings.getVersion().toString());
 
 		this.settings = settings;
 		this.commandlist = commandlist;
 
-		settingsWindow = new SettingsWindow(commandlist, settings);
 		scoreWindow = new ScoreWindow(commandlist, settings);
 
 		setPreferredSize(new Dimension(350, 532));

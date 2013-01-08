@@ -8,6 +8,11 @@ public class ScoreEntry implements Comparable<ScoreEntry> {
 	private String name;
 	private int score;
 
+	/**
+	 * ScoreEntry constructor.
+	 * @param line 	a line containing name and score separated by a tab
+	 * character.
+	 */
 	public ScoreEntry(String line) {
 		String[] words = line.split("\t");
 		parseLine(words);
@@ -19,23 +24,44 @@ public class ScoreEntry implements Comparable<ScoreEntry> {
 		this.score = Integer.parseInt(words[1]);
 	}
 
+	/**
+	 * Constructor that takes the fields as separate variables.
+	 * @param name	name of the entrant
+	 * @param score 	game score of this entrant
+	 */
 	public ScoreEntry(String name, int score) {
 		this.name = name;
 		this.score = score;
 	}
 
+	/**
+	 * Entrant name getter.
+	 * @return entrant name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Name setter.
+	 * @param name the new name to use
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * Entrant score getter.
+	 * @return the score of the entrant
+	 */
 	public int getScore() {
 		return score;
 	}
 
+	/**
+	 * Entrant score setter.
+	 * @param score the new score to use	
+	 */
 	public void setScore(int score) {
 		this.score = score;
 	}
@@ -53,6 +79,10 @@ public class ScoreEntry implements Comparable<ScoreEntry> {
 		return 0;
 	}
 
+	/**
+	 * 
+	 * @return name and score as string, separated by a tab (\t) character
+	 */
 	@Override
 	public String toString() {
 		return this.name + "\t" + this.score;	

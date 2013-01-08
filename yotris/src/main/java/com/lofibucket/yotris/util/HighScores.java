@@ -12,16 +12,27 @@ public class HighScores {
 	private List<ScoreEntry> scorelist;
 	private FileDAO dao;
 
+	/**
+	 * Constructor with the default DAO.
+	 */
 	public HighScores() {
 		this.dao = new FileDAO();
 		this.scorelist = dao.getScorelist();
 	}
 
+	/**
+	 * Constructor with custom DAO.
+	 * @param dao the data access object to use
+	 */
 	public HighScores(FileDAO dao) {
 		this.dao = dao;
 		this.scorelist = dao.getScorelist();
 	}
 
+	/**
+	 * Returns the ten best (highest scoring) ScoreEntries.
+	 * @return list of ten best ScoreEntries
+	 */
 	public List<ScoreEntry> getTopTen() {
 		List<ScoreEntry> topten;
 
@@ -31,18 +42,18 @@ public class HighScores {
 		return topten;
 	}
 
+	/**
+	 * Inserts a score entry to the list, if the score is high enough.
+	 * @param name	player name
+	 * @param score	player score
+	 * @return true if added, otherwise false
+	 */
 	public boolean insertScoreEntry(String name, int score) {
 		ScoreEntry entry = new ScoreEntry(name, score);
 
 		List<ScoreEntry> top = getTopTen();
 
-		if (top.size() < 10) {
-			scorelist.add(entry);
-			dao.saveScorelist();
-			return true;
-		}
-
-		if (top.get(9).getScore() < entry.getScore()) {
+		if (isHighScore(score)) {
 			scorelist.add(entry);
 			dao.saveScorelist();
 			return true;

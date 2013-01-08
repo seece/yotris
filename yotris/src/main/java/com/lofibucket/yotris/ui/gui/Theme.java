@@ -13,15 +13,27 @@ import java.util.Map;
 public class Theme {
 	private Map<TileColor, Color> palette;
 
+	/**
+	 * A constructor that takes in an explicit palette.
+	 * @param palette 
+	 */
 	public Theme (Map<TileColor, Color> palette) {
 		this.palette = palette;
 	}
 
+	/**
+	 * The default constructor. Initializes the theme with default colors.
+	 */
 	public Theme() {
 		palette = new HashMap<>();
 		initDefaultPalette(palette);
 	}
 
+	/**
+	 * Returns the real color matching the palette color.
+	 * @param tilecolor	the palette color to use
+	 * @return 	the real color matching the palette
+	 */
 	public Color getPaletteColor(TileColor tilecolor) {
 		return palette.get(tilecolor);
 	}

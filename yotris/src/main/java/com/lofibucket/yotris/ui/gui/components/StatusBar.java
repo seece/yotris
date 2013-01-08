@@ -21,6 +21,10 @@ public class StatusBar extends JPanel implements View {
 	private String msgPaused = "     Game paused";
 	private String msgNotPaused = "";
 
+	/**
+	 * Constructor.
+	 * @param layout 	the layout manager to use
+	 */
 	public StatusBar(LayoutManager layout) {
 		super(layout);
 

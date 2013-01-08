@@ -1,20 +1,15 @@
 
 package com.lofibucket.yotris.util;
 
-import com.lofibucket.yotris.util.ScoreEntry;
-import com.lofibucket.yotris.util.FileDAO;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;

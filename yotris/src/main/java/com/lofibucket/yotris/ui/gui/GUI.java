@@ -69,6 +69,9 @@ public class GUI implements UserInterface, Runnable {
 		mainwindow.setVisible(true);	
 	}
 
+	/**
+	 * Starts the UI.
+	 */
 	@Override
 	public void start() {
 		run();

@@ -18,15 +18,26 @@ public class FileDAO implements ScoreDAO, SettingsDAO {
 	private List<ScoreEntry> scorelist;
 	private File file;
 
+	/**
+	 * Initializes the Data Access Object with the default file path.
+	 */
 	public FileDAO() {
 		this("scores.dat");
 	}	
 
+	/**
+	 * Constructor with a custom file path. (Used mainly for testing purposes.)
+	 * @param filepath custom file path to use
+	 */
 	public FileDAO(String filepath) {
 		 this(new File(filepath));
 		 this.filepath = filepath;
 	}	
 
+	/**
+	 * Constructor with a predefined file. Used mainly for testing purposes.
+	 * @param file file to use for file access.
+	 */
 	public FileDAO(File file) {
 		 this.file = file;
 		 reloadScoreList();
@@ -98,10 +109,9 @@ public class FileDAO implements ScoreDAO, SettingsDAO {
 	}
 
 	@Override
-	public boolean setContent(List<ScoreEntry> scorelist) {
+	public void setContent(List<ScoreEntry> scorelist) {
 		this.scorelist = scorelist;
 		saveScorelist();
-		return true;
 	}
 
 }

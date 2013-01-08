@@ -21,10 +21,18 @@ public class GameArea extends JPanel {
 		this.theme = theme;
 	}
 
+	/**
+	 * Returns the current render grid.
+	 * @return the render grid
+	 */
 	public Grid getRenderGrid() {
 		return renderGrid;
 	}
 
+	/**
+	 * Sets the current render grid.
+	 * @param renderGrid the new render grid to use
+	 */
 	public void setRenderGrid(Grid renderGrid) {
 		this.renderGrid = renderGrid;
 	}
@@ -57,7 +65,7 @@ public class GameArea extends JPanel {
 
 
 	}
-
+	
 	private int getTileWidth() {
 		return (int) Math.round((double)this.getWidth() / (double)renderGrid.getWidth());
 	}
