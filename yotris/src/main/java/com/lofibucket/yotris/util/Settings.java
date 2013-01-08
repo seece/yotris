@@ -1,7 +1,10 @@
 
 package com.lofibucket.yotris.util;
+import com.lofibucket.yotris.util.command.Command;
+import com.lofibucket.yotris.util.command.MoveCommand;
+import com.lofibucket.yotris.util.command.RotateCommand;
+import com.lofibucket.yotris.logic.Position;
 import com.lofibucket.yotris.ui.gui.Theme;
-import com.lofibucket.yotris.util.commands.*;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,8 +30,7 @@ public class Settings {
 	}
 
 	/**
-	 *
-	 * @param difficulty	The game difficulty level, see {@link DifficultyLevel}
+	 * The main constructor.
 	 * @param gridWidth	The game area width in tiles
 	 * @param gridHeight	The game are height in tiles
 	 */
@@ -64,14 +66,6 @@ public class Settings {
 	public boolean debugEnabled() {
 		return debug;
 	}
-
-	/*
-	private void addDefaultLayout(Map<Integer, Command> map, GameLogic logic) {
-		map.put(KeyEvent.VK_LEFT, new MoveLeftCommand(logic));
-		map.put(KeyEvent.VK_RIGHT, new MoveRightCommand(logic));
-		map.put(KeyEvent.VK_DOWN, new MoveDownCommand(logic));
-	}
-	*/
 
 	/**
 	 * The game key configuration, used by the keyboard handler.
@@ -113,25 +107,43 @@ public class Settings {
 		return version;
 	}
 
+	/**
+	 * Calculates the time to wait in the main loop to achieve the target FPS.
+	 * Just an approximation since it doesn't take the actual game loop 
+	 * running time into account.
+	 * @return the delay in milliseconds
+	 */
 	public long getFrameDelay() {
 		return (long)(1000.0/this.targetFPS);
 	}
 
+	/**
+	 * Returns the default key layout.
+	 * @return the default layout
+	 */
 	public static Map<Integer, Command> getDefaultLayout() {
 		Map<Integer, Command> map = new HashMap<>();
 
-		map.put(KeyEvent.VK_LEFT, new MoveLeftCommand());
-		map.put(KeyEvent.VK_RIGHT, new MoveRightCommand());
-		map.put(KeyEvent.VK_DOWN, new MoveDownCommand());
-		map.put(KeyEvent.VK_UP, new RotateCommand());
+		map.put(KeyEvent.VK_LEFT, 	new MoveCommand(new Position(-1, 0)));
+		map.put(KeyEvent.VK_RIGHT, 	new MoveCommand(new Position( 1, 0)));
+		map.put(KeyEvent.VK_DOWN, 	new MoveCommand(new Position( 0, 1)));
+		map.put(KeyEvent.VK_UP, 	new RotateCommand());
 
 		return map;
 	}
 
+	/**
+	 * The current theme
+	 * @return the active Theme instance
+	 */
 	public Theme getTheme() {
 		return theme;
 	}
 
+	/**
+	 * Set the active theme
+	 * @param theme the Theme instance to use
+	 */
 	public void setTheme(Theme theme) {
 		this.theme = theme;
 	}

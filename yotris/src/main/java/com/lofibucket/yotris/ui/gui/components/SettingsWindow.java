@@ -4,7 +4,7 @@ package com.lofibucket.yotris.ui.gui.components;
 import com.lofibucket.yotris.logic.GameLogic;
 import com.lofibucket.yotris.ui.CommandContainer;
 import com.lofibucket.yotris.util.Settings;
-import com.lofibucket.yotris.util.commands.UnpauseCommand;
+import com.lofibucket.yotris.util.command.UnpauseCommand;
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;

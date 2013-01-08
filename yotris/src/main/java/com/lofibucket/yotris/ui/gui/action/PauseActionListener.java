@@ -2,7 +2,7 @@
 package com.lofibucket.yotris.ui.gui.action;
 
 import com.lofibucket.yotris.ui.CommandContainer;
-import com.lofibucket.yotris.util.commands.TogglePauseCommand;
+import com.lofibucket.yotris.util.command.TogglePauseCommand;
 import java.awt.event.ActionEvent;
 
 

@@ -4,7 +4,7 @@ package com.lofibucket.yotris.logic;
 import com.lofibucket.yotris.ui.UserInterfaceMock;
 import com.lofibucket.yotris.ui.UserInterface;
 import com.lofibucket.yotris.util.Settings;
-import com.lofibucket.yotris.util.commands.Command;
+import com.lofibucket.yotris.util.command.Command;
 import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;

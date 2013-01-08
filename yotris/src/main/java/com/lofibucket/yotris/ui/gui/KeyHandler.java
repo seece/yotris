@@ -3,7 +3,7 @@ package com.lofibucket.yotris.ui.gui;
 
 import com.lofibucket.yotris.ui.CommandContainer;
 import com.lofibucket.yotris.util.Settings;
-import com.lofibucket.yotris.util.commands.Command;
+import com.lofibucket.yotris.util.command.Command;
 import java.awt.KeyEventDispatcher;
 import java.awt.event.KeyEvent;
 import java.util.Map;

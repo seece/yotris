@@ -1,6 +1,6 @@
 package com.lofibucket.yotris.ui;
 
-import com.lofibucket.yotris.util.commands.Command;
+import com.lofibucket.yotris.util.command.Command;
 import java.util.List;
 
 /**

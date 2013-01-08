@@ -5,7 +5,7 @@ import com.lofibucket.yotris.logic.GameLogic;
 import com.lofibucket.yotris.logic.GameState;
 import com.lofibucket.yotris.ui.UserInterface;
 import com.lofibucket.yotris.util.Settings;
-import com.lofibucket.yotris.util.commands.Command;
+import com.lofibucket.yotris.util.command.Command;
 import java.awt.KeyboardFocusManager;
 import java.util.ArrayList;
 import java.util.Collections;

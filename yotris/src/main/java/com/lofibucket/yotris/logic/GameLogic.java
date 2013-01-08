@@ -1,9 +1,9 @@
 package com.lofibucket.yotris.logic;
 import com.lofibucket.yotris.ui.UserInterface;
 import com.lofibucket.yotris.util.Settings;
-import com.lofibucket.yotris.util.commands.Command;
-import com.lofibucket.yotris.util.commands.TogglePauseCommand;
-import com.lofibucket.yotris.util.commands.UnpauseCommand;
+import com.lofibucket.yotris.util.command.Command;
+import com.lofibucket.yotris.util.command.TogglePauseCommand;
+import com.lofibucket.yotris.util.command.UnpauseCommand;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;

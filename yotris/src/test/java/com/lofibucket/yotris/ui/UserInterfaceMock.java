@@ -3,7 +3,7 @@ package com.lofibucket.yotris.ui;
 
 import com.lofibucket.yotris.ui.UserInterface;
 import com.lofibucket.yotris.ui.UserInterface;
-import com.lofibucket.yotris.util.commands.Command;
+import com.lofibucket.yotris.util.command.Command;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
