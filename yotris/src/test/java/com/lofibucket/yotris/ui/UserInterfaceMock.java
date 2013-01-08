@@ -50,9 +50,4 @@ public class UserInterfaceMock implements UserInterface {
 	public void reset() {
 	}
 
-	@Override
-	public boolean getWaitState() {
-		return false;
-	}
-
 }
