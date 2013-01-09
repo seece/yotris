@@ -58,6 +58,10 @@ public class MainWindow extends JFrame implements View {
 		createMenu();
 	}
 
+	/**
+	 * Creates all window components.
+	 * @param container the container to add all the created components
+	 */
 	private void createComponents(Container container) {
 		//container.addKeyListener(keylistener);
 		area = new GameArea(null, settings.getTheme());
@@ -68,6 +72,9 @@ public class MainWindow extends JFrame implements View {
 		container.add(statusbar, BorderLayout.NORTH);
 	}
 
+	/**
+	 * Creates all the menus for the main window.
+	 */
 	private void createMenu() {
 		menubar = new JMenuBar();
 		gameMenu = new JMenu("Game");
@@ -103,7 +110,6 @@ public class MainWindow extends JFrame implements View {
 		pauseItem.addActionListener(new PauseActionListener(commandlist));
 		quitItem.addActionListener(new QuitActionListener(commandlist));
 		hallOfFameItem.addActionListener(new ShowWindowActionListener(scoreWindow));
-		//settingsItem.addActionListener(new ShowSettingsActionListener(commandlist, settingsWindow));
 
 		this.setJMenuBar(menubar);
 	}
@@ -118,6 +124,10 @@ public class MainWindow extends JFrame implements View {
 		lastState = new GameState(state);
 	}
 
+	/**
+	 * If the game just ended, this shows the game over (hall of fame) screen.
+	 * @param state 	current game state
+	 */
 	private void updateGameoverScreen(GameState state) {
 		if (gameJustEnded(state)) {
 			scoreWindow = new ScoreWindow(commandlist, settings, state);
@@ -126,6 +136,12 @@ public class MainWindow extends JFrame implements View {
 		}
 	}
 
+	/**
+	 * Deduces if the player just lost the game.
+	 * @param currentState	current state of the game passed in from the game
+	 * logic
+	 * @return 	true if the game was just lost, otherwise false
+	 */
 	private boolean gameJustEnded(GameState currentState) {
 		if (currentState == null) {
 			return false;

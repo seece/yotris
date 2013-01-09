@@ -2,8 +2,6 @@ package com.lofibucket.yotris.logic;
 import com.lofibucket.yotris.ui.UserInterface;
 import com.lofibucket.yotris.util.Settings;
 import com.lofibucket.yotris.util.command.Command;
-import com.lofibucket.yotris.util.command.TogglePauseCommand;
-import com.lofibucket.yotris.util.command.UnpauseCommand;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
@@ -70,6 +68,9 @@ public class GameLogic extends Observable {
 		return state;
 	}
 
+	/**
+	 * Updates game. Moves the piece downwards and increases score if necessary.
+	 */
 	private void updateGame() {
 		state.frames++;
 		field.updateFallingPiece(this);

@@ -12,9 +12,20 @@ import javax.swing.JPanel;
  * The visible game area UI component. Renders a Grid with the given Theme.
  */
 public class GameArea extends JPanel {
+	/**
+	 * The render grid to use.
+	 */
 	private Grid renderGrid;
+	/**
+	 * The current theme.
+	 */
 	private Theme theme;
 
+	/**
+	 * The default constructor.
+	 * @param renderGrid	the render grid to use
+	 * @param theme 	the color scheme to use for rendering
+	 */
 	public GameArea(Grid renderGrid, Theme theme) {
 		super.setBackground(Color.BLACK);
 		this.renderGrid = renderGrid;
@@ -66,10 +77,18 @@ public class GameArea extends JPanel {
 
 	}
 	
+	/**
+	 * Gets the tile width calculated from the component size.
+	 * @return width of a single tile in pixels
+	 */
 	private int getTileWidth() {
 		return (int) Math.round((double)this.getWidth() / (double)renderGrid.getWidth());
 	}
 	
+	/**
+	 * Gets the tile height calculated from the component size.
+	 * @return height of a single tile in pixels
+	 */
 	private int getTileHeight() {
 		return (int) Math.round((double)this.getHeight() / (double)renderGrid.getHeight());
 	}

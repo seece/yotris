@@ -54,6 +54,9 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Initializes the game with default settings.
+	 */
 	private void init() {
 		Settings defaultSettings = new Settings();
 		this.settings = defaultSettings;

@@ -24,7 +24,7 @@ public class Grid {
 
 		this.tiles = new Tile[height][width];
 
-		// TODO make this some ArrayCopy2D method
+		// build a new array
 		for (int y=0;y<h;y++) {
 		for (int x=0;x<w;x++) {
 			if (tiles[y][x] != null) {
@@ -34,6 +34,11 @@ public class Grid {
 		}
 	}
 
+	/**
+	 * The custom shape constructor. Used in Piece.
+	 * @param shape	the shape to set the grid tiles to as default
+	 * @param color grid tile color
+	 */
 	public Grid(boolean[][] shape, TileColor color) {
 		this.tiles = parseTileGridFromTetrimino(shape, color);
 		this.width = this.tiles[0].length;
@@ -70,6 +75,13 @@ public class Grid {
 		return tiles[y][x];
 	}
 
+	/**
+	 * Creates an array of Tiles with the given color from the given 2D boolean
+	 * array.
+	 * @param tetrimino	the shape to use
+	 * @param color	the color to set all non-null tiles
+	 * @return 	the new tile array
+	 */
 	private Tile[][] parseTileGridFromTetrimino(boolean [][] tetrimino, TileColor color) {
 		int block_width = tetrimino[0].length;
 		int block_height = tetrimino.length;

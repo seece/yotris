@@ -38,6 +38,10 @@ public class Theme {
 		return palette.get(tilecolor);
 	}
 
+	/**
+	 * Initializes the default palette.
+	 * @param palette 	the palette map to use
+	 */
 	private static void initDefaultPalette(Map<TileColor, Color> palette) {
 		palette.put(TileColor.BLUE, Color.blue);
 		palette.put(TileColor.CYAN, Color.cyan);

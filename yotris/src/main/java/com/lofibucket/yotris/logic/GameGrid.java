@@ -6,10 +6,19 @@ package com.lofibucket.yotris.logic;
  */
 public class GameGrid extends Grid {
 
+	/**
+	 * Creates a game grid from a given tile array.
+	 * @param tiles 
+	 */
 	public GameGrid(Tile[][] tiles) {
 		super(tiles);
 	}
 
+	/**
+	 * Creates an empty grid with the given dimensions.
+	 * @param width	grid width
+	 * @param height	grid height 
+	 */
 	public GameGrid(int width, int height) {
 		super(width, height);
 	}
@@ -62,6 +71,11 @@ public class GameGrid extends Grid {
 		return checkIfCollides(temp);
 	}
 
+	/**
+	 * Checks if the given row has only non-null tiles.
+	 * @param y	the y-coordinate of the line
+	 * @return 	true if no non-null tiles were found, otherwise false
+	 */
 	public boolean checkIfLineIsSolid(int y) {
 		for (int x=0;x<this.getWidth();x++) {
 			if (getTile(x, y) == null) {
@@ -71,6 +85,10 @@ public class GameGrid extends Grid {
 		return true;
 	}
 
+	/**
+	 * Clears all solid lines.
+	 * @return 	how many lines were cleared
+	 */
 	public int clearLines() {
 		int cleared_lines;
 		int total = 0;
@@ -92,6 +110,11 @@ public class GameGrid extends Grid {
 		return total;
 	}
 
+	/**
+	 * Clears a row and moves all higher tiles one step downwards.
+	 * @param start_y	the row to clear
+	 * @throws IndexOutOfBoundsException 
+	 */
 	protected void deleteRow(int start_y) throws IndexOutOfBoundsException {
 		if (start_y < 0 || start_y >= this.getHeight()) {
 			throw new IndexOutOfBoundsException("Grid vertical index " + start_y 

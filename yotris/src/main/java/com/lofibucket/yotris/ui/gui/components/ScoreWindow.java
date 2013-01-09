@@ -43,7 +43,7 @@ public class ScoreWindow extends JFrame {
 
 		this.state = state;
 		scores = new HighScores();
-		checkScore();
+		checkScore(state);
 		
 		createComponents();
 		pack();
@@ -65,6 +65,11 @@ public class ScoreWindow extends JFrame {
 		pack();
 	}
 
+	/**
+	 * Initializes the the score window.
+	 * @param container	the container to add all the components
+	 * @param settings	current game settings 
+	 */
 	private void init(CommandContainer container, Settings settings) {
 		this.container = container;
 		this.settings = settings;
@@ -73,9 +78,12 @@ public class ScoreWindow extends JFrame {
 		setResizable(false);
 	}
 
-	private void checkScore() {
+	/**
+	 * Asks for players name and updates it to the DB if necessary.
+	 * @param state 	current game state to read the score from
+	 */
+	private void checkScore(GameState state) {
 		if (state == null) {
-			System.out.println("null");
 			return;
 		}
 
@@ -94,6 +102,9 @@ public class ScoreWindow extends JFrame {
 		scores.insertScoreEntry(name, state.score);
 	}
 
+	/**
+	 * Creates all components for this window.
+	 */
 	private void createComponents() {
 		JPanel pane = new JPanel();
 		this.add(pane);

@@ -80,6 +80,10 @@ public class ZeroBasedCounter {
 		upperLimit = newLimit;
 	}
 
+	/**
+	 * Checks if the value has gone under the lower limit, and resets it to 
+	 * the upper limit if necessary.
+	 */
 	private void checkLimit() {
 		if (value < lowerLimit) {
 			value = upperLimit;

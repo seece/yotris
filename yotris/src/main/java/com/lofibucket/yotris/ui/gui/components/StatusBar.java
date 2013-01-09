@@ -31,10 +31,16 @@ public class StatusBar extends JPanel implements View {
 		createComponents();
 	}
 
-	StatusBar() {
+	/**
+	 * Creates a status bar with BorderLayout.
+	 */
+	public StatusBar() {
 		this(new BorderLayout());
 	}
 
+	/**
+	 * Creates all components.
+	 */
 	private void createComponents() {
 		score = new JLabel("");
 		paused = new JLabel("");
@@ -44,10 +50,18 @@ public class StatusBar extends JPanel implements View {
 		this.add(level, BorderLayout.LINE_END);
 	}
 
+	/**
+	 * Updates the score view.
+	 * @param scoreAmount 	the new score
+	 */
 	private void updateScore(int scoreAmount) {
 		score.setText(msgScore + scoreAmount);
 	}
 
+	/**
+	 * Updates the pause state text.
+	 * @param state 	the current state of the game
+	 */
 	private void updatePaused(GameState state) {
 		if (state.paused) {
 			paused.setText(msgPaused);
