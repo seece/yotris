@@ -13,7 +13,7 @@ import java.util.Scanner;
 /**
  * Takes care of file access.
  */
-public class FileDAO implements ScoreDAO, SettingsDAO {
+public class FileDAO implements ScoreDAO {
 	private String filepath;
 	private List<ScoreEntry> scorelist;
 	private File file;
@@ -56,6 +56,11 @@ public class FileDAO implements ScoreDAO, SettingsDAO {
 		 }
 	}
 
+	/**
+	 * Loads the score list from file.
+	 * @return	all score entries loaded in the file
+	 * @throws FileNotFoundException 
+	 */
 	private List<ScoreEntry> loadScoreList() throws FileNotFoundException {
 		List<ScoreEntry> scores = new ArrayList<>();
 
@@ -101,6 +106,12 @@ public class FileDAO implements ScoreDAO, SettingsDAO {
 		return true;
 	}
 
+	/**
+	 * Writes the contents of the currently loaded score list to the given
+	 * OutputStreamWriter.
+	 * @param writer	the writer to use
+	 * @throws IOException 
+	 */
 	private void writeContent(OutputStreamWriter writer) throws IOException {
 		for (ScoreEntry e : scorelist) {
 			writer.write(e.toString());

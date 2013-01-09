@@ -147,7 +147,7 @@ public static final boolean[][] testShapeRotatedClockwise =
 	}
 
 	@Test
-	public void testPlotter() {
+	public void testPlotterWithPieceO() {
 		Piece piece = new Piece(TetrominoShape.getShape("O"), TileColor.BLUE, new Position(0, 0));
 		grid.plotPiece(piece);	
 

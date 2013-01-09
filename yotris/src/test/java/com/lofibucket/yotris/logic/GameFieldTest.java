@@ -28,6 +28,15 @@ public class GameFieldTest {
 	}
 
 	@Test
+	public void testFallingPieceMethodCreatesNewPiece() {
+		init();
+
+		field.spawnPiece();
+
+		assertTrue(field.fallingPiece != null);
+	}
+
+	@Test
 	public void testFallingPieceGetsCreatedAfterClockReset() {
 		init();
 

@@ -24,18 +24,17 @@ public class GameLogicTest {
 		ui = new UserInterfaceMock();
 		settings = new Settings();
 		logic = new GameLogic(ui, settings);
+		logic.reset(settings);
 	}
 
 	@Test
 	public void testFrameCounterIncrement() {
-		logic.reset(settings);
 		logic.update(ui.pollCommands());
 		assertEquals(1, logic.getSimulatedFrames());
 	}
 	
 	@Test
 	public void testFrameCounterZeroAtInit() {
-		logic.reset(settings);
 		assertEquals(0, logic.getSimulatedFrames());
 	}
 
@@ -44,7 +43,6 @@ public class GameLogicTest {
 		ArrayList<Integer> testlist = new ArrayList<>();
 		testlist.add(1);
 
-		logic.reset(settings);
 		ui.addNewCommand(new MockCommand(testlist));
 		logic.update(ui.pollCommands());
 
@@ -53,14 +51,12 @@ public class GameLogicTest {
 
 	@Test
 	public void testObserverUpdateGetsCalled() {
-		logic.reset(settings);
 		logic.update(ui.pollCommands());
 		assertTrue(ui.updated > 0);
 	}
 
 	@Test
 	public void testScoreIncreasesWhenClearingLine() {
-		logic.reset(settings);
 		int startscore = logic.getGameState().score;
 		logic.increaseScore(4);
 		assertTrue(logic.getGameState().score > startscore);
@@ -68,7 +64,6 @@ public class GameLogicTest {
 
 	@Test
 	public void testScoreIncreasesWhenBlockHitsBottom() {
-		logic.reset(settings);
 		int startscore = logic.getGameState().score;
 		logic.increaseScoreHitBottom();
 		assertTrue(logic.getGameState().score > startscore);
@@ -76,9 +71,26 @@ public class GameLogicTest {
 
 	@Test
 	public void testLevelIncreasesWithScore() {
-		logic.reset(settings);
 		logic.increaseScore(100);
 		assertTrue(logic.getLevel() > 1);
+	}
+
+	@Test
+	public void testQuitGameWorks() {
+		logic.quitGame();
+		assertEquals(false, logic.getGameState().running);
+	}
+
+	@Test
+	public void testEndGameWorks() {
+		logic.endGame();
+		assertEquals(true, logic.getGameState().gameover);
+	}
+
+	@Test
+	public void pauseGameWorks() {
+		logic.pauseGame();
+		assertEquals(true, logic.getGameState().paused);
 	}
 }
 
