@@ -10,7 +10,7 @@ public class ZeroBasedCounterTest {
 	ZeroBasedCounter counter;
 
 	@Before
-	public void createCounter() {
+	public void testCreateCounter() {
 		counter = new ZeroBasedCounter(1, 10);
 	}
 
@@ -18,24 +18,24 @@ public class ZeroBasedCounterTest {
     }
 
 	@Test
-	public void initialValueIsCorrect() {
+	public void testInitialValueIsCorrect() {
 		assertEquals(1, counter.getValue());
 	}
 
 	@Test
-	public void isZeroWorks() {
+	public void testIsZeroWorks() {
 		ZeroBasedCounter zero_counter = new ZeroBasedCounter(0, 10);
 		assertTrue(zero_counter.isZero());
 	}
 	
 	@Test
-	public void singleDecreaseWorks() {
+	public void testSingleDecreaseWorks() {
 		counter.decrease();
 		assertTrue(counter.isZero());
 	}
 
 	@Test
-	public void multipleDecreasesWork() {
+	public void testMultipleDecreasesWork() {
 		int amount = 5;
 
 		for (int i=0;i<amount;i++) {
@@ -46,7 +46,7 @@ public class ZeroBasedCounterTest {
 	}
 
 	@Test
-	public void setValueWorks() {
+	public void testSetValueWorks() {
 		counter.setValue(8);
 		assertEquals(8, counter.getValue());
 		counter.setValue(0);
@@ -56,7 +56,7 @@ public class ZeroBasedCounterTest {
 	}
 
 	@Test
-	public void limitsAreCorrect() {
+	public void testLimitsAreCorrect() {
 		assertEquals(10, counter.getUpperLimit());
 		assertEquals(0, counter.getLowerLimit());
 	}

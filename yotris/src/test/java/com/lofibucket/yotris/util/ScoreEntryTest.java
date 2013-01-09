@@ -30,4 +30,17 @@ public class ScoreEntryTest {
 		assertEquals(score, entry.getScore());
 	}
 
+	@Test
+	public void testConstructorParametersAreSaved() {
+		ScoreEntry entry2 = new ScoreEntry(name, score);
+		assertEquals(name, entry2.getName());
+		assertEquals(score, entry2.getScore());
+	}
+	
+	@Test
+	public void testToStringWorks() {
+		ScoreEntry testEntry = new ScoreEntry(name, score);
+		assertEquals(name + "\t" + score, testEntry.toString());
+	}
+
 }

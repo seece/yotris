@@ -11,7 +11,7 @@ import javax.swing.SwingUtilities;
 
 
 /**
- * The main game class that creates the ui and runs the Game class instance.
+ * The main game class that creates the UI  and runs the Game class instance.
  */
 public class Game {
 	private UserInterface ui;
