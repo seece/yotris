@@ -164,14 +164,14 @@ public class GameLogic extends Observable {
 	}
 
 	/**
-	 * Quits the game.
+	 * Quits the game. Sets the state.running flag to false.
 	 */
 	public void quitGame() {
 		state.running = false;
 	}
 
 	/**
-	 * Ends the current game.
+	 * Ends the current game. Sets the state.gameover attribute flag to true.
 	 */
 	public void endGame() {
 		state.gameover = true;

@@ -9,6 +9,9 @@ import java.util.Random;
  */
 public class TetrominoShape {
 
+	/**
+	 * The I-piece.
+	 */
 	private static final boolean[][] I = 
 			new boolean[][] 
 			{
@@ -18,6 +21,9 @@ public class TetrominoShape {
 			{false, true, 	false, false}
 			};
 
+	/**
+	 * The J-piece.
+	 */
 	private static final boolean[][] J = 
 			new boolean[][] 
 			{
@@ -26,6 +32,9 @@ public class TetrominoShape {
 			{false, false, 	true}
 			};
 
+	/**
+	 * The L-piece.
+	 */
 	private static final boolean[][] L = 
 			new boolean[][] 
 			{
@@ -34,6 +43,9 @@ public class TetrominoShape {
 			{true, 	false, 	false}
 			};
 
+	/**
+	 * The O-piece.
+	 */
 	private static final boolean[][] O = 
 			new boolean[][] 
 			{
@@ -41,6 +53,9 @@ public class TetrominoShape {
 			{true, 	true},
 			};
 
+	/**
+	 * The S-piece.
+	 */
 	private static final boolean[][] S = 
 			new boolean[][] 
 			{
@@ -48,7 +63,9 @@ public class TetrominoShape {
 			{false, true, 	true},
 			{true,  true, 	false}
 			};
-
+	/**
+	 * The T-piece.
+	 */
 	private static final boolean[][] T = 
 			new boolean[][] 
 			{
@@ -57,6 +74,9 @@ public class TetrominoShape {
 			{false,  true, 	false}
 			};
 
+	/**
+	 * The Z-piece.
+	 */
 	private static final boolean[][] Z = 
 			new boolean[][] 
 			{
@@ -65,6 +85,11 @@ public class TetrominoShape {
 			{false, true, 	true}
 			};
 
+	/**
+	 * Returns the shape matching the given letter.
+	 * @param shape	the shape we want
+	 * @return 	a two dimensional boolean array describing the piece shape
+	 */
 	public static boolean[][] getShape(String shape) {
 		switch (shape) {
 
@@ -89,6 +114,10 @@ public class TetrominoShape {
 		}
 	}
 
+	/**
+	 * Returns all shapes in a list.
+	 * @return the list of all shapes
+	 */
 	private static ArrayList<boolean[][]> getAllShapes() {
 		ArrayList<boolean[][]> shapes = new ArrayList<>();
 
@@ -103,6 +132,10 @@ public class TetrominoShape {
 		return shapes;
 	}
 
+	/**
+	 * Returns one randomly chosen shape.
+	 * @return the shape as a two dimensional boolean array
+	 */
 	public static boolean[][] getRandomShape() {
 		ArrayList<boolean[][]> shapes = getAllShapes();
 		Random random = new Random();

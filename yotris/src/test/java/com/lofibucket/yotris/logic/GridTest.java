@@ -1,11 +1,6 @@
 
 package com.lofibucket.yotris.logic;
 
-import com.lofibucket.yotris.logic.Tile;
-import com.lofibucket.yotris.logic.Grid;
-import com.lofibucket.yotris.logic.Position;
-import com.lofibucket.yotris.logic.TetrominoShape;
-import com.lofibucket.yotris.logic.Piece;
 import com.lofibucket.yotris.util.ArrayHelpers;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -69,6 +64,15 @@ public static final boolean[][] testShapeRotatedClockwise =
 	}
 
 	@Test
+	public void testCreatedBigGridDimensions() {
+		int width = 250;
+		int height = 300;
+		Grid grid = new Grid(width, height);
+		assertEquals(width, grid.getWidth());
+		assertEquals(height, grid.getHeight());
+	}
+
+	@Test
 	public void testTileSetter() {
 		Grid grid = new Grid(10, 11);
 		Tile t = new Tile(TileColor.CYAN);
@@ -86,6 +90,23 @@ public static final boolean[][] testShapeRotatedClockwise =
 
 		Grid grid = new Grid(tiles);
 		assertEquals(t, grid.getTile(2, 1));
+	}
+
+	@Test
+	public void testTileGetterCornerCase() {
+		Tile t = new Tile(TileColor.CYAN);
+		int width = 5;
+		int height = 5;
+		Tile[][] tiles = new Tile[width][height];
+
+		Grid grid = new Grid(tiles);
+		tiles[0][width-1] = t;
+		grid = new Grid(tiles);
+		assertEquals(t, grid.getTile(width-1, 0));
+
+		tiles[height-1][0] = t;
+		grid = new Grid(tiles);
+		assertEquals(t, grid.getTile(0, height-1));
 	}
 
 	@Test
@@ -107,8 +128,20 @@ public static final boolean[][] testShapeRotatedClockwise =
 		grid.setTile(0, 1, t2);
 		Tile[][] tiles = grid.getTiles();
 
-		assertEquals(t1.getColor(), grid.getTile(1, 1).getColor());
-		assertEquals(t2.getColor(), grid.getTile(0, 1).getColor());
+		assertEquals(t1, tiles[1][1]);
+		assertEquals(t2, tiles[1][0]);
+	}
+
+	@Test
+	public void testTileSetterCornerCaseValue() {
+		Tile t1= new Tile(TileColor.BLUE);
+		Tile t2= new Tile(TileColor.RED);
+		grid.setTile(grid.getWidth()-1, 0, t1);
+		grid.setTile(0, grid.getHeight()-1, t2);
+		Tile[][] tiles = grid.getTiles();
+
+		assertEquals(t1, tiles[0][grid.getWidth()-1]);
+		assertEquals(t2, tiles[grid.getHeight()-1][0]);
 	}
 
 	@Test
@@ -129,8 +162,12 @@ public static final boolean[][] testShapeRotatedClockwise =
 	}
 
 	@Test 
-	public void testTileGetterOutOfBounds() {
+	public void testTileGetterOutOfBoundsNegative() {
 		assertEquals(null, grid.getTile(-1, -1));
+	}
+
+	@Test 
+	public void testTileGetterOutOfBounds() {
 		assertEquals(null, grid.getTile(0, h));
 		assertEquals(null, grid.getTile(w, h));
 		assertEquals(null, grid.getTile(w, 0));

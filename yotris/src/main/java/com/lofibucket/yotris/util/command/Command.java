@@ -1,4 +1,3 @@
-
 package com.lofibucket.yotris.util.command;
 
 import com.lofibucket.yotris.logic.GameLogic;

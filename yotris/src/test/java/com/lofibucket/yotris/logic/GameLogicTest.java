@@ -50,6 +50,35 @@ public class GameLogicTest {
 	}
 
 	@Test
+	public void testCommandGetsAppliedGameoverOverride() {
+		ArrayList<Integer> testlist = new ArrayList<>();
+		testlist.add(1);
+
+		MockCommand command = new MockCommand(testlist);
+		command.overrideGameover = true;
+		logic.endGame();
+		ui.addNewCommand(command);
+		logic.update(ui.pollCommands());
+
+		assertEquals(2, testlist.size());
+	}
+
+	@Test
+	public void testCommandGetsAppliedPauseOverride() {
+		ArrayList<Integer> testlist = new ArrayList<>();
+		testlist.add(1);
+
+		MockCommand command = new MockCommand(testlist);
+		command.overridePause = true;
+		logic.pauseGame();
+
+		ui.addNewCommand(command);
+		logic.update(ui.pollCommands());
+
+		assertEquals(2, testlist.size());
+	}
+
+	@Test
 	public void testObserverUpdateGetsCalled() {
 		logic.update(ui.pollCommands());
 		assertTrue(ui.updated > 0);
@@ -96,6 +125,8 @@ public class GameLogicTest {
 
 class MockCommand extends Command {
 	private ArrayList<Integer> list;
+	public boolean overridePause = false;
+	public boolean overrideGameover = false;
 
 	public MockCommand(ArrayList<Integer> list) {
 		this.list = list;
@@ -105,6 +136,18 @@ class MockCommand extends Command {
 	public void apply(GameLogic logic) {
 		this.list.add(2);
 	}
+
+	@Override
+	public boolean overridePause() {
+		return overridePause;
+	}
+
+	@Override
+	public boolean overrideGameOver() {
+		return overrideGameover;
+	}
+
+	
 
 
 }
