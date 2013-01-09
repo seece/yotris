@@ -56,7 +56,7 @@ public class Settings {
 	 * @param gridHeight	The game are height in tiles
 	 */
 	public Settings(int gridWidth, int gridHeight) { 
-		this.version = "0.6";
+		this.version = "0.7";
 		this.gridWidth = gridWidth;
 		this.gridHeight = gridHeight;
 		this.keymap = new HashMap<>();
