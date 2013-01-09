@@ -4,10 +4,6 @@ package com.lofibucket.yotris.logic;
 import com.lofibucket.yotris.ui.UserInterface;
 import com.lofibucket.yotris.ui.gui.GUI;
 import com.lofibucket.yotris.util.Settings;
-import java.awt.event.KeyEvent;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.SwingUtilities;
 
 
 /**

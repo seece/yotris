@@ -16,11 +16,21 @@ public class GameField {
 	protected Piece fallingPiece;
 	private ZeroBasedCounter pieceFallCounter;
 
+	/**
+	 * Creates a game field with the given settings.
+	 * @param settings	the settings to use
+	 * @param counterLimit the counter limit to use (game speed)
+	 */
 	public GameField(Settings settings, int counterLimit) {
 		this(settings);
 		pieceFallCounter = new ZeroBasedCounter(0, counterLimit);
 	}
 
+	/**
+	 * Creates a game field with the given settings and the default counter 
+	 * limit (10).
+	 * @param settings the settings to use
+	 */
 	public GameField(Settings settings) {
 		this.settings = settings;
 		this.grid = new GameGrid(settings.getGridWidth(), settings.getGridHeight());	
@@ -72,10 +82,19 @@ public class GameField {
 		fallingPiece.moveDown();
 	}
 
+	/**
+	 * Checks if there are any lines to be cleared and then clears them.
+	 * @return how many lines were cleared
+	 */
 	protected int checkLines() {
 		return grid.clearLines();
 	}
 
+	/**
+	 * Creates the falling piece
+	 * @return true if the piece was created successfully, and false if the
+	 * piece couldn't fit 
+	 */
 	protected boolean spawnPiece() {
 		if (settings.debugEnabled()) {
 			System.out.println("Spawning a new block.");
@@ -83,7 +102,7 @@ public class GameField {
 
 		Position center = new Position(grid.getWidth()/2, 0);
 		fallingPiece = new Piece(TetrominoShape.getRandomShape(), 
-				getRandomColor(), center);
+				TileColor.getRandomColor(), center);
 		// center the piece
 		fallingPiece.move(new Position(-fallingPiece.getWidth()/2, 0)); 
 
@@ -162,21 +181,11 @@ public class GameField {
 		fallingPiece.rotateClockwise();
 	}
 
+	/**
+	 * Clears all full lines.
+	 * @return how many full lines were cleared
+	 */
 	public int clearLines() {
 		return checkLines();
 	}
-
-	// TODO move this somewhere else
-	private TileColor getRandomColor() {
-		TileColor[] colors;
-		int choice;
-
-		colors = TileColor.class.getEnumConstants();
-
-		Random r = new Random();
-		choice = r.nextInt(colors.length);
-
-		return colors[choice];
-	}
-
 }

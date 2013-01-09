@@ -2,8 +2,8 @@
 package com.lofibucket.yotris.logic;
 
 import com.lofibucket.yotris.util.TileColor;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class TileTest {
 
