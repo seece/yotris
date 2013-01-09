@@ -18,11 +18,18 @@ import java.util.Observable;
  */
 public class GUI implements UserInterface, Runnable {
 
+	/**
+	 * The list of accumulated commands.
+	 */
 	private List<Command> commandlist;
+	/**
+	 * The main game window containing the visible game area & score window.
+	 */
 	private MainWindow mainwindow;
+	/**
+	 * Current game settings.
+	 */
 	private Settings settings;
-
-	private int tilesize = 18;
 
 	public GUI(Settings settings) {
 		super();
@@ -41,9 +48,6 @@ public class GUI implements UserInterface, Runnable {
 		GameState state = (GameState)arg;
 
 		mainwindow.updateState(state);
-
-
-		//System.out.println("GUI updates: " + logic.getSimulatedFrames());
 	}
 
 	/**

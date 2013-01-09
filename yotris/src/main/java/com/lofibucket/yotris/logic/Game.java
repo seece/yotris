@@ -10,7 +10,13 @@ import com.lofibucket.yotris.util.Settings;
  * The main game class that creates the UI  and runs the Game class instance.
  */
 public class Game {
+	/**
+	 * The user interface to use for this session.
+	 */
 	private UserInterface ui;
+	/**
+	 * The settings to use for this session.
+	 */
 	private Settings settings;
 
 	/**

@@ -9,10 +9,18 @@ import java.awt.event.KeyEvent;
 import java.util.Map;
 
 /**
- *	Catches the game key presses.
+ *	Catches the game key presses. In the keyboard layout, each key press has 
+ * been mapped to one
+ * command that gets added to the command queue.
  */
 public class KeyHandler implements KeyEventDispatcher {
+	/**
+	 * The command list to add new commands to.
+	 */
 	private CommandContainer container;
+	/**
+	 * Current game settings.
+	 */
 	private Settings settings;
 
 	/**

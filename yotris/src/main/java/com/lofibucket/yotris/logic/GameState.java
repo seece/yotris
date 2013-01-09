@@ -5,12 +5,34 @@ package com.lofibucket.yotris.logic;
  * A game state container. Used to transmit updated state to the User Interface.
  */
 public class GameState {
+	/**
+	 * Is the game running or not.
+	 */
 	public boolean running;
+	/**
+	 * Is the game in paused state?
+	 */
 	public boolean paused;
+	/**
+	 * Has the player lost the game (or just started it)
+	 */
 	public boolean gameover;
+	/**
+	 * The game grid with the currently falling piece plotted in.
+	 */
 	public Grid renderGrid;
+	/**
+	 * Players score.
+	 */
 	public int score;
+	/**
+	 * How many frames have been simulated.
+	 */
 	public int frames;
+	/**
+	 * On which level the player is currently on. Gets higher as the score 
+	 * increases.
+	 */
 	public int level;
 
 	/**

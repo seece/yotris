@@ -7,6 +7,10 @@ package com.lofibucket.yotris.logic;
 public abstract class Movable {
 	protected Position pos;
 
+	/**
+	 * Moves the piece with the given offset.
+	 * @param offset the movement
+	 */
 	abstract public void move(Position offset);
 	abstract public void moveRight();	
 	abstract public void moveLeft();	

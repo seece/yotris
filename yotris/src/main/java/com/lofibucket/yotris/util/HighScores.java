@@ -1,7 +1,5 @@
 package com.lofibucket.yotris.util;
 
-import com.lofibucket.yotris.util.FileDAO;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,7 +7,13 @@ import java.util.List;
  * A class for manipulating and storing the high score table.
  */
 public class HighScores {
+	/**
+	 * The list of scores acquired from the DAO.
+	 */
 	private List<ScoreEntry> scorelist;
+	/**
+	 * Takes care of file access & sorting when saving/loading scores.
+	 */
 	private FileDAO dao;
 
 	/**

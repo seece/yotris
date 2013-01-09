@@ -10,6 +10,9 @@ import com.lofibucket.yotris.logic.Position;
  * class.
  */
 public class MoveCommand extends Command {
+	/**
+	 * The offset to pass to the GameLogic object when this command is applied.
+	 */
 	private Position offset;
 
 	/**

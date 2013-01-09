@@ -1,10 +1,10 @@
 
 package com.lofibucket.yotris.util;
+import com.lofibucket.yotris.logic.Position;
+import com.lofibucket.yotris.ui.gui.Theme;
 import com.lofibucket.yotris.util.command.Command;
 import com.lofibucket.yotris.util.command.MoveCommand;
 import com.lofibucket.yotris.util.command.RotateCommand;
-import com.lofibucket.yotris.logic.Position;
-import com.lofibucket.yotris.ui.gui.Theme;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,19 +13,40 @@ import java.util.Map;
  * Holds all game settings.
  */
 public class Settings {
+	/**
+	 * The game area width, in tiles.
+	 */
 	private int gridWidth;
+	/**
+	 * The game area height, in tiles.
+	 */
 	private int gridHeight;
+	/**
+	 * Current game version. 
+	 */
 	private String version;
+	/**
+	 * Is the debug mode (more verbose logging) enabled.
+	 */
 	private boolean debug;
+	/**
+	 * The keyboard layout configuration.
+	 */
 	private Map<Integer, Command> keymap;
+	/**
+	 * How fast do want the game to run.
+	 */
 	private double targetFPS;
+	/**
+	 * The theme to use.
+	 */
 	private Theme theme;
 
 	/**
 	 * The constructor with no parameters initializes the default settings. 
 	 */
 	public Settings() {
-		// the default settings
+		// default settings
 		this(10, 20);
 	}
 

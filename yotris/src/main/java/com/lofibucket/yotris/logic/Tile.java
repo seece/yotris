@@ -7,6 +7,9 @@ import com.lofibucket.yotris.util.TileColor;
  * position is deduced from array coordinates in Grid.
  */
 public class Tile {
+	/**
+	 * The color of this tile.
+	 */
 	TileColor color;
 
 	/**

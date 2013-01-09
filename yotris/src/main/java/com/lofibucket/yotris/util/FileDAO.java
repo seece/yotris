@@ -14,8 +14,13 @@ import java.util.Scanner;
  * Takes care of file access.
  */
 public class FileDAO implements ScoreDAO {
-	private String filepath;
+	/**
+	 * The list of scores. 
+	 */
 	private List<ScoreEntry> scorelist;
+	/**
+	 * The file where to save and load scores.
+	 */
 	private File file;
 
 	/**
@@ -31,7 +36,6 @@ public class FileDAO implements ScoreDAO {
 	 */
 	public FileDAO(String filepath) {
 		 this(new File(filepath));
-		 this.filepath = filepath;
 	}	
 
 	/**

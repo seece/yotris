@@ -11,6 +11,9 @@ import java.util.Map;
  * rendering.
  */
 public class Theme {
+	/**
+	 * Maps each tile color to exactly one awt.Color object.
+	 */
 	private Map<TileColor, Color> palette;
 
 	/**

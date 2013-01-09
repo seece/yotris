@@ -10,9 +10,17 @@ import java.util.Observable;
  *	The main logic class. Keeps the game running.
  */
 public class GameLogic extends Observable {
-	private UserInterface ui;
+	/**
+	 * The current game field.
+	 */
 	private GameField field;
+	/**
+	 * Current game settings.
+	 */
 	private Settings settings;
+	/**
+	 * The current game state is encapsulated inside this object.
+	 */
 	private GameState state;
 	
 	/**
@@ -22,7 +30,6 @@ public class GameLogic extends Observable {
 	 */
 	public GameLogic(UserInterface ui, Settings settings)	 {
 		super();
-		this.ui = ui;
 		this.settings = settings;
 		this.reset(settings);
 

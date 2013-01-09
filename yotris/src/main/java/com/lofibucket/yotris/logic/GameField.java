@@ -11,9 +11,24 @@ import java.util.Random;
  * falling the piece and checking its collisions.
  */
 public class GameField {
+	/**
+	 * Current settings.
+	 */
 	private Settings settings;
+
+	/**
+	 * The grid representing the area tiles.
+	 */
 	private GameGrid grid;
+
+	/**
+	 * The currently falling piece the player controls.
+	 */
 	protected Piece fallingPiece;
+
+	/**
+	 * When this counter hits zero, the game is updated.
+	 */
 	private ZeroBasedCounter pieceFallCounter;
 
 	/**

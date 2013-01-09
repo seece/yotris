@@ -6,9 +6,18 @@ import com.lofibucket.yotris.util.TileColor;
  *	The grid class used to represent the game area and also tetrimino pieces.
  */
 public class Grid {
+	/**
+	 * The width of this grid.
+	 */
 	private int width;
+	/**
+	 * The height of this grid.
+	 */
 	private int height;
 
+	/**
+	 * The two-dimensional array containing the actual tiles.
+	 */
 	private Tile[][] tiles;
 
 	/**

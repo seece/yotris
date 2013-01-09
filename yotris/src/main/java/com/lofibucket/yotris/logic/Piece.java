@@ -8,9 +8,19 @@ import com.lofibucket.yotris.util.TileColor;
  * A single tetris piece consisting of a Tile Grid.
  */
 public class Piece extends Movable {
-	//private Tile grid[][];	
+	/**
+	 * The Grid object that describes the shape of this Piece. Used for 
+	 * collision testing & rendering.
+	 */
 	private Grid grid;
+	/**
+	 * The orientation of this piece.
+	 */
 	private Rotation rotation;
+	/**
+	 * The color used when rendering this piece. (Should be the same as the 
+	 * color its tiles)
+	 */
 	private TileColor color;
 
 	/**

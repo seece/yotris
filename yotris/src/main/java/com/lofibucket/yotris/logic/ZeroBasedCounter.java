@@ -4,10 +4,20 @@ package com.lofibucket.yotris.logic;
 
 /**
  * A simple counter class that wraps around when its value is less than zero.
+ * The counter can only decrease.
  */
 public class ZeroBasedCounter {
+	/**
+	 * Current value of this counter.
+	 */
 	private int value;
+	/**
+	 * When value hits this limit, it will be set to upperLimit 
+	 */
 	private int lowerLimit;
+	/**
+	 * Value will be set to this when it hits the lowerLimit
+	 */
 	private int upperLimit;
 
 	/**

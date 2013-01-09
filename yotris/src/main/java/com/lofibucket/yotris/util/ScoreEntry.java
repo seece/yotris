@@ -5,7 +5,13 @@ package com.lofibucket.yotris.util;
  * An entry in a high score table.
  */
 public class ScoreEntry implements Comparable<ScoreEntry> {
+	/**
+	 * Name of the player.
+	 */
 	private String name;
+	/**
+	 * The score of this player.
+	 */
 	private int score;
 
 	/**
