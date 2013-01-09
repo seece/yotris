@@ -49,7 +49,7 @@ public class MainWindow extends JFrame implements View {
 
 		scoreWindow = new ScoreWindow(commandlist, settings);
 
-		setPreferredSize(new Dimension(350, 532));
+		setPreferredSize(new Dimension(330, 552));
 		setResizable(false);
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

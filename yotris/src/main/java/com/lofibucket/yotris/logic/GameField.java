@@ -44,7 +44,7 @@ public class GameField {
 	 * @param level Current game level.
 	 */
 	public void updateCounterLimit(int level) {
-		pieceFallCounter.setLimit(Math.max(3, 19 - level));
+		pieceFallCounter.setLimit(Math.max(3, 19 - (int)(level*1.5)));
 	}
 
 	/**
