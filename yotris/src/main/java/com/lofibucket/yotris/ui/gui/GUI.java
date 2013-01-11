@@ -7,10 +7,14 @@ import com.lofibucket.yotris.ui.UserInterface;
 import com.lofibucket.yotris.util.Settings;
 import com.lofibucket.yotris.util.command.Command;
 import java.awt.KeyboardFocusManager;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
 
 /**
  * The Graphical User Interface. Holds current settings, the main window 
@@ -74,11 +78,15 @@ public class GUI implements UserInterface, Runnable {
 	}
 
 	/**
-	 * Starts the UI.
+	 * Starts the UI. Waits until the GUI thread has been started.
 	 */
 	@Override
 	public void start() {
-		run();
+		try {
+			SwingUtilities.invokeAndWait(this);
+		} catch (InterruptedException | InvocationTargetException ex) {
+			Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+		}
 	}
 
 	/*

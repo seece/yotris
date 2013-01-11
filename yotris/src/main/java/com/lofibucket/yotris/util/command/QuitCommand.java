@@ -17,6 +17,11 @@ public class QuitCommand extends Command {
 	}
 
 	@Override
+	public boolean overridePause() {
+		return true;
+	}
+
+	@Override
 	public boolean overrideGameOver() {
 		return true;
 	}
