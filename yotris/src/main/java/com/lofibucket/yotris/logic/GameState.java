@@ -62,7 +62,7 @@ public class GameState {
 
 	/**
 	 * Tells is the game is running.
-	 * @return 
+	 * @return true if running, false if not
 	 */
 	public boolean isRunning() {
 		return running;

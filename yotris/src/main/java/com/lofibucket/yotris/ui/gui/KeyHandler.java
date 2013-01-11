@@ -28,9 +28,9 @@ public class KeyHandler implements KeyEventDispatcher {
 	 * @param container	The CommandContainer where new commands are pushed.
 	 * @param settings	Current settings to use (includes key layout)
 	 */
-	public KeyHandler(CommandContainer commandlist, Settings settings) {
+	public KeyHandler(CommandContainer container, Settings settings) {
 		super();
-		this.container = commandlist;
+		this.container = container;
 		this.settings = settings;
 	}
 

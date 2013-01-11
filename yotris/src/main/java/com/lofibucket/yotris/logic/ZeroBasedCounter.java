@@ -35,7 +35,7 @@ public class ZeroBasedCounter {
 
 	/**
 	 *	Returns the counter value
-	 * @return
+	 * @return	the current counter value
 	 */
 	public int getValue() {
 		return value;

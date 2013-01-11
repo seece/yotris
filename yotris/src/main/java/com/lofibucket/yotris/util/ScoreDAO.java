@@ -14,7 +14,7 @@ public interface ScoreDAO {
 	public List<ScoreEntry> getScorelist();
 	/**
 	 * Saves the currently loaded list to a file.
-	 * @return 
+	 * @return true if the list was saved successfully, otherwise false
 	 */
 	public boolean saveScorelist();
 	/**

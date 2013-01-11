@@ -39,7 +39,7 @@ public class Piece extends Movable {
 	/**
 	 * A constructor that takes in a two dimensional Tile array as parameter
 	 * instead of a boolean array.
-	 * @param grid		The tile shape array for this piece
+	 * @param tiles		The tile shape array for this piece
 	 * @param color		The color of this piece
 	 * @param pos		Position in the game grid, used when plotting
 	 */
@@ -166,7 +166,7 @@ public class Piece extends Movable {
 
 	/**
 	 * Change this pieces internal tile grid
-	 * @param grid New grid to be used
+	 * @param tiles New grid to be used
 	 */
 	public void setGrid(Grid tiles) {
 		this.grid = tiles;
