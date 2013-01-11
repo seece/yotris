@@ -1,0 +1,20 @@
+# compile with http://www.websequencediagrams.com
+
+title piece collision detection
+
+
+GameLogic->+GameField: updateFallingPiece()
+GameField->+GameGrid: checkIfBottomCollides(piece)
+GameGrid->+Piece: getTiles()
+Piece->+Grid: getTiles()
+Grid-->-Piece: tiles:Tile[][]
+Piece-->-GameGrid: tiles:Tile[][]
+
+loop each tile in tiles
+GameGrid->+Grid:equals(grid.getTile())
+Grid-->-GameGrid:comparisonResult:boolean
+note left of GameGrid: If gamegrid tile != null where piece tile != null, return true
+end
+
+GameGrid-->-GameField: result:Boolean
+
