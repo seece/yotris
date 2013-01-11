@@ -1,0 +1,7 @@
+# yotriksen käyttöohjeet
+Nämä ovat käyttöohjeet yotris-pelin versioon 0.7
+
+## Käynnistäminen
+Käynnistääksesi ohjelman, koneellasi tulee olla asennettuna Java 7 (JRE 7). Jos sinulla ei ole tätä, ja käytät Linux-käyttöjärjestelmää, voit ladata JRE 7:n sekä yotriksen paikalliseen kansioon seuraavilla komennoilla (löytyvät myös tiedostosta README.md)
+
+
