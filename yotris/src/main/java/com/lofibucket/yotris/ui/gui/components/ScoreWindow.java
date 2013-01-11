@@ -22,7 +22,6 @@ import javax.swing.JPanel;
 /**
  * The score view that opens after game over, or when triggered from the menu.
  */
-
 public class ScoreWindow extends JFrame {
 	private CommandContainer container;
 	private Settings settings;

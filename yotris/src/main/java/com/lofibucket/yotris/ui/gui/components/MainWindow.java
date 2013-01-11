@@ -31,7 +31,8 @@ public class MainWindow extends JFrame implements View {
 	private GameArea area;
 	private CommandContainer commandlist;
 	private StatusBar statusbar;
-	private ScoreWindow scoreWindow; // score window is created at gameover
+	private ScoreWindow scoreWindow; 
+	private AboutWindow aboutWindow; 
 	private Settings settings;
 	private GameState lastState;
 	private boolean scoresShown;
@@ -48,6 +49,7 @@ public class MainWindow extends JFrame implements View {
 		this.commandlist = commandlist;
 
 		scoreWindow = new ScoreWindow(commandlist, settings);
+		aboutWindow = new AboutWindow(settings);
 
 		setPreferredSize(new Dimension(330, 552));
 		setResizable(false);
@@ -103,13 +105,16 @@ public class MainWindow extends JFrame implements View {
 		gameMenu.add(pauseItem);
 		gameMenu.add(quitItem);
 
-		JMenuItem hallOfFameItem = new JMenuItem("Hall of Fame");
+		JMenuItem hallOfFameItem 	= new JMenuItem("Hall of Fame");
+		JMenuItem aboutItem			= new JMenuItem("About yotris");
 		viewMenu.add(hallOfFameItem);
+		viewMenu.add(aboutItem);
 
 		startItem.addActionListener(new NewGameActionListener(commandlist));
 		pauseItem.addActionListener(new PauseActionListener(commandlist));
 		quitItem.addActionListener(new QuitActionListener(commandlist));
 		hallOfFameItem.addActionListener(new ShowWindowActionListener(scoreWindow));
+		aboutItem.addActionListener(new ShowWindowActionListener(aboutWindow));
 
 		this.setJMenuBar(menubar);
 	}
