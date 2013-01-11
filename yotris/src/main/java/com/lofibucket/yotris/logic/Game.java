@@ -66,7 +66,6 @@ public class Game {
 	private void init() {
 		Settings defaultSettings = new Settings();
 		this.settings = defaultSettings;
-		this.settings.enableDebug();
 
 		ui = new GUI(defaultSettings);
 		ui.start();
