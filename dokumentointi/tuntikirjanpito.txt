@@ -25,3 +25,4 @@ vuosi vaihtuu
 8.1	3	bugifiksailua ja refaktorointia
 9.1	4	dokumentointi
 11.1	2	kaavioiden päivitys
+11.1	2	dokumentointi
