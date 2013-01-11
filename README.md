@@ -1,6 +1,8 @@
 yotris
 ======
 
+Suomenkieliset käyttöohjeet: dokumentaatio/kayttoohje.txt
+
 A tetris clone for joululabra. This program *requires JRE 7* to run.
 
 If you don't have Java 7, run the following commands to download JRE 7 binaries and run the game.

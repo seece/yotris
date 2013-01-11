@@ -1,7 +1,44 @@
 # yotriksen käyttöohjeet
-Nämä ovat käyttöohjeet yotris-pelin versioon 0.7
+Nämä ovat käyttöohjeet yotris-pelin versioon 0.7.
 
-## Käynnistäminen
-Käynnistääksesi ohjelman, koneellasi tulee olla asennettuna Java 7 (JRE 7). Jos sinulla ei ole tätä, ja käytät Linux-käyttöjärjestelmää, voit ladata JRE 7:n sekä yotriksen paikalliseen kansioon seuraavilla komennoilla (löytyvät myös tiedostosta README.md)
+## Ohjelman käynnistäminen
+Käynnistääksesi ohjelman, koneellasi tulee olla asennettuna Java 7 (JRE 7). Käynnistä repositoriosta löytyvä jar-tiedosto seuraavalla komennolla:
 
+	java -jar yotris-0.7.jar
 
+Jos sinulla on käytössä vanhempi java-versio, ja käytät Linux-käyttöjärjestelmää, voit ladata JRE 7:n sekä yotriksen paikalliseen kansioon seuraavilla komennoilla (löytyvät myös tiedostosta README.md):
+
+	mkdir yotris_dl
+	cd yotris_dl
+	wget http://cs.helsinki.fi/u/pekkavaa/foo/jre-7-linux-i586.gz && \
+	tar -xvf jre-7-linux-i586.gz && \
+	git clone https://github.com/seece/yotris.git && \
+	jre1.7.0/bin/java -jar yotris/yotris-0.7.jar; cd ..
+	
+Komentosarjan viimeinen rivi käynnistää myös itse pelin ladatulla javaversiolla.
+
+## Peruskäyttö
+Kun käynnistät ohjelman aloitetaan uusi peli automaattisesti.
+
+### Näppäinoikotiet
+
+	Nuoli vasemalle		liikuta palaa vasemmalle
+	Nuoli oikealle		liikuta palaa oikealle
+	Nuoli ylös			käännä putoavaa palaa
+	Nuoli alas			liikuta palaa alaspäin
+	Alt+N				aloita uusi peli
+	Alt+Q				sulje ohjelma
+	Alt+P				tauko
+	
+### Valikot
+Voit aloittaa uuden pelin, pitää tauon tai sulkea ohjelman ikkunan ylälaidassa olevasta Game-valikosta. View-valikosta voit tarkastella pistetilastoa (Hall of Fame) tai tutustua ohjelman tietoihin (About yotris).
+	
+## Pelin kulku
+Yritä muodostaa tippuvista palasista pelikentälle täysiä vaakasuuntaisia rivejä. Kun muodostat rivin, poistetaan kyseinen rivi ja yläpuolella olevia rivejä tipautetaan alaspäin. Pisteitä saat eniten täytetyistä vaakariveistä, mutta myös jokaisesta alas tipautetusta palasta myönnetään pieni bonus. 
+
+Peli nopeutuu pistesaldon kasvaessa, ja voit tarkkailla nopeuden nousua ikkunan oikean yläkulman Level-arvosta.
+
+Häviät pelin jos palikkarakennelmasi kohoaa ruudun yläreunaan asti. Jos pisteesi ovat riittävän korkeat, kysytään nimeäsi jonka jälkeen tietosi ikuistetaan pelin pistetilastoon.
+	
+## Lisenssi
+Katso repositorion tiedosto COPYING.

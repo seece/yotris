@@ -1,0 +1,19 @@
+# yotriksen testausdokumentaatio
+
+Ohjelman korkeamman tason seuraavia ominaisuuksia ei testattu automaattisesti:
+
+* pelin lopetus kun uutta palikkaa ei enää mahduta luomaan
+* pelin varsinainen pysäytys kun se on asetettu taukotilaan
+	* testasin tämän käsin suorittamalla ohjelman, ja painelemalla taukonäppäimiä
+	* pelilogiikan tauko-metodien toiminta kuitenkin varmistettiin automaattisilla testeillä
+* liikutuskomentojen todellista vaikutusta
+	* testasin tämän käsin kokeilemalla liikutusnappuloiden vaikutusta jokaisen relevantin muutoksen jälkeen
+	* automaattiset testit kuitenkin varmistivat että komentojonoon laitetut komennot suoritetaan
+* ruudunpiirtoa
+	* tämä oli helppo tarkistaa itse käsin yksinkertaisesti ajamalla ohjelma ja katsomalla näyttääkö kuva oikealta
+
+Myöskään pelin graafista käyttöliittymää ei testattu automaattisesti. Käyttöliittymä oli kuitenkin niin yksinkertainen, että valikoiden eri elementtien availu käsin silloin tällöin riitti varmistamaan niiden toimivuuden.
+
+## Tunnetut bugit
+
+Pistetilaston tai tietoikkunan avaaminen ei pysäytä pelin kulkua.
