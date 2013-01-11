@@ -53,7 +53,7 @@ public class HighScores {
 	 * @return true if added, otherwise false
 	 */
 	public boolean insertScoreEntry(String name, int score) {
-		ScoreEntry entry = new ScoreEntry(name, score);
+		ScoreEntry entry = new ScoreEntry(sanitizeInput(name), score);
 
 		List<ScoreEntry> top = getTopTen();
 
@@ -64,6 +64,17 @@ public class HighScores {
 		}
 		
 		return false;
+	}
+
+	/**
+	 * Removes excess whitespace from string.
+	 * @param input	the input from user
+	 * @return 	a sanitized string
+	 */
+	protected String sanitizeInput(String input) {
+		String trimmed = input.trim();
+		trimmed= trimmed.replaceAll("\t", "");
+		return trimmed;
 	}
 
 	/**

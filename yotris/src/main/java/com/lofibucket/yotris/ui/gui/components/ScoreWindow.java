@@ -122,16 +122,30 @@ public class ScoreWindow extends JFrame {
 			label.setAlignmentX(Component.CENTER_ALIGNMENT);
 			pane.add(label);
 		}
-		
+
 		JButton nappu = new JButton("Close");
 
 		title.setAlignmentX(Component.CENTER_ALIGNMENT);
 		nappu.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+		if (top.isEmpty()) {
+			pane.add(createEmptyMessage());
+		}
 		pane.add(Box.createVerticalGlue());
 		pane.add(nappu);
 
 		nappu.addActionListener(new HideWindowActionListener(this));
+	}
+
+	/**
+	 * Creates the "No score entries to show." label 
+	 * @return the created JLabel object
+	 */
+	private JLabel createEmptyMessage() {
+		JLabel message = new JLabel("No score entries to show.");
+		message.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+		return message;
 	}
 }
 

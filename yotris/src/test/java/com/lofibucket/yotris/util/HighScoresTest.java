@@ -37,6 +37,16 @@ public class HighScoresTest {
 			assertTrue(list.get(i).getScore() > list.get(i + 1).getScore());
 		}
 	}
+
+	@Test
+	public void sanitizeInputTrims() {
+		assertEquals("nimi", scores.sanitizeInput("  nimi  "));
+	}
+
+	@Test
+	public void sanitizeInputRemovesTabs() {
+		assertEquals("nimi20", scores.sanitizeInput("nimi\t20"));
+	}
 }
 
 class FileDAOMock extends FileDAO {
