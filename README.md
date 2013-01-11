@@ -1,7 +1,7 @@
 yotris
 ======
 
-Suomenkieliset käyttöohjeet: dokumentaatio/kayttoohje.txt
+Suomenkieliset käyttöohjeet: dokumentointi/kayttoohje.txt
 
 A tetris clone for joululabra. This program *requires JRE 7* to run.
 
